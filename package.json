@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "ciaervo",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Homepage for Ciaervo",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Chris Odegard <c.odegard@gmail.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
@@ -33,9 +33,10 @@
     "typeface-montserrat": "0.0.75"
   },
   "devDependencies": {
+    "gatsby-cli": "^4.0.0",
     "prettier": "^2.4.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://www.ciaervo.com",
   "keywords": [
     "gatsby"
   ],
