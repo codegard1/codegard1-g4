@@ -5,8 +5,9 @@ const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
   const data = useStaticQuery(graphql`
-    query {
+    query LayoutQuery {
       site {
+        buildTime(fromNow: true)
         siteMetadata {
           copyright
         }
@@ -40,6 +41,8 @@ const Layout = ({ location, title, children }) => {
         {copyright}, Built with
         {` `}
         <a href="https://www.gatsbyjs.com">Gatsby</a>
+        {` `}
+        {data.site.buildTime}
       </footer>
     </div>
   );
