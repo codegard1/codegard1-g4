@@ -52,6 +52,9 @@ const BlogPostTemplate = ({ data, location }) => {
             )}
           </li>
           <li>
+            <Link to={"/"}>Index</Link>
+          </li>
+          <li>
             {next && (
               <Link to={next.fields.slug} rel="next">
                 {next.frontmatter.title} →
