@@ -8,6 +8,8 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "@fluentui/react": "^8.37.6",
+    "@uifabric/icons": "^7.6.2",
     "gatsby": "^4.0.1",
     "gatsby-plugin-feed": "^4.0.0",
     "gatsby-plugin-gatsby-cloud": "^4.0.0",
