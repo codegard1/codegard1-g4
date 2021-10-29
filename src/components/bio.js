@@ -16,10 +16,16 @@ const Bio = () => {
         siteMetadata {
           author {
             name
+            bio
             summary
           }
           social {
-            twitter
+           bandcamp
+           github
+           keybase
+           linkedin
+           soundcloud
+           stackoverflow 
           }
         }
       }
