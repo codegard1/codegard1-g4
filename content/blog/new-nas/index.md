@@ -1,10 +1,11 @@
 ---
 tags:
-  - ''
+  - ""
 published: true
 date: 2020-07-30T23:42:45.076Z
 title: New NAS
 ---
+
 After playing with FreeNAS for a few months I finally decided I was tired of micro-managing my backup solution. So I bought a WD NAS on sale from Amazon, the MyCloudEX2Ultra 4TB.
 
 ![MyCloudEX2Ultra](./mycloudex2ultra.png "MyCloudEX2Ultra")

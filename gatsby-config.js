@@ -10,12 +10,13 @@ module.exports = {
     description: `Personal site of Chris Odegard.`,
     siteUrl: `https://www.ciaervo.com`,
     social: {
-      bandcamp:"https://ciaervo.bandcamp.com/",
+      bandcamp: "https://ciaervo.bandcamp.com/",
       github: "https://github.com/codegard1",
       keybase: `https://keybase.io/ciaervo`,
       linkedin: "https://www.linkedin.com/in/codegard1",
       soundcloud: "https://soundcloud.com/ciaervo",
-      stackoverflow:"https://stackoverflow.com/users/2852366/chris-odegard?tab=profile",
+      stackoverflow:
+        "https://stackoverflow.com/users/2852366/chris-odegard?tab=profile",
     },
   },
   plugins: [
@@ -89,8 +90,8 @@ module.exports = {
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
                   custom_elements: [{ "content:encoded": node.html }],
-                })
-              })
+                });
+              });
             },
             query: `
               {
@@ -136,4 +137,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
   ],
-}
+};

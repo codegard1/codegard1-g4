@@ -5,26 +5,18 @@
     "work": [
       "Learned about ES6 Arrow functions and variable declaration keywords "
     ],
-    "notes": [
-      "See Rapid E6 Training"
-    ]
+    "notes": ["See Rapid E6 Training"]
   },
   {
     "key": 1,
     "date": "12/22/2016",
-    "work": [
-      "Learned about TypeScript on Pluralsight"
-    ],
-    "notes": [
-      "See TypeScript Pluralsight Notes"
-    ]
+    "work": ["Learned about TypeScript on Pluralsight"],
+    "notes": ["See TypeScript Pluralsight Notes"]
   },
   {
     "key": 2,
     "date": "12/14/2016",
-    "work": [
-      "Watched a webinar at work about SharePoint framework"
-    ],
+    "work": ["Watched a webinar at work about SharePoint framework"],
     "notes": [
       "See Converting your CEWP Customizations to the SharePoint Framework"
     ]
@@ -32,12 +24,8 @@
   {
     "key": 3,
     "date": "12/13/2016",
-    "work": [
-      "Read about modules in different versions of JS"
-    ],
-    "notes": [
-      "See Modules in ECMAScript"
-    ]
+    "work": ["Read about modules in different versions of JS"],
+    "notes": ["See Modules in ECMAScript"]
   },
   {
     "key": 4,
@@ -59,9 +47,7 @@
       "Spent some time optimizing codegard1-react",
       "I experimented with import/export and using index.js to make nested components more accessible"
     ],
-    "notes": [
-      "See Commit log "
-    ]
+    "notes": ["See Commit log "]
   },
   {
     "key": 6,
@@ -70,9 +56,7 @@
       "Continued the Learning React II Course on Codecademy",
       "Learned about using styles in React components"
     ],
-    "notes": [
-      "See Learn React II Notes"
-    ]
+    "notes": ["See Learn React II Notes"]
   },
   {
     "key": 7,
@@ -81,29 +65,19 @@
       "Started Learning React II on Codecademy",
       "Learned about Setting state from Parent, Child, and Sibling components"
     ],
-    "notes": [
-      "See Learn React II Notes"
-    ]
+    "notes": ["See Learn React II Notes"]
   },
   {
     "key": 8,
     "date": "12/5/2016",
-    "work": [
-      "Finished the react course on Codecademy "
-    ],
-    "notes": [
-      "See Learn ReactJS: Part 2 Notes (Codecademy)"
-    ]
+    "work": ["Finished the react course on Codecademy "],
+    "notes": ["See Learn ReactJS: Part 2 Notes (Codecademy)"]
   },
   {
     "key": 9,
     "date": "12/1/2016",
-    "work": [
-      "Learned a bit more about Netlify"
-    ],
-    "notes": [
-      "null"
-    ]
+    "work": ["Learned a bit more about Netlify"],
+    "notes": ["null"]
   },
   {
     "key": 10,
@@ -112,9 +86,7 @@
       "Continued learning about how to use Jade",
       "Learned about Handlebars"
     ],
-    "notes": [
-      "See Templating Engines"
-    ]
+    "notes": ["See Templating Engines"]
   },
   {
     "key": 11,
@@ -122,19 +94,13 @@
     "work": [
       "Learned a bit about the jade (AKA Pug) templating engine from Pluralsight"
     ],
-    "notes": [
-      "See Templating Engines"
-    ]
+    "notes": ["See Templating Engines"]
   },
   {
     "key": 12,
     "date": "11/22/2016",
-    "work": [
-      "Learned about jshint "
-    ],
-    "notes": [
-      "See jshint Info"
-    ]
+    "work": ["Learned about jshint "],
+    "notes": ["See jshint Info"]
   },
   {
     "key": 13,
@@ -143,29 +109,19 @@
       "Started NPM course on web development using Node.js",
       "Learned about gulp"
     ],
-    "notes": [
-      "See page Building Web Applications with Node.js & Express 4.0"
-    ]
+    "notes": ["See page Building Web Applications with Node.js & Express 4.0"]
   },
   {
     "key": 14,
     "date": "11/14/2016",
-    "work": [
-      "Finished the NPM Playbook course on Pluralsight"
-    ],
-    "notes": [
-      "See Page NPM Playbook 3: Publishing your own packages"
-    ]
+    "work": ["Finished the NPM Playbook course on Pluralsight"],
+    "notes": ["See Page NPM Playbook 3: Publishing your own packages"]
   },
   {
     "key": 15,
     "date": "11/13/2016",
-    "work": [
-      "Finished Codecademy course on props in React"
-    ],
-    "notes": [
-      "null"
-    ]
+    "work": ["Finished Codecademy course on props in React"],
+    "notes": ["null"]
   },
   {
     "key": 16,
@@ -176,9 +132,7 @@
       "Learned about State Lifting",
       "Fixed the page switching function in codegard1-react"
     ],
-    "notes": [
-      "null"
-    ]
+    "notes": ["null"]
   },
   {
     "key": 17,
@@ -194,12 +148,8 @@
   {
     "key": 18,
     "date": "11/4/2016",
-    "work": [
-      "Completed Learn ReactJS: Part I on CodeCademy"
-    ],
-    "notes": [
-      "See page: React Codecademy Course Notes"
-    ]
+    "work": ["Completed Learn ReactJS: Part I on CodeCademy"],
+    "notes": ["See page: React Codecademy Course Notes"]
   },
   {
     "key": 19,
@@ -208,9 +158,7 @@
       "Went to a Hacker Hours meetup at Gregory's coffe on 7th ave & 30th and talked to a couple of guys there, Jamie & Sam, who were studying React in a Bootcamp & who were able to give me a brief rundown of how React apps are structured, w/r/t Components, state, and props. They advised me too to look at React tutorials on Codecademy & nodeschool",
       "Started reading the thinking-in-react guide"
     ],
-    "notes": [
-      "See page: Thinking-in-react"
-    ]
+    "notes": ["See page: Thinking-in-react"]
   },
   {
     "key": 20,
@@ -233,9 +181,7 @@
       "Watched ShareGate webinar re: the future of SharePoint",
       "Read about next.js"
     ],
-    "notes": [
-      "null"
-    ]
+    "notes": ["null"]
   },
   {
     "key": 22,
@@ -258,9 +204,7 @@
     "work": [
       "MS Ignite Deck: Build Business Apps for O365 - InfoPath, PowerApps, Flow, and More"
     ],
-    "notes": [
-      "null"
-    ]
+    "notes": ["null"]
   },
   {
     "key": 24,
@@ -270,9 +214,7 @@
       "Read about NodeJS package.json",
       "Learned about where NodeJS installs packages locally vs. globally "
     ],
-    "notes": [
-      "See page Introduction to NodeJS Part 7"
-    ]
+    "notes": ["See page Introduction to NodeJS Part 7"]
   },
   {
     "key": 25,
@@ -284,19 +226,13 @@
       "Discover What's new and what's coming to SharePoint Modern Team Sites",
       "NodeJS Pluralsight course: Interacting with the Web section"
     ],
-    "notes": [
-      "See page: Introduction to NodeJS part 6"
-    ]
+    "notes": ["See page: Introduction to NodeJS part 6"]
   },
   {
     "key": 26,
     "date": "10/13/2016",
-    "work": [
-      "Participated in a 3hr Presentation Skills workshop hosted by HR"
-    ],
-    "notes": [
-      "null"
-    ]
+    "work": ["Participated in a 3hr Presentation Skills workshop hosted by HR"],
+    "notes": ["null"]
   },
   {
     "key": 27,
@@ -306,9 +242,7 @@
       "Watched webinar: Macy's Save Actively Financial Wellness Series Millenials and financial matters",
       "Watched two chapters in the NodeJS Pluralsight Course, topics were File System and  Buffers"
     ],
-    "notes": [
-      "null"
-    ]
+    "notes": ["null"]
   },
   {
     "key": 28,
@@ -330,9 +264,7 @@
       "Read article on Arrow functions and did some experimenting on ES6Fiddle.net",
       "Read article on Linting "
     ],
-    "notes": [
-      "null"
-    ]
+    "notes": ["null"]
   },
   {
     "key": 30,
@@ -342,37 +274,24 @@
       "Learned how to scaffold from @microsoft/generator; see this page for more info",
       "Watched some videos in the Modules, require(), and NPM chapter of the NodeJS Pluralsight course"
     ],
-    "notes": [
-      "null"
-    ]
+    "notes": ["null"]
   },
   {
     "key": 31,
     "date": "9/22/2016",
-    "work": [
-      "PnP video re: SharePoint Framework",
-      "Learned about npm"
-    ],
-    "notes": [
-      "null"
-    ]
+    "work": ["PnP video re: SharePoint Framework", "Learned about npm"],
+    "notes": ["null"]
   },
   {
     "key": 32,
     "date": "9/21/2016",
-    "work": [
-      "Read Grokking Scope in JavaScript"
-    ],
-    "notes": [
-      "null"
-    ]
+    "work": ["Read Grokking Scope in JavaScript"],
+    "notes": ["null"]
   },
   {
     "key": 33,
     "date": "9/28/2017",
-    "work": [
-      "Make a blog for create-react-app in 10 lines of code"
-    ],
+    "work": ["Make a blog for create-react-app in 10 lines of code"],
     "notes": [
       "https://www.prerender.cloud/blog/2016/10/20/create-react-app-blog"
     ]
@@ -380,9 +299,7 @@
   {
     "key": 34,
     "date": "8/30/2017",
-    "work": [
-      "Edit and manage permissions for a SharePoint list or library"
-    ],
+    "work": ["Edit and manage permissions for a SharePoint list or library"],
     "notes": [
       "https://support.office.com/en-us/article/Edit-and-manage-permissions-for-a-SharePoint-list-or-library-02d770f3-59eb-4910-a608-5f84cc297782"
     ]
@@ -400,9 +317,7 @@
   {
     "key": 36,
     "date": "8/30/2017",
-    "work": [
-      "Overview of SharePoint Framework Extensions (preview)"
-    ],
+    "work": ["Overview of SharePoint Framework Extensions (preview)"],
     "notes": [
       "https://dev.office.com/sharepoint/docs/spfx/extensions/overview-extensions"
     ]
@@ -410,19 +325,13 @@
   {
     "key": 37,
     "date": "8/30/2017",
-    "work": [
-      "SharePoint Framework development tools and libraries"
-    ],
-    "notes": [
-      "https://dev.office.com/sharepoint/docs/spfx/tools-and-libraries"
-    ]
+    "work": ["SharePoint Framework development tools and libraries"],
+    "notes": ["https://dev.office.com/sharepoint/docs/spfx/tools-and-libraries"]
   },
   {
     "key": 38,
     "date": "8/30/2017",
-    "work": [
-      "Create a PowerApp for a list in SharePoint Online"
-    ],
+    "work": ["Create a PowerApp for a list in SharePoint Online"],
     "notes": [
       "https://support.office.com/en-us/article/Create-a-PowerApp-for-a-list-in-SharePoint-Online-9338b2d2-67ac-4b81-8e67-97da27e5e9ab"
     ]
@@ -430,39 +339,25 @@
   {
     "key": 39,
     "date": "8/23/2017",
-    "work": [
-      ".gitkeep (Track Empty Directory)"
-    ],
-    "notes": [
-      "http://www.ryanwright.me/cookbook/git/gitkeep"
-    ]
+    "work": [".gitkeep (Track Empty Directory)"],
+    "notes": ["http://www.ryanwright.me/cookbook/git/gitkeep"]
   },
   {
     "key": 40,
     "date": "8/23/2017",
-    "work": [
-      "foreach vs for-of vs for-in in JavaScript"
-    ],
-    "notes": [
-      "http://qnimate.com/foreach-vs-for-of-vs-for-in-in-javascript/"
-    ]
+    "work": ["foreach vs for-of vs for-in in JavaScript"],
+    "notes": ["http://qnimate.com/foreach-vs-for-of-vs-for-in-in-javascript/"]
   },
   {
     "key": 41,
     "date": "8/23/2017",
-    "work": [
-      "The 5 Types Of React Application State"
-    ],
-    "notes": [
-      "http://jamesknelson.com/5-types-react-application-state/"
-    ]
+    "work": ["The 5 Types Of React Application State"],
+    "notes": ["http://jamesknelson.com/5-types-react-application-state/"]
   },
   {
     "key": 42,
     "date": "8/23/2017",
-    "work": [
-      "How do you separate components?"
-    ],
+    "work": ["How do you separate components?"],
     "notes": [
       "https://reactarmory.com/answers/how-should-i-separate-components"
     ]
@@ -470,9 +365,7 @@
   {
     "key": 43,
     "date": "8/23/2017",
-    "work": [
-      "State Machines in Games"
-    ],
+    "work": ["State Machines in Games"],
     "notes": [
       "https://www.gamedev.net/articles/programming/general-and-gameplay-programming/state-machines-in-games-r2982/"
     ]
@@ -480,9 +373,7 @@
   {
     "key": 44,
     "date": "8/23/2017",
-    "work": [
-      "Shadow DOM"
-    ],
+    "work": ["Shadow DOM"],
     "notes": [
       "https://developer.mozilla.org/en-US/docs/Web/Web_Components/Shadow_DOM"
     ]
@@ -490,9 +381,7 @@
   {
     "key": 45,
     "date": "8/23/2017",
-    "work": [
-      "Angular Change Detection Explained"
-    ],
+    "work": ["Angular Change Detection Explained"],
     "notes": [
       "https://blog.thoughtram.io/angular/2016/02/22/angular-2-change-detection-explained.html"
     ]
@@ -500,9 +389,7 @@
   {
     "key": 46,
     "date": "8/21/2017",
-    "work": [
-      "When should I use curly braces for ES6 import?"
-    ],
+    "work": ["When should I use curly braces for ES6 import?"],
     "notes": [
       "https://stackoverflow.com/questions/36795819/when-should-i-use-curly-braces-for-es6-import/36796281#36796281"
     ]
@@ -510,9 +397,7 @@
   {
     "key": 47,
     "date": "8/14/2017",
-    "work": [
-      "SQL Server Stored Procedure Tutorial"
-    ],
+    "work": ["SQL Server Stored Procedure Tutorial"],
     "notes": [
       "https://www.mssqltips.com/sqlservertutorial/160/sql-server-stored-procedure-tutorial/"
     ]
@@ -520,19 +405,13 @@
   {
     "key": 48,
     "date": "8/11/2017",
-    "work": [
-      "What are the SQL database functions?"
-    ],
-    "notes": [
-      "https://docs.microsoft.com/en-us/sql/t-sql/functions/functions"
-    ]
+    "work": ["What are the SQL database functions?"],
+    "notes": ["https://docs.microsoft.com/en-us/sql/t-sql/functions/functions"]
   },
   {
     "key": 49,
     "date": "8/11/2017",
-    "work": [
-      "Collation Precedence (Transact-SQL)t"
-    ],
+    "work": ["Collation Precedence (Transact-SQL)t"],
     "notes": [
       "https://docs.microsoft.com/en-us/sql/t-sql/statements/collation-precedence-transact-sql"
     ]
@@ -540,9 +419,7 @@
   {
     "key": 50,
     "date": "8/11/2017",
-    "work": [
-      "Creating a Table (SQL Server 2014)"
-    ],
+    "work": ["Creating a Table (SQL Server 2014)"],
     "notes": [
       "https://docs.microsoft.com/en-us/sql/t-sql/lesson-1-2-creating-a-table"
     ]
@@ -550,9 +427,7 @@
   {
     "key": 51,
     "date": "8/11/2017",
-    "work": [
-      "Create Procedure (T-SQL)"
-    ],
+    "work": ["Create Procedure (T-SQL)"],
     "notes": [
       "https://docs.microsoft.com/en-us/sql/t-sql/statements/create-procedure-transact-sql"
     ]
@@ -570,9 +445,7 @@
   {
     "key": 53,
     "date": "8/8/2017",
-    "work": [
-      "Data types (Transact-SQL)"
-    ],
+    "work": ["Data types (Transact-SQL)"],
     "notes": [
       "https://docs.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql"
     ]
@@ -583,26 +456,18 @@
     "work": [
       "The complete history of the IBM PC, part two: The DOS empire strikes"
     ],
-    "notes": [
-      "https://arstechnica.com/gadgets/2017/07/ibm-pc-history-part-2/"
-    ]
+    "notes": ["https://arstechnica.com/gadgets/2017/07/ibm-pc-history-part-2/"]
   },
   {
     "key": 55,
     "date": "7/26/2017",
-    "work": [
-      "Immutable.js Docs - Record"
-    ],
-    "notes": [
-      "http://facebook.github.io/immutable-js/docs/#/Record"
-    ]
+    "work": ["Immutable.js Docs - Record"],
+    "notes": ["http://facebook.github.io/immutable-js/docs/#/Record"]
   },
   {
     "key": 56,
     "date": "7/24/2017",
-    "work": [
-      "What's deprecated or removed from SharePoint Server 2016"
-    ],
+    "work": ["What's deprecated or removed from SharePoint Server 2016"],
     "notes": [
       "https://technet.microsoft.com/en-us/library/mt346112(v=office.16).aspx"
     ]
@@ -610,9 +475,7 @@
   {
     "key": 57,
     "date": "7/24/2017",
-    "work": [
-      "Nintex Workflow 2016 - Release Notes"
-    ],
+    "work": ["Nintex Workflow 2016 - Release Notes"],
     "notes": [
       "https://community.nintex.com/docs/DOC-4163-nintex-workflow-2016-release-notes"
     ]
@@ -620,19 +483,13 @@
   {
     "key": 58,
     "date": "7/21/2017",
-    "work": [
-      "Intro to SharePoint Community Sites"
-    ],
-    "notes": [
-      "Intro to SharePoint Communications Sites"
-    ]
+    "work": ["Intro to SharePoint Community Sites"],
+    "notes": ["Intro to SharePoint Communications Sites"]
   },
   {
     "key": 59,
     "date": "7/21/2017",
-    "work": [
-      "SharePoint and Machine Learning"
-    ],
+    "work": ["SharePoint and Machine Learning"],
     "notes": [
       "http://m.sharepointpromag.com/sharepoint/sharepoint-and-machine-learning?NL=TECH-008&Issue=TECH-008_20170719_TECH-008_234&sfvc4enews=42&cl=article_3_b&utm_rid=CPMIN000071492910&utm_campaign=88268&utm_medium=email&elq2=73d34a2947544ed9a0a094f2898f7adf"
     ]
@@ -640,9 +497,7 @@
   {
     "key": 60,
     "date": "7/21/2017",
-    "work": [
-      "10 JavaScript concepts every Node.js programmer must master"
-    ],
+    "work": ["10 JavaScript concepts every Node.js programmer must master"],
     "notes": [
       "http://www.infoworld.com/article/3196070/node-js/10-javascript-concepts-nodejs-programmers-must-master.html"
     ]
@@ -660,9 +515,7 @@
   {
     "key": 62,
     "date": "7/21/2017",
-    "work": [
-      "Creating new column types in modern SharePoint list"
-    ],
+    "work": ["Creating new column types in modern SharePoint list"],
     "notes": [
       "https://techcommunity.microsoft.com/t5/SharePoint-Blog/Creating-new-column-types-in-modern-SharePoint-lists-and/ba-p/87976"
     ]
@@ -670,29 +523,19 @@
   {
     "key": 63,
     "date": "7/20/2017",
-    "work": [
-      "19+ JavaScript Shorthand Coding Techniques"
-    ],
-    "notes": [
-      "https://www.sitepoint.com/shorthand-javascript-techniques/"
-    ]
+    "work": ["19+ JavaScript Shorthand Coding Techniques"],
+    "notes": ["https://www.sitepoint.com/shorthand-javascript-techniques/"]
   },
   {
     "key": 64,
     "date": "7/20/2017",
-    "work": [
-      "Under the Hood with ReactJS"
-    ],
-    "notes": [
-      "https://bogdan-lyashenko.github.io/Under-the-hood-ReactJS/"
-    ]
+    "work": ["Under the Hood with ReactJS"],
+    "notes": ["https://bogdan-lyashenko.github.io/Under-the-hood-ReactJS/"]
   },
   {
     "key": 65,
     "date": "6/26/2017",
-    "work": [
-      "Custom Functions Made Easy in Power BI Desktop"
-    ],
+    "work": ["Custom Functions Made Easy in Power BI Desktop"],
     "notes": [
       "http://radacad.com/custom-functions-made-easy-in-power-bi-desktop"
     ]
@@ -700,19 +543,13 @@
   {
     "key": 66,
     "date": "6/21/2017",
-    "work": [
-      "What Does a Well-Documented CSS Codebase Look Like?"
-    ],
-    "notes": [
-      "https://css-tricks.com/well-documented-css-codebase-look-like/"
-    ]
+    "work": ["What Does a Well-Documented CSS Codebase Look Like?"],
+    "notes": ["https://css-tricks.com/well-documented-css-codebase-look-like/"]
   },
   {
     "key": 67,
     "date": "6/19/2017",
-    "work": [
-      "Master the JavaScript Interview: What is a Closure?"
-    ],
+    "work": ["Master the JavaScript Interview: What is a Closure?"],
     "notes": [
       "https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36"
     ]
@@ -720,9 +557,7 @@
   {
     "key": 68,
     "date": "6/19/2017",
-    "work": [
-      "HTML 5.1 Is Here, Replaces HTML5 As The New œW3C Recommendation"
-    ],
+    "work": ["HTML 5.1 Is Here, Replaces HTML5 As The New œW3C Recommendation"],
     "notes": [
       "https://fossbytes.com/html-5-1-is-here-replaces-html5-as-the-new-w3c-recommendation/"
     ]
@@ -730,9 +565,7 @@
   {
     "key": 69,
     "date": "6/19/2017",
-    "work": [
-      "What's the deal with Typescript?"
-    ],
+    "work": ["What's the deal with Typescript?"],
     "notes": [
       "https://medium.com/@tomdale/glimmer-js-whats-the-deal-with-typescript-f666d1a3aad0"
     ]
@@ -740,39 +573,25 @@
   {
     "key": 70,
     "date": "6/13/2017",
-    "work": [
-      "Watch out for undefined state"
-    ],
-    "notes": [
-      "https://daveceddia.com/watch-out-for-undefined-state/"
-    ]
+    "work": ["Watch out for undefined state"],
+    "notes": ["https://daveceddia.com/watch-out-for-undefined-state/"]
   },
   {
     "key": 71,
     "date": "6/12/2017",
-    "work": [
-      "An Introduction to the `fr` CSS unit"
-    ],
-    "notes": [
-      "https://css-tricks.com/introduction-fr-css-unit/"
-    ]
+    "work": ["An Introduction to the `fr` CSS unit"],
+    "notes": ["https://css-tricks.com/introduction-fr-css-unit/"]
   },
   {
     "key": 72,
     "date": "6/8/2017",
-    "work": [
-      "You are not Google"
-    ],
-    "notes": [
-      "https://blog.bradfieldcs.com/you-are-not-google-84912cf44afb"
-    ]
+    "work": ["You are not Google"],
+    "notes": ["https://blog.bradfieldcs.com/you-are-not-google-84912cf44afb"]
   },
   {
     "key": 73,
     "date": "6/8/2017",
-    "work": [
-      "Adopting Flow and TypeScript"
-    ],
+    "work": ["Adopting Flow and TypeScript"],
     "notes": [
       "https://medium.com/the-thinkmill/adopting-flow-typescript-3549a3a36d51"
     ]
@@ -780,49 +599,31 @@
   {
     "key": 74,
     "date": "6/6/2017",
-    "work": [
-      "Fun with Viewport Units"
-    ],
-    "notes": [
-      "https://css-tricks.com/fun-viewport-units/"
-    ]
+    "work": ["Fun with Viewport Units"],
+    "notes": ["https://css-tricks.com/fun-viewport-units/"]
   },
   {
     "key": 75,
     "date": "5/31/2017",
-    "work": [
-      "6 Preprocessor Features Coming to Native CSS"
-    ],
-    "notes": [
-      "https://webdesign.tutsplus.com/tutorials/the-new-css--cms-28888"
-    ]
+    "work": ["6 Preprocessor Features Coming to Native CSS"],
+    "notes": ["https://webdesign.tutsplus.com/tutorials/the-new-css--cms-28888"]
   },
   {
     "key": 76,
     "date": "5/17/2017",
-    "work": [
-      "A Visual Git Reference"
-    ],
-    "notes": [
-      "http://marklodato.github.io/visual-git-guide/index-en.html"
-    ]
+    "work": ["A Visual Git Reference"],
+    "notes": ["http://marklodato.github.io/visual-git-guide/index-en.html"]
   },
   {
     "key": 77,
     "date": "5/11/2017",
-    "work": [
-      "Visualizing Git Concepts with D3"
-    ],
-    "notes": [
-      "http://www.wei-wang.com/ExplainGitWithD3/#"
-    ]
+    "work": ["Visualizing Git Concepts with D3"],
+    "notes": ["http://www.wei-wang.com/ExplainGitWithD3/#"]
   },
   {
     "key": 78,
     "date": "5/2/2017",
-    "work": [
-      "AJAX - Beau teaches JavaScript"
-    ],
+    "work": ["AJAX - Beau teaches JavaScript"],
     "notes": [
       "https://www.youtube.com/watch?v=tHRNuBf_8xg&index=25&list=PLWKjhJtqVAbk2qRZtWSzCIN38JC_NdhW5"
     ]
@@ -840,9 +641,7 @@
   {
     "key": 80,
     "date": "4/30/2017",
-    "work": [
-      "A step-by-Step Guide: Gatsby on Netlify"
-    ],
+    "work": ["A step-by-Step Guide: Gatsby on Netlify"],
     "notes": [
       "https://www.netlify.com/blog/2016/02/24/a-step-by-step-guide-gatsby-on-netlify/"
     ]
@@ -860,12 +659,8 @@
   {
     "key": 82,
     "date": "4/21/2017",
-    "work": [
-      "Read \"When Does a Project Need React?\""
-    ],
-    "notes": [
-      "https://css-tricks.com/project-need-react/"
-    ]
+    "work": ["Read \"When Does a Project Need React?\""],
+    "notes": ["https://css-tricks.com/project-need-react/"]
   },
   {
     "key": 83,
@@ -880,12 +675,8 @@
   {
     "key": 84,
     "date": "4/4/2017",
-    "work": [
-      "WebPack Concepts"
-    ],
-    "notes": [
-      "https://webpack.js.org/concepts/"
-    ]
+    "work": ["WebPack Concepts"],
+    "notes": ["https://webpack.js.org/concepts/"]
   },
   {
     "key": 85,
@@ -910,12 +701,8 @@
   {
     "key": 87,
     "date": "3/7/2017",
-    "work": [
-      "Took Learning Tree course on SSIS"
-    ],
-    "notes": [
-      ""
-    ]
+    "work": ["Took Learning Tree course on SSIS"],
+    "notes": [""]
   },
   {
     "key": 88,
@@ -923,49 +710,31 @@
     "work": [
       "Took Learning Tree course on building web applications with React (2/28 - 3/3)"
     ],
-    "notes": [
-      ""
-    ]
+    "notes": [""]
   },
   {
     "key": 89,
     "date": "2/27/2017",
-    "work": [
-      "Read Three Ways to Create DOM Elements without jQuery"
-    ],
-    "notes": [
-      ""
-    ]
+    "work": ["Read Three Ways to Create DOM Elements without jQuery"],
+    "notes": [""]
   },
   {
     "key": 90,
     "date": "2/22/2017",
-    "work": [
-      "Read react-cheatsheet"
-    ],
-    "notes": [
-      ""
-    ]
+    "work": ["Read react-cheatsheet"],
+    "notes": [""]
   },
   {
     "key": 91,
     "date": "2/17/2017",
-    "work": [
-      "Read jsx-cheatsheet"
-    ],
-    "notes": [
-      ""
-    ]
+    "work": ["Read jsx-cheatsheet"],
+    "notes": [""]
   },
   {
     "key": 92,
     "date": "2/16/2017",
-    "work": [
-      "Read Learn Raw React ” no JSX, no Flux, no ES6, no Webpack¦"
-    ],
-    "notes": [
-      ""
-    ]
+    "work": ["Read Learn Raw React ” no JSX, no Flux, no ES6, no Webpack¦"],
+    "notes": [""]
   },
   {
     "key": 93,
@@ -973,79 +742,49 @@
     "work": [
       "Tried AngularJS in SharePoint 2013:Using AngularJS in SharePoint 2013 (didn't work) AngularJS in SharePoint 2013: Part 1"
     ],
-    "notes": [
-      ""
-    ]
+    "notes": [""]
   },
   {
     "key": 94,
     "date": "2/13/2017",
-    "work": [
-      "The Anti-hero of CSS Layout - display:table"
-    ],
-    "notes": [
-      "http://colintoh.com/blog/display-table-anti-hero"
-    ]
+    "work": ["The Anti-hero of CSS Layout - display:table"],
+    "notes": ["http://colintoh.com/blog/display-table-anti-hero"]
   },
   {
     "key": 95,
     "date": "2/13/2017",
-    "work": [
-      "In Search of the Holy Grail"
-    ],
-    "notes": [
-      "http://alistapart.com/article/holygrail"
-    ]
+    "work": ["In Search of the Holy Grail"],
+    "notes": ["http://alistapart.com/article/holygrail"]
   },
   {
     "key": 96,
     "date": "2/13/2017",
-    "work": [
-      "Semantic Class Names"
-    ],
-    "notes": [
-      "https://css-tricks.com/semantic-class-names/"
-    ]
+    "work": ["Semantic Class Names"],
+    "notes": ["https://css-tricks.com/semantic-class-names/"]
   },
   {
     "key": 97,
     "date": "2/10/2017",
-    "work": [
-      "React Children Deep Dive"
-    ],
-    "notes": [
-      "https://mxstbr.blog/2017/02/react-children-deepdive/"
-    ]
+    "work": ["React Children Deep Dive"],
+    "notes": ["https://mxstbr.blog/2017/02/react-children-deepdive/"]
   },
   {
     "key": 98,
     "date": "1/31/2017",
-    "work": [
-      ""
-    ],
-    "notes": [
-      "https://github.com/SharePoint/PnP-JS-Core/wiki"
-    ]
+    "work": [""],
+    "notes": ["https://github.com/SharePoint/PnP-JS-Core/wiki"]
   },
   {
     "key": 99,
     "date": "1/28/2017",
-    "work": [
-      "Completed some lessons in the Codecademy JavaScript course"
-    ],
-    "notes": [
-      ""
-    ]
+    "work": ["Completed some lessons in the Codecademy JavaScript course"],
+    "notes": [""]
   },
   {
     "key": 100,
     "date": "1/25/2017",
-    "work": [
-      "Completed the Authentication part of the Node/Express tutorial"
-    ],
-    "notes": [
-      ""
-    ]
+    "work": ["Completed the Authentication part of the Node/Express tutorial"],
+    "notes": [""]
   },
   {
     "key": 101,
@@ -1053,29 +792,19 @@
     "work": [
       "Started the section of NodeJS/Express tutorial with user authentication"
     ],
-    "notes": [
-      ""
-    ]
+    "notes": [""]
   },
   {
     "key": 102,
     "date": "1/19/2017",
-    "work": [
-      "Finished the section on MongoDB"
-    ],
-    "notes": [
-      ""
-    ]
+    "work": ["Finished the section on MongoDB"],
+    "notes": [""]
   },
   {
     "key": 103,
     "date": "1/16/2017",
-    "work": [
-      "Learned more about routing in Express"
-    ],
-    "notes": [
-      ""
-    ]
+    "work": ["Learned more about routing in Express"],
+    "notes": [""]
   },
   {
     "key": 104,
@@ -1085,28 +814,18 @@
       "Learned about using MSSQL database with Express",
       "Read 4 key concepts of webpack"
     ],
-    "notes": [
-      ""
-    ]
+    "notes": [""]
   },
   {
     "key": 105,
     "date": "1/10/2017",
-    "work": [
-      "Learned about Type Definition files in TypeScript"
-    ],
-    "notes": [
-      ""
-    ]
+    "work": ["Learned about Type Definition files in TypeScript"],
+    "notes": [""]
   },
   {
     "key": 106,
     "date": "1/9/2017",
-    "work": [
-      "Learned a bit about Typing in Typescript"
-    ],
-    "notes": [
-      ""
-    ]
+    "work": ["Learned a bit about Typing in Typescript"],
+    "notes": [""]
   }
 ]

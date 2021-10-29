@@ -7,13 +7,14 @@ published: true
 date: 2020-04-27T20:08:43.043Z
 title: Expose Shared Mailbox and Calendar for Teams
 ---
-Teams in MS Teams are really just Office 365 Groups with some special resources attached. This is why you can create new Teams from existing Office 365 Groups. It is also why every Team has a shared mailbox and calendar, although these are hidden from Exchange clients (like Outlook) by default. 
 
-In order to expose the shared mailbox and calendar for a Team, you need to use PowerShell commands to change settings on the Team's underlying `UnifiedGroup` object. 
+Teams in MS Teams are really just Office 365 Groups with some special resources attached. This is why you can create new Teams from existing Office 365 Groups. It is also why every Team has a shared mailbox and calendar, although these are hidden from Exchange clients (like Outlook) by default.
+
+In order to expose the shared mailbox and calendar for a Team, you need to use PowerShell commands to change settings on the Team's underlying `UnifiedGroup` object.
 
 The relevant setting is `HiddenFromExchangeClientsEnabled`
 
-(*Note*: to do this, you probably need to be the Teams admin, and/or the Exchange admin for your tenant.)
+(_Note_: to do this, you probably need to be the Teams admin, and/or the Exchange admin for your tenant.)
 
 ## Steps
 
@@ -43,19 +44,20 @@ $g = Get-UnifiedGroup myfunteam1
 Set-UnifiedGroup $g.id -HiddenFromExchangeClientsEnabled:$false
 ```
 
-4. You may also want to set the primary SMTP (email) address for the group, since its default, machine-generated default address may not be as human-friendly as you would prefer. 
+4. You may also want to set the primary SMTP (email) address for the group, since its default, machine-generated default address may not be as human-friendly as you would prefer.
 
 ```powershell
 Set-UnifiedGroup $g.id -PrimarySmtpAddress "funteam@mytenant.com"
 ```
 
-5. Finally, if you want the mailbox to be able to receive mail from people outside the organization (e.g. clients, vendors, etc.) then you would also need to set the `RequireSenderauthenticationEnabled` property to `$false`.  Note that this property is boolean, not a switch, so you do not put a colon between the property name and its value. 
+5. Finally, if you want the mailbox to be able to receive mail from people outside the organization (e.g. clients, vendors, etc.) then you would also need to set the `RequireSenderauthenticationEnabled` property to `$false`. Note that this property is boolean, not a switch, so you do not put a colon between the property name and its value.
 
 ```powershell
 Set-UnifiedGroup $g.id -RequireSenderAuthenticationEnabled $false
 ```
 
-6. Don't forget to log out of the Remote PS Session when you're done: 
+6. Don't forget to log out of the Remote PS Session when you're done:
+
 ```powershell
 Exit-PSSession
 ```

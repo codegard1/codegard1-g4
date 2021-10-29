@@ -6,6 +6,7 @@ published: true
 date: 2020-06-03T17:10:15.641Z
 title: Connect ESXi Host Directly to FreeNAS
 ---
+
 I have two servers: an ESXi host running several VMs and a FreeNAS server for backup storage. Each one has two physical NIC's.
 
 Goal: establish a network between the two hosts that is strictly for ISCSi traffic between ESXi and a ZFS volume on FreeNAS
@@ -13,7 +14,7 @@ Goal: establish a network between the two hosts that is strictly for ISCSi traff
 ## Create a ZFS on FreeNAS
 
 1. From the FreeNAS web UI, open Storage > Pools > Add
-2. Create a new ZFS volume called "backup2" (figure 1) 
+2. Create a new ZFS volume called "backup2" (figure 1)
 
 ![Create Backup2 ZVOL](./annotation-2020-06-03-131554.png "Figure 1")
 
@@ -26,7 +27,7 @@ Goal: establish a network between the two hosts that is strictly for ISCSi traff
 
    Autoconfigure IPv6: Yes
 
-   IP Address: (e.g.) 192.168.3.200 
+   IP Address: (e.g.) 192.168.3.200
 
 ![Configure second NIC](./annotation-2020-06-03-132627.png "Figure 2")
 
@@ -64,10 +65,11 @@ Goal: establish a network between the two hosts that is strictly for ISCSi traff
 1. From the ESXi host, navigate to Storage > Adapters
 2. Click "Software iSCSI" and enter the IP address of the second NIC on the FreeNAS server as a Dynamic Target, then click "Save Configuration" and wait a few moments for the ESXi host to initiate a connection to the FreeNAS host
 3. Rescan and Refresh adapters, then click "Software iSCSI" again. Now, if the configuration is correct, the Freenas host will appear in the "Static Targets" section of the form.
-4. You should also now see the FreeNAS iSCSI disk appear on the "devices" tab of the Storage control panel. 
+4. You should also now see the FreeNAS iSCSI disk appear on the "devices" tab of the Storage control panel.
 
-   If it says "Normal, Degraded" under the Status column, this is because there is not a redundant network connection to the iSCSI host. Adding a second uplink to the vSwitch that services iSCSI would resolve this issue, but otherwise it should be fine in normal home lab circumstances. 
-5. You should also see the backup2 disk on the Datastores tab of the Storage control panel. 
+   If it says "Normal, Degraded" under the Status column, this is because there is not a redundant network connection to the iSCSI host. Adding a second uplink to the vSwitch that services iSCSI would resolve this issue, but otherwise it should be fine in normal home lab circumstances.
+
+5. You should also see the backup2 disk on the Datastores tab of the Storage control panel.
 
    Now you can browse the disk from the ESXi web interface and use it to store VM images, hard disks, and other resources.
 
@@ -75,8 +77,6 @@ Goal: establish a network between the two hosts that is strictly for ISCSi traff
 
 ![](./annotation-2020-06-10-094059.png)
 
-
-
-ESXi has no knowledge of the state of the FreeNAS server so you must be conscious of when ESXi is using resources located on FreeNAS. If FreeNAS shuts down or the connection with ESXi is lost unexpectedly, active VM's on ESXi will continue to run in an error state and data loss may occur. 
+ESXi has no knowledge of the state of the FreeNAS server so you must be conscious of when ESXi is using resources located on FreeNAS. If FreeNAS shuts down or the connection with ESXi is lost unexpectedly, active VM's on ESXi will continue to run in an error state and data loss may occur.
 
 As long as ESXi is not using resources on FreeNAS is it acceptable to shut down the FreeNAS server. ESXi will show error messages as it can no longer reach the iSCSI host, but they will go away once the connection is re-established.

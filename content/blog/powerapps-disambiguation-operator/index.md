@@ -5,9 +5,10 @@ published: true
 date: 2020-09-09T20:51:27.029Z
 title: PowerApps Disambiguation Operator
 ---
-Recently I've been using PowerApps more frequently and I have noticed that sometimes it auto-fills Data Source names with a notation like `[@'Data Source']`. 
 
-I wasn't sure how to find the answer for this since it was not immediately clear how to describe what is happening. But today I found the answer in post from 2016 on the PowerApps community forum: 
+Recently I've been using PowerApps more frequently and I have noticed that sometimes it auto-fills Data Source names with a notation like `[@'Data Source']`.
+
+I wasn't sure how to find the answer for this since it was not immediately clear how to describe what is happening. But today I found the answer in post from 2016 on the PowerApps community forum:
 
 [How does the "\[@\[@" notation work?](https://powerusers.microsoft.com/t5/Building-Power-Apps/How-does-the-quot-quot-notation-work/m-p/7265#M3274)
 

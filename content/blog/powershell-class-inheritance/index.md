@@ -5,7 +5,8 @@ published: true
 date: 2020-04-16T22:15:52.555Z
 title: PowerShell Class Inheritance
 ---
-PowerShell classes support inheritance, which allows you to create a base class and methods that are then automatically available to inheritor classes. 
+
+PowerShell classes support inheritance, which allows you to create a base class and methods that are then automatically available to inheritor classes.
 
 ### Parent Class
 
@@ -20,7 +21,7 @@ class Rock {
 
 ### Inheritor class
 
-Inheritance is signaled by `: ParentClassName` in the class signature. The inheritor will be able to access properties and methods of its parent. 
+Inheritance is signaled by `: ParentClassName` in the class signature. The inheritor will be able to access properties and methods of its parent.
 
 ```powershell
 class Pebble : Rock {
@@ -35,7 +36,7 @@ class Pebble : Rock {
     }
   }
 
-  # Constructor 
+  # Constructor
   Pebble( [String]$Size, [Float]$Weight, [Bool]$IsShiny, [Int]$SmoothnessIndex ) {
     $This.Size = $Size
     $This.Weight = $Weight
