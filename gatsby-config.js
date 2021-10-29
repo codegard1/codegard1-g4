@@ -1,15 +1,21 @@
 module.exports = {
   siteMetadata: {
+    copyright: `© ${new Date().getFullYear()} Chris Odegard, All rights reserved`,
     title: `Ciaervo`,
     author: {
       name: `Chris Odegard`,
-      summary: `who has a dev blog.`,
+      bio: "Self-taught web developer and data scientist",
+      summary: `I have a dev blog.`,
     },
     description: `Personal site of Chris Odegard.`,
     siteUrl: `https://www.ciaervo.com`,
     social: {
-      twitter: `ciaervo`,
+      bandcamp:"https://ciaervo.bandcamp.com/",
+      github: "https://github.com/codegard1",
       keybase: `https://keybase.io/ciaervo`,
+      linkedin: "https://www.linkedin.com/in/codegard1",
+      soundcloud: "https://soundcloud.com/ciaervo",
+      stackoverflow:"https://stackoverflow.com/users/2852366/chris-odegard?tab=profile",
     },
   },
   plugins: [
