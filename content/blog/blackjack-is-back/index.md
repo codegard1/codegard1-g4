@@ -18,4 +18,4 @@ Admittedly this is not a fully-functional game of blackjack but more of a tech d
 \
 I would like to put more work into this, to flesh out some of the inchoate features and make it more fun to actually play (I would love for it to be able to track your play stats across multiple sessions, for example), and also to learn about the new features in React 17.
 
-![Screenshot of blackjack game](./screenshot-2020-09-30-171413.png "Chris's Blackjack")
+![Screenshot of blackjack game](./screenshot-2020-09-30-171413.png)
