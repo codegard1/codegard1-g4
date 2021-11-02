@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "gatsby-cli": "^4.0.0",
+    "image-size": "^1.0.0",
     "prettier": "^2.4.1"
   },
   "homepage": "https://www.ciaervo.com",
@@ -52,7 +53,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "build": "npm run preprocess; gatsby build;",
+    "build": "gatsby build;",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "clean": "gatsby clean; rm -r node_modules",
