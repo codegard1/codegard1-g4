@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useStaticQuery, graphql, Link } from "gatsby";
+import { Link } from "gatsby";
 import { DefaultPalette, IconButton, initializeIcons, Stack, TooltipHost } from '@fluentui/react';
 import { useId } from '@fluentui/react-hooks';
 
@@ -9,10 +9,12 @@ initializeIcons();
 const ButtonIcon = props => {
   const { disabled, checked } = props;
   const calloutProps = { gapSpace: 0 };
-  const hostStyles = { root: { 
-    display: 'inline-block'
-  }};
-  const iconStyles= { root: { color:DefaultPalette.themeDarker}}
+  const hostStyles = {
+    root: {
+      display: 'inline-block'
+    }
+  };
+  const iconStyles = { root: { color: DefaultPalette.themeDarker } }
   const tooltipId = useId('tooltip');
   return (
     <div>
@@ -60,18 +62,7 @@ const myTheme = createTheme({
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
-  const data = useStaticQuery(graphql`
-    query LayoutQuery {
-      site {
-        buildTime(fromNow: true)
-        siteMetadata {
-          copyright
-        }
-      }
-    }
-  `);
 
-  const copyright = data.site.siteMetadata?.copyright;
   let header;
   if (isRootPath) {
     header = (
@@ -122,6 +113,7 @@ const Layout = ({ location, title, children }) => {
     <Stack horizontal grow styles={containerStackStyles} tokens={containerStackTokens}>
       <Stack grow={2} styles={sideStackStyles} tokens={sideStackTokens}>
         <ButtonIcon checked={false} disabled={false} />
+        {` `}
       </Stack>
       <Stack
         verticalAlign="space-between"
@@ -136,16 +128,16 @@ const Layout = ({ location, title, children }) => {
         </Stack.Item>
         <Stack.Item align="auto">
           <footer>
-            {copyright}, Built with
+            {`© ${new Date().getFullYear()} Ciaervo, All rights reserved`}, Built with
             {` `}
-            <a href="https://www.gatsbyjs.com">Gatsby</a>
+            <a href="https://www.gatsbyjs.com" rel="noopener noreferrer" target="_blank">Gatsby</a>
             {` `}
             {data.site.buildTime}
           </footer>
         </Stack.Item>
       </Stack>
       <Stack grow={2} styles={sideStackStyles} tokens={sideStackTokens}>
-        Right column
+        {` `}
       </Stack>
     </Stack>
   );

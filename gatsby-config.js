@@ -1,6 +1,5 @@
 module.exports = {
   siteMetadata: {
-    copyright: `© ${new Date().getFullYear()} Chris Odegard, All rights reserved`,
     title: `Ciaervo`,
     author: {
       name: `Chris Odegard`,
