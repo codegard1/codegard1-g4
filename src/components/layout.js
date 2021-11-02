@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import { DefaultPalette, IconButton, initializeIcons, Stack, TooltipHost } from '@fluentui/react';
+import { DefaultPalette, IconButton, initializeIcons, Stack, TooltipHost, createTheme, ThemeProvider } from '@fluentui/react';
 import { useId } from '@fluentui/react-hooks';
 
 // Initialize icons
@@ -29,8 +29,6 @@ const ButtonIcon = props => {
     </div>
   );
 };
-
-import { Stack, createTheme, ThemeProvider } from "@fluentui/react";
 
 const myTheme = createTheme({
   palette: {
@@ -110,36 +108,36 @@ const Layout = ({ location, title, children }) => {
   };
 
   return (
-    <Stack horizontal grow styles={containerStackStyles} tokens={containerStackTokens}>
-      <Stack grow={2} styles={sideStackStyles} tokens={sideStackTokens}>
-        <ButtonIcon checked={false} disabled={false} />
-        {` `}
+    <ThemeProvider theme={myTheme}>
+      <Stack horizontal grow styles={containerStackStyles} tokens={containerStackTokens}>
+        <Stack grow={2} styles={sideStackStyles} tokens={sideStackTokens}>
+          <ButtonIcon checked={false} disabled={false} />
+          {` `}
+        </Stack>
+        <Stack
+          verticalAlign="space-between"
+          data-is-root-path={isRootPath}
+          styles={midStackStyles}
+          tokens={midStackTokens}>
+          <Stack.Item align="start">
+            <header className="global-header">{header}</header>
+          </Stack.Item>
+          <Stack.Item grow align="stretch">
+            <main>{children}</main>
+          </Stack.Item>
+          <Stack.Item align="auto">
+            <footer>
+              {`© ${new Date().getFullYear()}`} Ciaervo, All rights reserved. 
+              {` `}
+              Built with <a href="https://www.gatsbyjs.com" rel="noopener noreferrer" target="_blank">Gatsby</a>.
+            </footer>
+          </Stack.Item>
+        </Stack>
+        <Stack grow={2} styles={sideStackStyles} tokens={sideStackTokens}>
+          {` `}
+        </Stack>
       </Stack>
-      <Stack
-        verticalAlign="space-between"
-        data-is-root-path={isRootPath}
-        styles={midStackStyles}
-        tokens={midStackTokens}>
-        <Stack.Item align="start">
-          <header className="global-header">{header}</header>
-        </Stack.Item>
-        <Stack.Item grow align="stretch">
-          <main>{children}</main>
-        </Stack.Item>
-        <Stack.Item align="auto">
-          <footer>
-            {`© ${new Date().getFullYear()} Ciaervo, All rights reserved`}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.com" rel="noopener noreferrer" target="_blank">Gatsby</a>
-            {` `}
-            {data.site.buildTime}
-          </footer>
-        </Stack.Item>
-      </Stack>
-      <Stack grow={2} styles={sideStackStyles} tokens={sideStackTokens}>
-        {` `}
-      </Stack>
-    </Stack>
+    </ThemeProvider>
   );
 };
 
