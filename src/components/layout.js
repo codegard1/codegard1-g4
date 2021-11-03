@@ -1,34 +1,11 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import { DefaultPalette, IconButton, initializeIcons, Stack, TooltipHost, createTheme, ThemeProvider } from '@fluentui/react';
-import { useId } from '@fluentui/react-hooks';
+import { DefaultPalette, initializeIcons, Stack, TooltipHost, createTheme, ThemeProvider, Text, TextStyles, Theme } from '@fluentui/react';
+import ButtonIcon from './button-icon';
+import SiteNav from './site-nav';
 
 // Initialize icons
 initializeIcons();
-
-const ButtonIcon = props => {
-  const { disabled, checked } = props;
-  const calloutProps = { gapSpace: 0 };
-  const hostStyles = {
-    root: {
-      display: 'inline-block'
-    }
-  };
-  const iconStyles = { root: { color: DefaultPalette.themeDarker } }
-  const tooltipId = useId('tooltip');
-  return (
-    <div>
-      <TooltipHost
-        content="Site Navigation"
-        id={tooltipId}
-        calloutProps={calloutProps}
-        styles={hostStyles}
-      >
-        <IconButton iconProps={{ iconName: 'GlobalNavButton' }} title="Global Nav" ariaLabel="Global Nav" disabled={disabled} checked={checked} styles={iconStyles} />
-      </TooltipHost>
-    </div>
-  );
-};
 
 const myTheme = createTheme({
   palette: {
@@ -64,9 +41,9 @@ const Layout = ({ location, title, children }) => {
   let header;
   if (isRootPath) {
     header = (
-      <h1 className="main-heading">
-        <Link to="/">{title}</Link>
-      </h1>
+      <Link to="/">
+        <Text variant="mega">{title}</Text>
+      </Link>
     );
   } else {
     header = (
@@ -113,6 +90,7 @@ const Layout = ({ location, title, children }) => {
         <Stack grow={2} styles={sideStackStyles} tokens={sideStackTokens}>
           <ButtonIcon checked={false} disabled={false} />
           {` `}
+          <SiteNav />
         </Stack>
         <Stack
           verticalAlign="space-between"
@@ -127,7 +105,7 @@ const Layout = ({ location, title, children }) => {
           </Stack.Item>
           <Stack.Item align="auto">
             <footer>
-              {`© ${new Date().getFullYear()}`} Ciaervo, All rights reserved. 
+              {`© ${new Date().getFullYear()}`} Ciaervo, All rights reserved.
               {` `}
               Built with <a href="https://www.gatsbyjs.com" rel="noopener noreferrer" target="_blank">Gatsby</a>.
             </footer>
