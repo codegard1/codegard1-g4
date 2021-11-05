@@ -6,10 +6,10 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 
-import { FocusZone } from '@fluentui/react/lib/FocusZone';
-import { List } from '@fluentui/react/lib/List';
-import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
-import { useConst } from '@fluentui/react-hooks';
+import { FocusZone } from "@fluentui/react/lib/FocusZone";
+import { List } from "@fluentui/react/lib/List";
+import { getTheme, mergeStyleSets } from "@fluentui/react/lib/Styling";
+import { useConst } from "@fluentui/react-hooks";
 
 const ROWS_PER_PAGE = 1;
 const MAX_ROW_HEIGHT = 200;
@@ -17,58 +17,57 @@ const theme = getTheme();
 const { palette, fonts } = theme;
 const classNames = mergeStyleSets({
   listGrid: {
-    overflow: 'hidden',
+    overflow: "hidden",
     fontSize: 0,
-    position: 'relative',
+    position: "relative",
   },
   listGridTile: {
-    textAlign: 'center',
-    outline: 'none',
-    position: 'relative',
-    float: 'left',
+    textAlign: "center",
+    outline: "none",
+    position: "relative",
+    float: "left",
     background: palette.neutralLighter,
     selectors: {
-      'focus:after': {
-        content: '',
-        position: 'absolute',
+      "focus:after": {
+        content: "",
+        position: "absolute",
         left: 2,
         right: 2,
         top: 2,
         bottom: 2,
-        boxSizing: 'border-box',
+        boxSizing: "border-box",
         border: `1px solid ${palette.white}`,
       },
     },
   },
   listGridSizer: {
-    paddingBottom: '100%',
+    paddingBottom: "100%",
   },
   listGridPadder: {
-    position: 'absolute',
+    position: "absolute",
     left: 5,
     top: 2,
     right: 5,
     bottom: 2,
   },
   listGridLabel: {
-    background: 'rgba(0, 0, 0, 0.3)',
-    color: '#FFFFFF',
-    position: 'absolute',
+    background: "rgba(0, 0, 0, 0.3)",
+    color: "#FFFFFF",
+    position: "absolute",
     padding: 10,
     bottom: 0,
     left: 0,
-    width: '100%',
+    width: "100%",
     fontSize: fonts.small.fontSize,
-    boxSizing: 'border-box',
+    boxSizing: "border-box",
   },
   listGridImage: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
-    width: '100%',
+    width: "100%",
   },
 });
-
 
 const GalleryPage = ({ data, location }) => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -92,10 +91,10 @@ const GalleryPage = ({ data, location }) => {
   const photos = useConst(
     data.allInstagramPostsJson.nodes.map(photo => ({
       ...photo,
-      height: (photo.height / 3),
-      width: (photo.width / 3),
+      height: photo.height / 3,
+      width: photo.width / 3,
       src: blobStorageBaseUrl + photo.uri,
-      key: `photo_${photo.id}`
+      key: `photo_${photo.id}`,
     }))
   );
 
@@ -126,9 +125,11 @@ const GalleryPage = ({ data, location }) => {
         className={classNames.listGridTile}
         data-is-focusable
         style={{
-          width: 100 / columnCount.current + '%',
+          width: 100 / columnCount.current + "%",
         }}
-        onClick={(e) => { openLightbox(e, { item, index }) }}
+        onClick={e => {
+          openLightbox(e, { item, index });
+        }}
       >
         <div className={classNames.listGridSizer}>
           <div className={classNames.listGridPadder}>
@@ -149,12 +150,34 @@ const GalleryPage = ({ data, location }) => {
       <Seo title="Gallery" keywords={[`gallery`, `photos`, `Instagram`]} />
       <h2>Gallery</h2>
       <p>
-        Custom implementation of my own <a target="_blank" href="https://www.instagram.com/codegard1/">Instagram feed</a> using <a href="https://azure.microsoft.com/en-us/services/storage/blobs/" target="_blank">Azure Blob Storage </a> and <a href="https://github.com/neptunian/react-photo-gallery" target="_blank">List Grid</a>.
+        Custom implementation of my own{" "}
+        <a target="_blank" href="https://www.instagram.com/codegard1/">
+          Instagram feed
+        </a>{" "}
+        using{" "}
+        <a
+          href="https://azure.microsoft.com/en-us/services/storage/blobs/"
+          target="_blank"
+        >
+          Azure Blob Storage{" "}
+        </a>{" "}
+        and{" "}
+        <a
+          href="https://github.com/neptunian/react-photo-gallery"
+          target="_blank"
+        >
+          List Grid
+        </a>
+        .
       </p>
-      <p>See also: <a href="https://github.com/codegard1/imagal3/" target="_blank">Imagal3 on GitHub</a></p>
+      <p>
+        See also:{" "}
+        <a href="https://github.com/codegard1/imagal3/" target="_blank">
+          Imagal3 on GitHub
+        </a>
+      </p>
 
       <FocusZone>
-
         <List
           className={classNames.listGrid}
           items={photos}
@@ -172,7 +195,7 @@ const GalleryPage = ({ data, location }) => {
                 views={photos.map(x => ({
                   ...x,
                   srcset: x.srcSet,
-                  caption: x.title
+                  caption: x.title,
                 }))}
               />
             </Modal>
@@ -186,23 +209,23 @@ const GalleryPage = ({ data, location }) => {
 export default GalleryPage;
 
 export const pageQuery = graphql`
-query {
-  site {
-        siteMetadata {
-          title
-        }
+  query {
+    site {
+      siteMetadata {
+        title
       }
-  allInstagramPostsJson(sort: {fields: creation_timestamp, order: DESC}) {
-    nodes {
-      creation_timestamp
-      height
-      width
-      uri
-      type
-      title
-      ratio
-      id
+    }
+    allInstagramPostsJson(sort: { fields: creation_timestamp, order: DESC }) {
+      nodes {
+        creation_timestamp
+        height
+        width
+        uri
+        type
+        title
+        ratio
+        id
+      }
     }
   }
-}
 `;

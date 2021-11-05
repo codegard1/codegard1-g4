@@ -14,8 +14,10 @@ module.exports = {
       keybase: `https://keybase.io/ciaervo`,
       linkedin: "https://www.linkedin.com/in/codegard1",
       soundcloud: "https://soundcloud.com/ciaervo",
-      stackoverflow: "https://stackoverflow.com/users/2852366/chris-odegard?tab=profile",
-      spotify: "https://open.spotify.com/artist/3MS6P6gKoxxcSJoEqqNQST?si=dHeDrh3WS4iAB1lw2bAGDg",
+      stackoverflow:
+        "https://stackoverflow.com/users/2852366/chris-odegard?tab=profile",
+      spotify:
+        "https://open.spotify.com/artist/3MS6P6gKoxxcSJoEqqNQST?si=dHeDrh3WS4iAB1lw2bAGDg",
       tumblr: "https://ciaervo1.tumblr.com",
       twitter: "https://twitter.com/ciaervo1",
     },

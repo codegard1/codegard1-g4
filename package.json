@@ -57,7 +57,7 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "build": "gatsby build;",
     "develop": "gatsby develop",
-    "start": "npm run develop",
+    "start": "run develop",
     "clean": "gatsby clean; rm -r node_modules",
     "preprocess": "node PreprocessInstagramJson.js"
   }

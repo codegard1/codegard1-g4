@@ -31,8 +31,10 @@ const BlogIndex = ({ data, location }) => {
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug;
 
-          const tags = post.frontmatter.tags !== null ?
-            post.frontmatter.tags.join(`  `) : "";
+          const tags =
+            post.frontmatter.tags !== null
+              ? post.frontmatter.tags.join(`  `)
+              : "";
 
           return (
             <li key={post.fields.slug}>
@@ -77,7 +79,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
         excerpt
         fields {
@@ -95,5 +97,5 @@ export const pageQuery = graphql`
         }
       }
     }
-  }  
+  }
 `;

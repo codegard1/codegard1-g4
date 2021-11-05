@@ -1,37 +1,47 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import { DefaultPalette, initializeIcons, Stack, TooltipHost, createTheme, ThemeProvider, Text, TextStyles, Theme } from '@fluentui/react';
-import ButtonIcon from './button-icon';
-import SiteNav from './site-nav';
+import {
+  DefaultPalette,
+  initializeIcons,
+  Stack,
+  TooltipHost,
+  createTheme,
+  ThemeProvider,
+  Text,
+  TextStyles,
+  Theme,
+} from "@fluentui/react";
+import ButtonIcon from "./button-icon";
+import SiteNav from "./site-nav";
 
 // Initialize icons
 initializeIcons();
 
 const myTheme = createTheme({
   palette: {
-    themePrimary: '#2334cc',
-    themeLighterAlt: '#010208',
-    themeLighter: '#060821',
-    themeLight: '#0a0f3d',
-    themeTertiary: '#151f7a',
-    themeSecondary: '#1f2db4',
-    themeDarkAlt: '#3545d1',
-    themeDark: '#505dd8',
-    themeDarker: '#7984e2',
-    neutralLighterAlt: '#f8f8f8',
-    neutralLighter: '#f4f4f4',
-    neutralLight: '#eaeaea',
-    neutralQuaternaryAlt: '#dadada',
-    neutralQuaternary: '#d0d0d0',
-    neutralTertiaryAlt: '#c8c8c8',
-    neutralTertiary: '#a19f9d',
-    neutralSecondary: '#605e5c',
-    neutralPrimaryAlt: '#3b3a39',
-    neutralPrimary: '#323130',
-    neutralDark: '#201f1e',
-    black: '#000000',
-    white: '#ffffff',
-  }
+    themePrimary: "#2334cc",
+    themeLighterAlt: "#010208",
+    themeLighter: "#060821",
+    themeLight: "#0a0f3d",
+    themeTertiary: "#151f7a",
+    themeSecondary: "#1f2db4",
+    themeDarkAlt: "#3545d1",
+    themeDark: "#505dd8",
+    themeDarker: "#7984e2",
+    neutralLighterAlt: "#f8f8f8",
+    neutralLighter: "#f4f4f4",
+    neutralLight: "#eaeaea",
+    neutralQuaternaryAlt: "#dadada",
+    neutralQuaternary: "#d0d0d0",
+    neutralTertiaryAlt: "#c8c8c8",
+    neutralTertiary: "#a19f9d",
+    neutralSecondary: "#605e5c",
+    neutralPrimaryAlt: "#3b3a39",
+    neutralPrimary: "#323130",
+    neutralDark: "#201f1e",
+    black: "#000000",
+    white: "#ffffff",
+  },
 });
 
 const Layout = ({ location, title, children }) => {
@@ -57,7 +67,7 @@ const Layout = ({ location, title, children }) => {
   const containerStackStyles = {
     root: {
       background: DefaultPalette.white,
-      minHeight: "100vh"
+      minHeight: "100vh",
     },
   };
   const midStackStyles = {
@@ -81,12 +91,17 @@ const Layout = ({ location, title, children }) => {
     padding: 10,
   };
   const midStackTokens = {
-    padding: 20
+    padding: 20,
   };
 
   return (
     <ThemeProvider theme={myTheme}>
-      <Stack horizontal grow styles={containerStackStyles} tokens={containerStackTokens}>
+      <Stack
+        horizontal
+        grow
+        styles={containerStackStyles}
+        tokens={containerStackTokens}
+      >
         <Stack grow={2} styles={sideStackStyles} tokens={sideStackTokens}>
           <ButtonIcon checked={false} disabled={false} />
           {` `}
@@ -96,7 +111,8 @@ const Layout = ({ location, title, children }) => {
           verticalAlign="space-between"
           data-is-root-path={isRootPath}
           styles={midStackStyles}
-          tokens={midStackTokens}>
+          tokens={midStackTokens}
+        >
           <Stack.Item align="start">
             <header className="global-header">{header}</header>
           </Stack.Item>
@@ -107,7 +123,15 @@ const Layout = ({ location, title, children }) => {
             <footer>
               {`© ${new Date().getFullYear()}`} Ciaervo, All rights reserved.
               {` `}
-              Built with <a href="https://www.gatsbyjs.com" rel="noopener noreferrer" target="_blank">Gatsby</a>.
+              Built with{" "}
+              <a
+                href="https://www.gatsbyjs.com"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Gatsby
+              </a>
+              .
             </footer>
           </Stack.Item>
         </Stack>

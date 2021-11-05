@@ -2,7 +2,7 @@ import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 
-import { Stack } from '@fluentui/react';
+import { Stack } from "@fluentui/react";
 
 const Bio = () => {
   const data = useStaticQuery(graphql`

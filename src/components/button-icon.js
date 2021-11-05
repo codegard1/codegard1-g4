@@ -1,7 +1,13 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import { DefaultPalette, IconButton, initializeIcons, Stack, TooltipHost } from '@fluentui/react';
-import { useId } from '@fluentui/react-hooks';
+import {
+  DefaultPalette,
+  IconButton,
+  initializeIcons,
+  Stack,
+  TooltipHost,
+} from "@fluentui/react";
+import { useId } from "@fluentui/react-hooks";
 
 // Initialize icons
 // initializeIcons();
@@ -11,10 +17,10 @@ const ButtonIcon = props => {
   const calloutProps = { gapSpace: 0 };
   const hostStyles = {
     root: {
-      display: 'inline-block'
-    }
+      display: "inline-block",
+    },
   };
-  const tooltipId = useId('tooltip');
+  const tooltipId = useId("tooltip");
   return (
     <div>
       <TooltipHost
@@ -23,7 +29,13 @@ const ButtonIcon = props => {
         calloutProps={calloutProps}
         styles={hostStyles}
       >
-        <IconButton iconProps={{ iconName: 'GlobalNavButton' }} title="Global Nav" ariaLabel="Global Nav" disabled={disabled} checked={checked} />
+        <IconButton
+          iconProps={{ iconName: "GlobalNavButton" }}
+          title="Global Nav"
+          ariaLabel="Global Nav"
+          disabled={disabled}
+          checked={checked}
+        />
       </TooltipHost>
     </div>
   );
