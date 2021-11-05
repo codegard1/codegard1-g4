@@ -1,21 +1,15 @@
 import React, { useState, useCallback } from "react";
 import Carousel, { Modal, ModalGateway } from "react-images";
 
-// import { graphql } from "gatsby";
-
-// import "bootstrap/dist/css/bootstrap.css";
-// import "./index.css";
+import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-// import Sidebar from "../components/sidebar/Sidebar";
 
 import { FocusZone } from '@fluentui/react/lib/FocusZone';
 import { List } from '@fluentui/react/lib/List';
 import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { useConst } from '@fluentui/react-hooks';
-import JSONData from '../../content/data/instagram_posts.json';
-
 
 const ROWS_PER_PAGE = 1;
 const MAX_ROW_HEIGHT = 200;
@@ -76,104 +70,134 @@ const classNames = mergeStyleSets({
 });
 
 
-// const GalleryPage = () => {
-//   const [currentImage, setCurrentImage] = useState(0);
-//   const [viewerIsOpen, setViewerIsOpen] = useState(false);
+const GalleryPage = ({ data, location }) => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
-//   // Public url prefix for images store in Azure
-//   const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
 
-//   // Pre-process image data from JSON
-//   // const photos = useConst(
-//   //   JSONData.map(photo => ({
-//   //     ...photo,
-//   //     height: (photo.height / 2),
-//   //     width: (photo.width / 2),
-//   //     src: blobStorageBaseUrl + photo.uri,
-//   //     key: `photo_${photo.id}`
-//   //   }))
-//   // );
+  // Public url prefix for images store in Azure
+  // const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
 
-//   const openLightbox = useCallback((event, { photo, index }) => {
-//     setCurrentImage(index);
-//     setViewerIsOpen(true);
-//   }, []);
+  // Preprocess images
+  const photos = useConst(
+    data.allFile.edges.map(edge => ({
+      ...edge.node.childrenImageSharp.original,
+      src: edge.node.publicURL,
+      key: `photo_${edge.node.id}`
+    }))
+  );
 
-//   const closeLightbox = () => {
-//     setCurrentImage(0);
-//     setViewerIsOpen(false);
-//   };
+  const openLightbox = useCallback((event, { photo, index }) => {
+    setCurrentImage(index);
+    setViewerIsOpen(true);
+  }, []);
 
-//   const columnCount = React.useRef(0);
-//   const rowHeight = React.useRef(0);
+  const closeLightbox = () => {
+    setCurrentImage(0);
+    setViewerIsOpen(false);
+  };
 
-//   const getItemCountForPage = React.useCallback((itemIndex, surfaceRect) => {
-//     if (itemIndex === 0) {
-//       columnCount.current = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
-//       rowHeight.current = Math.floor(surfaceRect.width / columnCount.current);
-//     }
-//     return columnCount.current * ROWS_PER_PAGE;
-//   }, []);
+  const columnCount = React.useRef(0);
+  const rowHeight = React.useRef(0);
 
-//   const onRenderCell = React.useCallback((item, index) => {
-//     return (
-//       <div
-//         className={classNames.listGridTile}
-//         data-is-focusable
-//         style={{
-//           width: 100 / columnCount.current + '%',
-//         }}
-//         onClick={(e) => { openLightbox(e, { item, index }) }}
-//       >
-//         <div className={classNames.listGridSizer}>
-//           <div className={classNames.listGridPadder}>
-//             <img src={item.src} className={classNames.listGridImage} />
-//             {/* <span className={classNames.listGridLabel}>{item.title}</span> */}
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }, []);
+  const getItemCountForPage = React.useCallback((itemIndex, surfaceRect) => {
+    if (itemIndex === 0) {
+      columnCount.current = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
+      rowHeight.current = Math.floor(surfaceRect.width / columnCount.current);
+    }
+    return columnCount.current * ROWS_PER_PAGE;
+  }, []);
 
-//   const getPageHeight = React.useCallback(() => {
-//     return rowHeight.current * ROWS_PER_PAGE;
-//   }, []);
+  const onRenderCell = React.useCallback((item, index) => {
+    return (
+      <div
+        className={classNames.listGridTile}
+        data-is-focusable
+        style={{
+          width: 100 / columnCount.current + '%',
+        }}
+        onClick={(e) => { openLightbox(e, { item, index }) }}
+      >
+        <div className={classNames.listGridSizer}>
+          <div className={classNames.listGridPadder}>
+            <img src={item.src} className={classNames.listGridImage} />
+            {/* <span className={classNames.listGridLabel}>{item.title}</span> */}
+          </div>
+        </div>
+      </div>
+    );
+  }, []);
 
-//   return (
-//     <Layout>
-//       <Seo title="Gallery" keywords={[`gallery`, `photos`, `Instagram`]} />
-//       <h2>Gallery</h2>
-//       <p>
-//         Custom implementation of my own <a target="_blank" href="https://www.instagram.com/codegard1/">Instagram feed</a> using <a href="https://azure.microsoft.com/en-us/services/storage/blobs/" target="_blank">Azure Blob Storage </a> and <a href="https://github.com/neptunian/react-photo-gallery" target="_blank">List Grid</a>.
-//       </p>
-//       <p>See also: <a href="https://github.com/codegard1/imagal3/" target="_blank">Imagal3 on GitHub</a></p>
+  const getPageHeight = React.useCallback(() => {
+    return rowHeight.current * ROWS_PER_PAGE;
+  }, []);
 
-//       <FocusZone>
-//         <List
-//           className={classNames.listGrid}
-//           items={photos}
-//           getItemCountForPage={getItemCountForPage}
-//           getPageHeight={getPageHeight}
-//           renderedWindowsAhead={1}
-//           onRenderCell={onRenderCell}
-//         />
-//       </FocusZone>
-//       <ModalGateway> */}
-//         {viewerIsOpen ? (
-//           <Modal onClose={closeLightbox}>
-//             <Carousel
-//               currentIndex={currentImage}
-//               views={photos.map(x => ({
-//                 ...x,
-//                 srcset: x.srcSet,
-//                 caption: x.title
-//               }))}
-//             />
-//           </Modal>
-//         ) : null}
-//       </ModalGateway>
-//     </Layout>
-//   );
-// };
+  return (
+    <Layout location={location} title={siteTitle}>
+      <Seo title="Gallery" keywords={[`gallery`, `photos`, `Instagram`]} />
+      <h2>Gallery</h2>
+      <p>
+        Custom implementation of my own <a target="_blank" href="https://www.instagram.com/codegard1/">Instagram feed</a> using <a href="https://azure.microsoft.com/en-us/services/storage/blobs/" target="_blank">Azure Blob Storage </a> and <a href="https://github.com/neptunian/react-photo-gallery" target="_blank">List Grid</a>.
+      </p>
+      <p>See also: <a href="https://github.com/codegard1/imagal3/" target="_blank">Imagal3 on GitHub</a></p>
 
-// export default GalleryPage;
+      <FocusZone>
+
+        <List
+          className={classNames.listGrid}
+          items={photos}
+          getItemCountForPage={getItemCountForPage}
+          getPageHeight={getPageHeight}
+          renderedWindowsAhead={1}
+          onRenderCell={onRenderCell}
+        />
+
+        <ModalGateway>
+          {viewerIsOpen ? (
+            <Modal onClose={closeLightbox}>
+              <Carousel
+                currentIndex={currentImage}
+                views={photos.map(x => ({
+                  ...x,
+                  srcset: x.srcSet,
+                  caption: x.title
+                }))}
+              />
+            </Modal>
+          ) : null}
+        </ModalGateway>
+      </FocusZone>
+    </Layout>
+  );
+};
+
+export default GalleryPage;
+
+export const PageQuery = graphql`
+query {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+  allFile(
+    filter: {sourceInstanceName: {eq: "instagram"}}
+  ) {
+    edges {
+      node {
+        id
+        name
+        relativePath
+        childrenImageSharp {
+          original {
+            width
+            height
+          }
+        }
+        publicURL
+      }
+    }
+  }
+}
+`;

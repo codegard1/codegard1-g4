@@ -6,9 +6,9 @@ const navLinkGroups = [
   {
     name: 'Pages',
     links: [
-      { name: 'Blog', url: '/', key: 'key1', target: '_self' },
-      { name: 'Gallery', url: '/gallery', key: 'key2', target: '_self' },
-      { name: 'Blackjack', url: '/blackjack', key: 'key2', target: '_self' },
+      { name: 'Blog', url: '/', key: 'blog', target: '_self' },
+      { name: 'Gallery', url: '/gallery', key: 'gallery', target: '_self' },
+      { name: 'Blackjack', url: '/blackjack', key: 'blackjack', target: '_self' },
     ],
   },
   {
