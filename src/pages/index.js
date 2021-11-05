@@ -31,6 +31,9 @@ const BlogIndex = ({ data, location }) => {
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug;
 
+          const tags = post.frontmatter.tags !== null ?
+            post.frontmatter.tags.join(`  `) : "";
+
           return (
             <li key={post.fields.slug}>
               <article
@@ -45,6 +48,8 @@ const BlogIndex = ({ data, location }) => {
                     </Link>
                   </h2>
                   <small>{post.frontmatter.date}</small>
+                  <br />
+                  <small>tags:&nbsp;{tags}</small>
                 </header>
                 <section>
                   <p
@@ -72,7 +77,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
       nodes {
         excerpt
         fields {
@@ -82,8 +87,13 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+          tags
+        }
+        timeToRead
+        wordCount {
+          words
         }
       }
     }
-  }
+  }  
 `;
