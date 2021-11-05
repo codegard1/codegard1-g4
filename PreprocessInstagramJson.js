@@ -7,7 +7,7 @@ const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
 
 // JSON file path
 const filePath = `${blobStorageBaseUrl}content/posts_1.json`;
-const filePath1 = `src/data/instagram_posts.json`;
+const filePath1 = `content/data/instagram_posts.json`;
 
 // fetch the posts_1 JSON file
 new Promise((resolve, reject) => {
