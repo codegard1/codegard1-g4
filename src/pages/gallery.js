@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import Carousel, { Modal, ModalGateway } from "react-images";
 
-import { graphql } from "gatsby";
+// import { graphql } from "gatsby";
 
 // import "bootstrap/dist/css/bootstrap.css";
 // import "./index.css";
@@ -14,11 +14,13 @@ import { FocusZone } from '@fluentui/react/lib/FocusZone';
 import { List } from '@fluentui/react/lib/List';
 import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { useConst } from '@fluentui/react-hooks';
+import JSONData from '../../content/data/instagram_posts.json';
 
-const theme = getTheme();
-const { palette, fonts } = theme;
+
 const ROWS_PER_PAGE = 1;
 const MAX_ROW_HEIGHT = 200;
+const theme = getTheme();
+const { palette, fonts } = theme;
 const classNames = mergeStyleSets({
   listGrid: {
     overflow: 'hidden',
@@ -73,24 +75,24 @@ const classNames = mergeStyleSets({
   },
 });
 
-// // Public url prefix for images store in Azure
-// const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
 
-
-// const GalleryPage = ({ data }) => {
+// const GalleryPage = () => {
 //   const [currentImage, setCurrentImage] = useState(0);
 //   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
+//   // Public url prefix for images store in Azure
+//   const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
+
 //   // Pre-process image data from JSON
-//   const photos = useConst(
-//     data.allInstagramPostsJson.nodes.map(photo => ({
-//       ...photo,
-//       // height: (photo.height / 2),
-//       // width: (photo.width / 2),
-//       src: blobStorageBaseUrl + photo.uri,
-//       key: `photo_${photo.id}`
-//     }))
-//   );
+//   // const photos = useConst(
+//   //   JSONData.map(photo => ({
+//   //     ...photo,
+//   //     height: (photo.height / 2),
+//   //     width: (photo.width / 2),
+//   //     src: blobStorageBaseUrl + photo.uri,
+//   //     key: `photo_${photo.id}`
+//   //   }))
+//   // );
 
 //   const openLightbox = useCallback((event, { photo, index }) => {
 //     setCurrentImage(index);
@@ -140,55 +142,38 @@ const classNames = mergeStyleSets({
 //   return (
 //     <Layout>
 //       <Seo title="Gallery" keywords={[`gallery`, `photos`, `Instagram`]} />
-//           <h2>Gallery</h2>
-//           <p>
-//             Custom implementation of my own <a target="_blank" href="https://www.instagram.com/codegard1/">Instagram feed</a> using <a href="https://azure.microsoft.com/en-us/services/storage/blobs/" target="_blank">Azure Blob Storage </a> and <a href="https://github.com/neptunian/react-photo-gallery" target="_blank">List Grid</a>.
-//           </p>
-//           <p>See also: <a href="https://github.com/codegard1/imagal3/" target="_blank">Imagal3 on GitHub</a></p>
+//       <h2>Gallery</h2>
+//       <p>
+//         Custom implementation of my own <a target="_blank" href="https://www.instagram.com/codegard1/">Instagram feed</a> using <a href="https://azure.microsoft.com/en-us/services/storage/blobs/" target="_blank">Azure Blob Storage </a> and <a href="https://github.com/neptunian/react-photo-gallery" target="_blank">List Grid</a>.
+//       </p>
+//       <p>See also: <a href="https://github.com/codegard1/imagal3/" target="_blank">Imagal3 on GitHub</a></p>
 
-//           <FocusZone>
-//             <List
-//               className={classNames.listGrid}
-//               items={photos}
-//               getItemCountForPage={getItemCountForPage}
-//               getPageHeight={getPageHeight}
-//               renderedWindowsAhead={1}
-//               onRenderCell={onRenderCell}
+//       <FocusZone>
+//         <List
+//           className={classNames.listGrid}
+//           items={photos}
+//           getItemCountForPage={getItemCountForPage}
+//           getPageHeight={getPageHeight}
+//           renderedWindowsAhead={1}
+//           onRenderCell={onRenderCell}
+//         />
+//       </FocusZone>
+//       <ModalGateway> */}
+//         {viewerIsOpen ? (
+//           <Modal onClose={closeLightbox}>
+//             <Carousel
+//               currentIndex={currentImage}
+//               views={photos.map(x => ({
+//                 ...x,
+//                 srcset: x.srcSet,
+//                 caption: x.title
+//               }))}
 //             />
-//           </FocusZone>
-//           <ModalGateway>
-//             {viewerIsOpen ? (
-//               <Modal onClose={closeLightbox}>
-//                 <Carousel
-//                   currentIndex={currentImage}
-//                   views={photos.map(x => ({
-//                     ...x,
-//                     srcset: x.srcSet,
-//                     caption: x.title
-//                   }))}
-//                 />
-//               </Modal>
-//             ) : null}
-//           </ModalGateway>
+//           </Modal>
+//         ) : null}
+//       </ModalGateway>
 //     </Layout>
 //   );
 // };
-
-// export const pageQuery = graphql`
-// query {
-//   allInstagramPostsJson(limit: 100, sort: {fields: creation_timestamp, order: DESC}) {
-//     nodes {
-//       creation_timestamp
-//       height
-//       width
-//       uri
-//       type
-//       title
-//       ratio
-//       id
-//     }
-//   }
-// }
-// `;
 
 // export default GalleryPage;
