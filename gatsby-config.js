@@ -14,14 +14,17 @@ module.exports = {
       keybase: `https://keybase.io/ciaervo`,
       linkedin: "https://www.linkedin.com/in/codegard1",
       soundcloud: "https://soundcloud.com/ciaervo",
-      stackoverflow:
-        "https://stackoverflow.com/users/2852366/chris-odegard?tab=profile",
+      stackoverflow: "https://stackoverflow.com/users/2852366/chris-odegard?tab=profile",
+      spotify: "https://open.spotify.com/artist/3MS6P6gKoxxcSJoEqqNQST?si=dHeDrh3WS4iAB1lw2bAGDg",
+      tumblr: "https://ciaervo1.tumblr.com",
+      twitter: "https://twitter.com/ciaervo1",
     },
   },
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -34,13 +37,6 @@ module.exports = {
       options: {
         name: `data`,
         path: `${__dirname}/content/data`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `instagram`,
-        path: `${__dirname}/content/instagram`,
       },
     },
     {

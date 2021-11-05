@@ -77,14 +77,25 @@ const GalleryPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
   // Public url prefix for images store in Azure
-  // const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
+  const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
 
-  // Preprocess images
+  // Preprocess images (local files)
+  // const photos = useConst(
+  //   data.allFile.edges.map(edge => ({
+  //     ...edge.node.childrenImageSharp.original,
+  //     src: edge.node.publicURL,
+  //     key: `photo_${edge.node.id}`
+  //   }))
+  // );
+
+  // Pre-process image data from JSON
   const photos = useConst(
-    data.allFile.edges.map(edge => ({
-      ...edge.node.childrenImageSharp.original,
-      src: edge.node.publicURL,
-      key: `photo_${edge.node.id}`
+    data.allInstagramPostsJson.nodes.map(photo => ({
+      ...photo,
+      height: (photo.height / 3),
+      width: (photo.width / 3),
+      src: blobStorageBaseUrl + photo.uri,
+      key: `photo_${photo.id}`
     }))
   );
 
@@ -174,29 +185,23 @@ const GalleryPage = ({ data, location }) => {
 
 export default GalleryPage;
 
-export const PageQuery = graphql`
+export const pageQuery = graphql`
 query {
   site {
-    siteMetadata {
-      title
-    }
-  }
-  allFile(
-    filter: {sourceInstanceName: {eq: "instagram"}}
-  ) {
-    edges {
-      node {
-        id
-        name
-        relativePath
-        childrenImageSharp {
-          original {
-            width
-            height
-          }
+        siteMetadata {
+          title
         }
-        publicURL
       }
+  allInstagramPostsJson(sort: {fields: creation_timestamp, order: DESC}) {
+    nodes {
+      creation_timestamp
+      height
+      width
+      uri
+      type
+      title
+      ratio
+      id
     }
   }
 }
