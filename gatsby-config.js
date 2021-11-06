@@ -9,6 +9,7 @@ module.exports = {
     description: `Personal site of Chris Odegard.`,
     siteUrl: `https://www.ciaervo.com`,
     social: {
+      applemusic: "https://music.apple.com/us/artist/1592784321",
       bandcamp: "https://ciaervo.bandcamp.com/",
       github: "https://github.com/codegard1",
       keybase: `https://keybase.io/ciaervo`,

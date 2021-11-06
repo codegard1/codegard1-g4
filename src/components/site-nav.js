@@ -5,11 +5,12 @@ import { OutboundLink } from "gatsby-plugin-google-gtag";
 
 const SiteNav = () => (
   <StaticQuery query={graphql`
-      query LayoutQuery {
+      query SiteNavQuery {
         site {
           siteMetadata {
             title
             social {
+              applemusic
               bandcamp
               github
               keybase
@@ -42,12 +43,8 @@ const SiteNav = () => (
           links: [
             { name: "Blog", url: "/", key: "blog", target: "_self" },
             { name: "Gallery", url: "/gallery", key: "gallery", target: "_self" },
-            {
-              name: "Blackjack",
-              url: "/blackjack",
-              key: "blackjack",
-              target: "_self",
-            },
+            { name: "Blackjack", url: "/blackjack", key: "blackjack", target: "_self" },
+            { name: "Music", url: "/music", key: "music", target: "_self" },
           ],
         },
         {
@@ -61,23 +58,12 @@ const SiteNav = () => (
           boxSizing: "border-box",
           overflowY: "hidden",
           overflowX: "hidden",
-          color:"white"
         },
         link: {
           whiteSpace: 'normal',
           lineHeight: 'inherit',
           height: '1.5em',
-          textDecoration: 'none',
         },
-        linkText: {
-          textDecoration: 'none',
-        },
-        navItem: {
-          textDecoration: 'none',
-        },
-        navItems: {
-          textDecoration: 'none',
-        }
       };
 
       const _onRenderGroupHeader = group => <Text variant="xLarge">{group.name}</Text>;
