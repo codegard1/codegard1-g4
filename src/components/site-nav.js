@@ -67,18 +67,16 @@ const SiteNav = () => (
           whiteSpace: 'normal',
           lineHeight: 'inherit',
           height: '1.5em',
+          textDecoration: 'none',
         },
         linkText: {
           textDecoration: 'none',
-          color: 'white',
         },
         navItem: {
           textDecoration: 'none',
-          color: 'white',
         },
         navItems: {
           textDecoration: 'none',
-          color: 'white',
         }
       };
 

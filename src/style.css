@@ -172,7 +172,7 @@ ol {
   margin-left: var(--spacing-0);
   margin-right: var(--spacing-0);
   padding: var(--spacing-0);
-  margin-bottom: var(--spacing-8);
+  margin-bottom: var(--spacing-0);
   list-style-position: outside;
   list-style-image: none;
 }
@@ -180,7 +180,7 @@ ol {
 ul li,
 ol li {
   padding-left: var(--spacing-0);
-  margin-bottom: calc(var(--spacing-8) / 2);
+  margin-bottom: calc(var(--spacing-8) / 4);
 }
 
 li > p {
@@ -231,6 +231,7 @@ table thead tr th {
 
 a {
   color: var(--color-primary);
+  text-decoration: none;
 }
 
 a:hover,
