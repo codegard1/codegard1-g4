@@ -11,6 +11,8 @@ import { List } from "@fluentui/react/lib/List";
 import { getTheme, mergeStyleSets } from "@fluentui/react/lib/Styling";
 import { useConst } from "@fluentui/react-hooks";
 
+import { OutboundLink } from "gatsby-plugin-google-gtag";
+
 const ROWS_PER_PAGE = 1;
 const MAX_ROW_HEIGHT = 200;
 const theme = getTheme();
@@ -151,30 +153,35 @@ const GalleryPage = ({ data, location }) => {
       <h2>Gallery</h2>
       <p>
         Custom implementation of my own{" "}
-        <a target="_blank" href="https://www.instagram.com/codegard1/">
+        <OutboundLink target="_blank" href="https://www.instagram.com/codegard1/">
           Instagram feed
-        </a>{" "}
+        </OutboundLink>{" "}
         using{" "}
-        <a
+        <OutboundLink
           href="https://azure.microsoft.com/en-us/services/storage/blobs/"
           target="_blank"
+          rel="noopener norefer"
         >
           Azure Blob Storage{" "}
-        </a>{" "}
+        </OutboundLink>{" "}
         and{" "}
-        <a
+        <OutboundLink
           href="https://github.com/neptunian/react-photo-gallery"
           target="_blank"
+          rel="noopener norefer"
         >
           List Grid
-        </a>
+        </OutboundLink>
         .
       </p>
       <p>
         See also:{" "}
-        <a href="https://github.com/codegard1/imagal3/" target="_blank">
+        <OutboundLink href="https://github.com/codegard1/imagal3/" 
+        target="_blank"
+        rel="noopener norefer"
+        >
           Imagal3 on GitHub
-        </a>
+        </OutboundLink>
       </p>
 
       <FocusZone>

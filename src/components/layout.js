@@ -1,15 +1,13 @@
 import * as React from "react";
 import { Link } from "gatsby";
+
 import {
+  createTheme,
   DefaultPalette,
   initializeIcons,
   Stack,
-  TooltipHost,
-  createTheme,
-  ThemeProvider,
   Text,
-  TextStyles,
-  Theme,
+  ThemeProvider,
 } from "@fluentui/react";
 import ButtonIcon from "./button-icon";
 import SiteNav from "./site-nav";
@@ -48,21 +46,6 @@ const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
 
-  let header;
-  if (isRootPath) {
-    header = (
-      <Link to="/">
-        <Text variant="mega">{title}</Text>
-      </Link>
-    );
-  } else {
-    header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
-    );
-  }
-
   // Styles definition
   const containerStackStyles = {
     root: {
@@ -86,7 +69,6 @@ const Layout = ({ location, title, children }) => {
   // Tokens definition
   const containerStackTokens = { childrenGap: 5 };
   const sideStackTokens = {
-    maxWidth: 300,
     minwidth: 50,
     padding: 10,
   };
@@ -102,10 +84,25 @@ const Layout = ({ location, title, children }) => {
         styles={containerStackStyles}
         tokens={containerStackTokens}
       >
-        <Stack grow={2} styles={sideStackStyles} tokens={sideStackTokens}>
-          <ButtonIcon checked={false} disabled={false} />
+        <Stack grow={2} styles={sideStackStyles} tokens={sideStackTokens} align="end">
+          <Stack.Item align="center" grow={0}>
+            <ButtonIcon checked={false} disabled={false} />
+          </Stack.Item>
+
           {` `}
-          <SiteNav />
+          {!isRootPath &&
+            <Stack.Item align="center" grow={0}>
+              <Link to="/" className="header-link-home">
+                <Text variant="xxLarge">
+                  {title}
+                </Text>
+              </Link>
+            </Stack.Item>
+          }
+          {` `}
+          <Stack.Item align="center" grow={0}>
+            <SiteNav />
+          </Stack.Item>
         </Stack>
         <Stack
           verticalAlign="space-between"
@@ -113,9 +110,15 @@ const Layout = ({ location, title, children }) => {
           styles={midStackStyles}
           tokens={midStackTokens}
         >
-          <Stack.Item align="start">
-            <header className="global-header">{header}</header>
-          </Stack.Item>
+          {isRootPath &&
+            <Stack.Item align="start">
+              <header>
+                <Link to="/">
+                  <Text variant="mega">{title}</Text>
+                </Link>
+              </header>
+            </Stack.Item>
+          }
           <Stack.Item grow align="stretch">
             <main>{children}</main>
           </Stack.Item>
@@ -135,12 +138,12 @@ const Layout = ({ location, title, children }) => {
             </footer>
           </Stack.Item>
         </Stack>
-        <Stack grow={2} styles={sideStackStyles} tokens={sideStackTokens}>
+        <Stack grow={3} styles={sideStackStyles} tokens={sideStackTokens}>
           {` `}
         </Stack>
       </Stack>
     </ThemeProvider>
-  );
+  )
 };
 
 export default Layout;
