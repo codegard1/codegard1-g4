@@ -1,19 +1,18 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { Link } from "gatsby";
-
 import {
   createTheme,
   DefaultPalette,
-  initializeIcons,
   Stack,
   Text,
   ThemeProvider,
+  IconButton,
+  initializeIcons
 } from "@fluentui/react";
-import ButtonIcon from "./button-icon";
 import SiteNav from "./site-nav";
 
-// Initialize icons
 initializeIcons();
+
 
 const myTheme = createTheme({
   palette: {
@@ -45,6 +44,8 @@ const myTheme = createTheme({
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
+
+  const [isSiteNavVisible, setIsSiteNavVisible] = useState(true);
 
   // Styles definition
   const containerStackStyles = {
@@ -85,10 +86,15 @@ const Layout = ({ location, title, children }) => {
         tokens={containerStackTokens}
       >
         <Stack grow={2} styles={sideStackStyles} tokens={sideStackTokens} align="end">
-          <Stack.Item align="center" grow={0}>
-            <ButtonIcon checked={false} disabled={false} />
+          <Stack.Item align="center" grow={0} onCl>
+            <IconButton
+              iconProps={{ iconName: "GlobalNavButton" }}
+              title="Global Nav"
+              ariaLabel="Global Nav"
+              checked={isSiteNavVisible}
+              onClick={() => setIsSiteNavVisible(!isSiteNavVisible)}
+            />
           </Stack.Item>
-
           {` `}
           {!isRootPath &&
             <Stack.Item align="center" grow={0}>
@@ -100,9 +106,11 @@ const Layout = ({ location, title, children }) => {
             </Stack.Item>
           }
           {` `}
-          <Stack.Item align="center" grow={0}>
-            <SiteNav />
-          </Stack.Item>
+          {isSiteNavVisible &&
+            <Stack.Item align="center" grow={0}>
+              <SiteNav visible={isSiteNavVisible} />
+            </Stack.Item>
+          }
         </Stack>
         <Stack
           verticalAlign="space-between"

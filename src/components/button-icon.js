@@ -1,16 +1,13 @@
-import * as React from "react";
-import { Link } from "gatsby";
+import React from "react";
 import {
-  DefaultPalette,
   IconButton,
   initializeIcons,
-  Stack,
   TooltipHost,
 } from "@fluentui/react";
 import { useId } from "@fluentui/react-hooks";
 
 // Initialize icons
-// initializeIcons();
+initializeIcons();
 
 const ButtonIcon = props => {
   const { disabled, checked } = props;
