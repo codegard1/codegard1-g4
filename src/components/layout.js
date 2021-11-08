@@ -85,8 +85,8 @@ const Layout = ({ location, title, children }) => {
         styles={containerStackStyles}
         tokens={containerStackTokens}
       >
-        <Stack grow={2} styles={sideStackStyles} tokens={sideStackTokens} align="end">
-          <Stack.Item align="center" grow={0} onCl>
+        <Stack grow={1} styles={sideStackStyles} tokens={sideStackTokens} align="end">
+          <Stack.Item align="left" grow={0}>
             <IconButton
               iconProps={{ iconName: "GlobalNavButton" }}
               title="Global Nav"
@@ -97,8 +97,8 @@ const Layout = ({ location, title, children }) => {
           </Stack.Item>
           {` `}
           {!isRootPath &&
-            <Stack.Item align="center" grow={0}>
-              <Link to="/" className="header-link-home">
+            <Stack.Item grow={0}>
+              <Link to="/">
                 <Text variant="xxLarge">
                   {title}
                 </Text>
