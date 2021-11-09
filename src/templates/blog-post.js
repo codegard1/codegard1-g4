@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
-
+import { Text } from "@fluentui/react";
 import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 
-const BlogPostTemplate = ({ data, location }) => {
+const BlogPostTemplate = ({data, location }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const { previous, next } = data;
@@ -23,7 +23,8 @@ const BlogPostTemplate = ({ data, location }) => {
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <Text variant="xxLarge">{post.frontmatter.date}</Text>
+          <Text variant="large">{post.frontmatter.tags.join(` `)}</Text>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -70,7 +71,7 @@ const BlogPostTemplate = ({ data, location }) => {
 export default BlogPostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
+  query BlogPostById(
     $id: String!
     $previousPostId: String
     $nextPostId: String
@@ -88,6 +89,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

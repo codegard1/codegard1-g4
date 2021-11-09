@@ -23,13 +23,6 @@ const SiteNav = () => (
             }
           }
         }
-        allMarkdownRemark {
-          nodes {
-            frontmatter {
-              tags
-            }
-          }
-        }
       }
       `}
     render={data => {      
@@ -48,6 +41,7 @@ const SiteNav = () => (
           name: "Site Pages",
           links: [
             { name: "Blog", url: "/", key: "blog", target: "_self" },
+            { name: "Tags", url: "/tags", key: "tags", target: "_self" },
             { name: "Gallery", url: "/gallery", key: "gallery", target: "_self" },
             { name: "Blackjack", url: "/blackjack", key: "blackjack", target: "_self" },
             { name: "Music", url: "/music", key: "music", target: "_self" },

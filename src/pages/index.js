@@ -33,7 +33,7 @@ const BlogIndex = ({ data, location }) => {
 
           const tags =
             post.frontmatter.tags !== null
-              ? post.frontmatter.tags.join(`  `)
+              ? post.frontmatter.tags.map(tag => <span><Link to={`/tags/${tag}`}>{tag}</Link>&nbsp;&nbsp;</span>)
               : "";
 
           return (
