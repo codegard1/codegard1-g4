@@ -11,4 +11,4 @@ I also learned that I have had an account on Bandcamp since 2012 but it had been
 
 Since I have literally hundreds of songs already produced, I am also considering publishing my work to Spotify, etc. using a service like CD Baby. However, much of my music is heavily derived from samples and other copyrighted work, so it may be prohibitively expensive or time consuming for me to publish anything.
 
-If/When I do publish my music it will be under the name _Ciaervo_ since Esses is already taken and never really felt right anyway. Plus, I already own the [ciervo.com](https://ciaervo.com) domain so it's kind of perfect, branding-wise.
+If/When I do publish my music it will be under the name _Ciaervo_ since Esses is already taken and never really felt right anyway. Plus, I already own the [ciaervo.com](https://www.ciaervo.com) domain so it's kind of perfect, branding-wise.

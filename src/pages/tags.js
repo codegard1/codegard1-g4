@@ -1,38 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import kebabCase from "lodash/kebabCase";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/layout";
-import { Text } from "@fluentui/react";
+import {
+  CheckboxVisibility,
+  DetailsList,
+  DetailsListLayoutMode,
+  Text,
+} from '@fluentui/react';
 
-const TagsPage = ({ data, location }) => (
-  <Layout location={location} title={data.site.siteMetadata.title}>
-    <Text variant="mega">Blog Post Tags</Text>
-    <br/><br/>
-    {data.allMarkdownRemark.group.map(tag => (
-      <Link to={`/tags/${kebabCase(tag.fieldValue)}/`} key={tag.fieldValue}>
-        {tag.fieldValue} ({tag.totalCount}) &nbsp;
-      </Link>
-    ))}
-  </Layout>
-);
+const TagsPage = ({ data, location }) => {
+  const _items = data.allMarkdownRemark.group.map(tag => {
+    return {
+      key: kebabCase(tag.fieldValue),
+      name: tag.fieldValue,
+      totalCount: tag.totalCount,
+      posts: tag.nodes,
+    }
+  });
+  const _columns = [
+    {
+      key: 'name',
+      name: 'Name',
+      fieldName: 'name',
+      minWidth: 100,
+      maxWidth: 200,
+      isResizable: false,
+      onRender: item => <Link to={`/tags/${item.key}`}>{item.name}</Link>
+      },
+    {
+      key: 'totalCount',
+      name: 'Post Count',
+      fieldName: 'totalCount',
+      minWidth: 100,
+      maxWidth: 200,
+      isResizable: false
+    },
+  ];
+
+  return (
+    <Layout location={location} title={data.site.siteMetadata.title}>
+      <Text variant="mega">Blog Post Tags</Text>
+      <br />
+      <DetailsList
+        items={_items}
+        columns={_columns}
+        setKey="set"
+        layoutMode={DetailsListLayoutMode.justified}
+        checkboxVisibility={CheckboxVisibility.hidden}
+        compact={false}
+      />
+    </Layout>
+  )
+};
 
 export default TagsPage;
 
 export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
+query {
+  site {
+    siteMetadata {
+      title
     }
-    allMarkdownRemark(
-      limit: 2000
-      filter: {frontmatter: {tags: {ne: ""}}}
-    ) {
-      group(field: frontmatter___tags) {
-        fieldValue
-        totalCount
+  }
+  allMarkdownRemark(limit: 2000, filter: {frontmatter: {tags: {ne: ""}}}) {
+    group(field: frontmatter___tags) {
+      fieldValue
+      totalCount
+      nodes {
+        frontmatter {
+          title
+          tags
+          date
+        }
+        id
       }
     }
   }
+}
 `;
