@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "gatsby";
 import {
   createTheme,
@@ -6,13 +6,11 @@ import {
   Stack,
   Text,
   ThemeProvider,
-  IconButton,
   initializeIcons
 } from "@fluentui/react";
 import SiteNav from "./site-nav";
 
 initializeIcons();
-
 
 const myTheme = createTheme({
   palette: {
@@ -45,8 +43,6 @@ const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
 
-  const [isSiteNavVisible, setIsSiteNavVisible] = useState(true);
-
   // Styles definition
   const containerStackStyles = {
     root: {
@@ -63,7 +59,6 @@ const Layout = ({ location, title, children }) => {
   const sideStackStyles = {
     root: {
       background: DefaultPalette.tealLight,
-      minwidth: 100,
     },
   };
 
@@ -71,7 +66,6 @@ const Layout = ({ location, title, children }) => {
   const containerStackTokens = { childrenGap: 5 };
   const sideStackTokens = {
     minwidth: 50,
-    padding: 10,
   };
   const midStackTokens = {
     padding: 20,
@@ -81,40 +75,26 @@ const Layout = ({ location, title, children }) => {
     <ThemeProvider theme={myTheme}>
       <Stack
         horizontal
-        grow
+        horizontalAlign="start"
         styles={containerStackStyles}
         tokens={containerStackTokens}
       >
-        <Stack grow={1} styles={sideStackStyles} tokens={sideStackTokens} align="end">
-          <Stack.Item align="left" grow={0}>
-            <IconButton
-              iconProps={{ iconName: "GlobalNavButton" }}
-              title="Global Nav"
-              ariaLabel="Global Nav"
-              checked={isSiteNavVisible}
-              onClick={() => setIsSiteNavVisible(!isSiteNavVisible)}
-            />
-          </Stack.Item>
-          {` `}
+        <Stack styles={sideStackStyles} tokens={sideStackTokens} align="end">
+            <Stack.Item align="right" shrink>
           {!isRootPath &&
-            <Stack.Item grow={0}>
               <Link to="/">
                 <Text variant="xxLarge">
                   {title}
                 </Text>
               </Link>
-            </Stack.Item>
           }
-          {` `}
-          {isSiteNavVisible &&
-            <Stack.Item align="center" grow={0}>
-              <SiteNav visible={isSiteNavVisible} />
-            </Stack.Item>
-          }
+          
+            <SiteNav />
+          </Stack.Item>
         </Stack>
+
         <Stack
           verticalAlign="space-between"
-          data-is-root-path={isRootPath}
           styles={midStackStyles}
           tokens={midStackTokens}
         >
@@ -127,10 +107,10 @@ const Layout = ({ location, title, children }) => {
               </header>
             </Stack.Item>
           }
-          <Stack.Item grow align="stretch">
+          <Stack.Item shrink align="stretch" >
             <main>{children}</main>
           </Stack.Item>
-          <Stack.Item align="auto">
+          <Stack.Item grow={2} align="auto">
             <footer>
               {`© ${new Date().getFullYear()}`} Ciaervo, All rights reserved.
               {` `}
@@ -146,7 +126,7 @@ const Layout = ({ location, title, children }) => {
             </footer>
           </Stack.Item>
         </Stack>
-        <Stack grow={3} styles={sideStackStyles} tokens={sideStackTokens}>
+        <Stack styles={sideStackStyles} tokens={sideStackTokens}>
           {` `}
         </Stack>
       </Stack>

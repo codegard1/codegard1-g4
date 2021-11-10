@@ -1,7 +1,6 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
 import { Nav, Text } from "@fluentui/react";
-import { Link, StaticQuery, graphql } from "gatsby";
-import { OutboundLink } from "gatsby-plugin-google-gtag";
+import { StaticQuery, graphql } from "gatsby";
 
 const SiteNav = () => (
   <StaticQuery query={graphql`
@@ -25,7 +24,7 @@ const SiteNav = () => (
         }
       }
       `}
-    render={data => {      
+    render={data => {
       let brandLinks = [];
       for (let key in data.site.siteMetadata.social) {
         if (key !== undefined) brandLinks.push({
@@ -71,7 +70,6 @@ const SiteNav = () => (
       return (
         <Nav
           onRenderGroupHeader={_onRenderGroupHeader}
-        
           ariaLabel="Site Nav"
           groups={navLinkGroups}
           styles={navStyles}

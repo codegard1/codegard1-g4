@@ -5,10 +5,13 @@ import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 
-const BlogPostTemplate = ({data, location }) => {
+const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const { previous, next } = data;
+  const tagLinks = post.frontmatter.tags.map(tag => 
+  <span><Link to={`/tags/${tag}`}>{tag}</Link>&nbsp;</span>
+  );
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -24,7 +27,8 @@ const BlogPostTemplate = ({data, location }) => {
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <Text variant="xxLarge">{post.frontmatter.date}</Text>
-          <Text variant="large">{post.frontmatter.tags.join(` `)}</Text>
+          &nbsp;|&nbsp;
+          <Text variant="large">{tagLinks}</Text>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}

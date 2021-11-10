@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
 import { Text } from "@fluentui/react";
 import { graphql } from "gatsby";
 
@@ -20,9 +20,10 @@ const MusicPage = ({ data, location }) => {
         <Text>I make music sometimes using Logic or Fruity Loops. You can find some of my tracks on <OutboundLink href={soundcloud} target="_blank" rel="noopener norefer">SoundCloud</OutboundLink>, <OutboundLink href={bandcamp} target="_blank" rel="noopener norefer">BandCamp</OutboundLink>, <OutboundLink href={spotify} target="_blank" rel="noopener norefer">Spotify</OutboundLink>, <OutboundLink href={applemusic} target="_blank" rel="noopener norefer">Apple Music</OutboundLink>, etc.</Text>
       </p>
       <br />
-      <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1341784969&color=%231860eb&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+
+      <iframe title="Ciaervo Music on SoundCloud" width="500" height="600" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1344404302&color=%231860eb&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
       <div>
-        <OutboundLink href={soundcloud} title="Ciaervo" target="_blank" >Ciaervo</OutboundLink> · <OutboundLink href="https://soundcloud.com/ciaervo/sets/ditributed" title="Distributed" target="_blank">Distributed</OutboundLink>
+        <OutboundLink href={soundcloud} title="Ciaervo" target="_blank" >Ciaervo</OutboundLink> · <OutboundLink href="https://soundcloud.com/ciaervo/sets/all-tracks" title="All Tracks" target="_blank">Distributed</OutboundLink>
       </div>
     </Layout>
   );
