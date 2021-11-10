@@ -46,7 +46,7 @@ const Layout = ({ location, title, children }) => {
   // Styles definition
   const containerStackStyles = {
     root: {
-      background: DefaultPalette.white,
+      background: DefaultPalette.tealLight,
       minHeight: "100vh",
     },
   };
@@ -54,22 +54,26 @@ const Layout = ({ location, title, children }) => {
     root: {
       background: DefaultPalette.white,
       childrenGap: 5,
+      maxWidth: "800px",
+      minWidth: "500px"
     },
   };
-  const sideStackStyles = {
+  const leftStackStyles = {
     root: {
       background: DefaultPalette.tealLight,
+      minWidth: "100px",
+    },
+  };
+  const rightStackStyles = {
+    root: {
+      background: DefaultPalette.tealLight,
+      minWidth: 0,
     },
   };
 
   // Tokens definition
   const containerStackTokens = { childrenGap: 5 };
-  const sideStackTokens = {
-    minwidth: 50,
-  };
-  const midStackTokens = {
-    padding: 20,
-  };
+  const midStackTokens = { padding: 20 };
 
   return (
     <ThemeProvider theme={myTheme}>
@@ -79,21 +83,18 @@ const Layout = ({ location, title, children }) => {
         styles={containerStackStyles}
         tokens={containerStackTokens}
       >
-        <Stack styles={sideStackStyles} tokens={sideStackTokens} align="end">
-            <Stack.Item align="right" shrink>
+
+        <Stack styles={leftStackStyles} disableShrink horizontalAlign="center">
           {!isRootPath &&
-              <Link to="/">
-                <Text variant="xxLarge">
-                  {title}
-                </Text>
-              </Link>
+            <Link to="/">
+              <Text variant="xxLarge">{title}</Text>
+            </Link>
           }
-          
-            <SiteNav />
-          </Stack.Item>
+          <SiteNav />
         </Stack>
 
         <Stack
+          disableShrink
           verticalAlign="space-between"
           styles={midStackStyles}
           tokens={midStackTokens}
@@ -107,10 +108,12 @@ const Layout = ({ location, title, children }) => {
               </header>
             </Stack.Item>
           }
-          <Stack.Item shrink align="stretch" >
+
+          <Stack.Item grow={3} verticalAlign="stretch" >
             <main>{children}</main>
           </Stack.Item>
-          <Stack.Item grow={2} align="auto">
+
+          <Stack.Item grow={1} shrink align="auto">
             <footer>
               {`© ${new Date().getFullYear()}`} Ciaervo, All rights reserved.
               {` `}
@@ -126,9 +129,11 @@ const Layout = ({ location, title, children }) => {
             </footer>
           </Stack.Item>
         </Stack>
-        <Stack styles={sideStackStyles} tokens={sideStackTokens}>
+
+        <Stack shrink={2} styles={rightStackStyles}>
           {` `}
         </Stack>
+
       </Stack>
     </ThemeProvider>
   )
