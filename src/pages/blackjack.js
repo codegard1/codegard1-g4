@@ -35,7 +35,7 @@ const BlackjackPage = ({ data, location }) => {
         </OutboundLink>
         <br />
         <OutboundLink
-          href="https://blackjack.ciaervo.com"
+          href="https://mango-cliff-08390e60f.azurestaticapps.net"
           target="_blank"
           rel="noreferrer"
           rel="noopener"
@@ -45,7 +45,7 @@ const BlackjackPage = ({ data, location }) => {
       </Text>
       <br />
       <br />
-      <iframe src="https://blackjack.ciaervo.com" width="600" height="800"></iframe>
+      <iframe src="https://mango-cliff-08390e60f.azurestaticapps.net" width="600" height="800"></iframe>
 
     </Layout>
   );

@@ -62,6 +62,7 @@ const Layout = ({ location, title, children }) => {
     root: {
       background: DefaultPalette.tealLight,
       minWidth: "100px",
+      padding:"10px",
     },
   };
   const rightStackStyles = {
