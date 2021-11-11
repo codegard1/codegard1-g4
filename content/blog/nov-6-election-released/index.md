@@ -5,7 +5,7 @@ published: true
 date: "2021-11-10"
 ---
 
-This is a bit old already, but I've published a second single to [https://open.spotify.com/track/4CJJ7RDN1mtanyFc6TpMhH?si=3bcdc57065454a97](Spotify) et. al. 
+This is a bit old already, but I've published a second single to [Spotify](https://open.spotify.com/track/4CJJ7RDN1mtanyFc6TpMhH?si=3bcdc57065454a97) et. al. 
 
 The cover art is a photograph I took at the Baltimore aquarium in 2021. The song I made in 2012/2013 during a time of some emotional turmoil.  
 
