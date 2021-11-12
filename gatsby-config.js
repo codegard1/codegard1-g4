@@ -20,6 +20,7 @@ module.exports = {
       spotify:
         "https://open.spotify.com/artist/3MS6P6gKoxxcSJoEqqNQST?si=dHeDrh3WS4iAB1lw2bAGDg",
       tumblr: "https://ciaervo1.tumblr.com",
+      twitch: "https://www.twitch.tv/ciaervo",
       twitter: "https://twitter.com/ciaervo1",
     },
   },
