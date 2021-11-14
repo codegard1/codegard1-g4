@@ -40,7 +40,7 @@ const TagsPage = ({ data, location }) => {
 
   return (
     <Layout location={location} title={data.site.siteMetadata.title}>
-      <Text variant="mega">Blog Post Tags</Text>
+      <h2>Blog Post Tags</h2>
       <br />
       <DetailsList
         items={_items}

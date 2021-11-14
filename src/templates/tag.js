@@ -2,7 +2,6 @@ import * as React from "react";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import { Text } from "@fluentui/react";
 
 const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext;
@@ -12,7 +11,7 @@ const Tags = ({ pageContext, data, location }) => {
 
   return (
     <Layout title={data.site.siteMetadata.title} location={location}>
-      <Text variant="mega">{tagHeader}</Text>
+      <h2>{tagHeader}</h2>
       <br/><br/>
       <ul>
         {edges.map(({ node }) => {
