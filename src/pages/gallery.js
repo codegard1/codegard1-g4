@@ -222,7 +222,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allInstagramPostsJson(sort: { fields: creation_timestamp, order: DESC }) {
+    allInstagramPostsJson(
+      sort: {fields: creation_timestamp, order: DESC}
+      limit: 50
+    ) {
       nodes {
         creation_timestamp
         height
