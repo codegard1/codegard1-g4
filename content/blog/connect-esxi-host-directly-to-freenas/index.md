@@ -1,7 +1,7 @@
 ---
 tags:
-  - FreeNAS
-  - ESXi
+  - freenas
+  - esxi
 published: true
 date: 2020-06-03T17:10:15.641Z
 title: Connect ESXi Host Directly to FreeNAS

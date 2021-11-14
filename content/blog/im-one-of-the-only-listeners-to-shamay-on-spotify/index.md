@@ -1,6 +1,7 @@
 ---
 tags:
-  - Music
+  - music
+  - spotify
 published: true
 date: 2020-06-15T13:57:33.249Z
 title: I'm one of the only listeners to Shamay on Spotify
@@ -14,4 +15,4 @@ According to [UrbanDictionary](https://www.urbandictionary.com/define.php?term=s
 
 Update on 10/19/2020: I am still the #2 listener and only follower of Shamay.
 
-![Shamay on Spotify]/screenshot-2020-10-19-103317.png "Shamay on Spotify")
+![Shamay on Spotify](./screenshot-2020-10-19-103317.png "Shamay on Spotify 2")

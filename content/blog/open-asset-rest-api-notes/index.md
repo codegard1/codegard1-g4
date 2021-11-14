@@ -1,7 +1,9 @@
 ---
 tags:
-  - Open Asset
-  - REST
+  - openasset
+  - rest
+  - api
+  - json
 published: true
 date: 2020-06-02T14:34:36.668Z
 title: Open Asset REST API Notes

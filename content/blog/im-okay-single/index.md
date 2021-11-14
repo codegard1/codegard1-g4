@@ -1,6 +1,6 @@
 ---
 title: "I'm Okay (Single) Released"
-tags: ["music", "single", "ciaervo"]
+tags: ["music", "single", "ciaervo", "spotify"]
 published: true
 date: "2021-11-01"
 ---

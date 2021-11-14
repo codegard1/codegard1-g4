@@ -3,6 +3,7 @@ tags:
   - powershell
   - teams
   - exchange
+  - office365
 published: true
 date: 2020-04-27T20:08:43.043Z
 title: Expose Shared Mailbox and Calendar for Teams

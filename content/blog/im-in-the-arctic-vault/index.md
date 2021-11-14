@@ -1,6 +1,6 @@
 ---
 tags:
-  - GitHub
+  - github
 published: true
 date: 2020-08-12T18:33:17.139Z
 title: I'm in the Arctic Vault

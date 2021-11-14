@@ -2,7 +2,7 @@
 tags:
   - json
   - grubhub
-  - API
+  - api
 published: true
 date: 2020-08-12T01:24:56.598Z
 title: Get Grubhub order history as JSON

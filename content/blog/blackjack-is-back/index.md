@@ -3,6 +3,7 @@ tags:
   - react
   - nodejs
   - javascript
+  - blackjack
 published: true
 date: 2020-09-30T21:13:09.580Z
 title: Blackjack is back

@@ -2,7 +2,7 @@
 title: Remotely Manage Hyper-V Host
 published: true
 date: 2020-12-09T17:07:23.591Z
-tags: ["windows","hyperv","snippet"]
+tags: ["windows","hyperv","snippet", "powershell"]
 ---
 
 I have a Hyper-V host running on an ESXI host, so to manage the Hyper-V VM's I have to use Remote Desktop to get to the Hyper-V Host to open the management console, which is inefficient. Instead I would prefer to manage the Hyper-V host remotely, using Hyper-V Manager. The page below describes how to set this up.

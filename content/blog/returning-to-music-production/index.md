@@ -1,6 +1,6 @@
 ---
 title: "Returning to Music Production"
-tags: ["fruityloops"]
+tags: ["fruityloops", "music", "ciaervo"]
 published: true
 date: "2021-10-02"
 ---
