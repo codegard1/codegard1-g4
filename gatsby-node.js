@@ -16,7 +16,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         sort: { fields: [frontmatter___date], order: DESC }
         limit: 1000
       ) {
-        edges{
+        edges {
           node {
             id
             fields {
@@ -26,11 +26,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               tags
             }
           }
-        } 
+        }
       }
       tagsGroup: allMarkdownRemark(
         limit: 2000
-        filter: {frontmatter: {tags: {ne: ""}}}
+        filter: { frontmatter: { tags: { ne: "" } } }
       ) {
         group(field: frontmatter___tags) {
           fieldValue
@@ -81,9 +81,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         context: {
           tag: tag.fieldValue,
         },
-      })
+      });
     });
-
   }
 };
 
@@ -141,4 +140,22 @@ exports.createSchemaCustomization = ({ actions }) => {
       slug: String
     }
   `);
+};
+
+exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
+  if (stage === 'build-javascript' || stage === 'develop') {
+    const config = getConfig();
+
+    const miniCss = config.plugins.find(
+      (plugin) => plugin.constructor.name === 'MiniCssExtractPlugin'
+    );
+
+    if (miniCss) {
+      // miniCss.options.ignoreOrder = true;
+      miniCss.options.runtime = false;
+      miniCss.options.experimentalUseImportModule = true;
+    }
+
+    actions.replaceWebpackConfig(config);
+  }
 };

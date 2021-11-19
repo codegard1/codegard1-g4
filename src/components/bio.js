@@ -2,7 +2,7 @@ import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 
-import { Stack } from "@fluentui/react";
+import { Stack } from "@fluentui/react/lib/Stack";
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -34,7 +34,6 @@ const Bio = () => {
   return (
     <Stack horizontal>
       <StaticImage
-        className="bio-avatar"
         layout="fixed"
         formats={["auto", "webp", "avif"]}
         src="../images/profile-pic.jpg"

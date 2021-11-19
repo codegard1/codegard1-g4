@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import kebabCase from "lodash/kebabCase";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/layout";
+
 import {
-  CheckboxVisibility,
   DetailsList,
   DetailsListLayoutMode,
-  Text,
-} from '@fluentui/react';
+  CheckboxVisibility,
+} from "@fluentui/react/lib/DetailsList";
 
 const TagsPage = ({ data, location }) => {
   const _items = data.allMarkdownRemark.group.map(tag => {
@@ -16,25 +16,25 @@ const TagsPage = ({ data, location }) => {
       name: tag.fieldValue,
       totalCount: tag.totalCount,
       posts: tag.nodes,
-    }
+    };
   });
   const _columns = [
     {
-      key: 'name',
-      name: 'Name',
-      fieldName: 'name',
+      key: "name",
+      name: "Name",
+      fieldName: "name",
       minWidth: 100,
       maxWidth: 200,
       isResizable: false,
-      onRender: item => <Link to={`/tags/${item.key}`}>{item.name}</Link>
-      },
+      onRender: item => <Link to={`/tags/${item.key}`}>{item.name}</Link>,
+    },
     {
-      key: 'totalCount',
-      name: 'Post Count',
-      fieldName: 'totalCount',
+      key: "totalCount",
+      name: "Post Count",
+      fieldName: "totalCount",
       minWidth: 100,
       maxWidth: 200,
-      isResizable: false
+      isResizable: false,
     },
   ];
 
@@ -51,31 +51,34 @@ const TagsPage = ({ data, location }) => {
         compact={false}
       />
     </Layout>
-  )
+  );
 };
 
 export default TagsPage;
 
 export const pageQuery = graphql`
-query {
-  site {
-    siteMetadata {
-      title
+  query {
+    site {
+      siteMetadata {
+        title
+      }
     }
-  }
-  allMarkdownRemark(limit: 2000, filter: {frontmatter: {tags: {ne: ""}}}) {
-    group(field: frontmatter___tags) {
-      fieldValue
-      totalCount
-      nodes {
-        frontmatter {
-          title
-          tags
-          date
+    allMarkdownRemark(
+      limit: 2000
+      filter: { frontmatter: { tags: { ne: "" } } }
+    ) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+        nodes {
+          frontmatter {
+            title
+            tags
+            date
+          }
+          id
         }
-        id
       }
     }
   }
-}
 `;
