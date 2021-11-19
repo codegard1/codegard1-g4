@@ -22,6 +22,7 @@ module.exports = {
       tumblr: "https://ciaervo1.tumblr.com",
       twitch: "https://www.twitch.tv/ciaervo",
       twitter: "https://twitter.com/ciaervo1",
+      lastfm: "https://www.last.fm/user/codegard1",
     },
   },
   plugins: [
