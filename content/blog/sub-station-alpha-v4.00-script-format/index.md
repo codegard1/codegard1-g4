@@ -13,7 +13,7 @@ Disclaimer: I am not the author of this document, and I have nothing to do with 
 
 # Sub Station Alpha v4.00 Script Format
 
-1.        General information
+1.               General information
 1.  The [sections] of a Sub Station Alpha script
 1.  The line types in a Sub Station Alpha script
 1.  Header lines, [Script Info] section
@@ -22,8 +22,8 @@ Disclaimer: I am not the author of this document, and I have nothing to do with 
 1.  Comment lines, [Events] section
 1.  Picture event lines, [Events] section
 1.  Movie event line, [Events] section
-1.        Sound event lines, [Events] section
-1.        Command event lines, [Events] section
+1.               Sound event lines, [Events] section
+1.               Command event lines, [Events] section
 
 - Appendix A: Style override codes
 - Appendix B: Embedded font/picture encoding
