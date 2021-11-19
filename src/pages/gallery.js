@@ -141,7 +141,7 @@ const GalleryPage = ({ data, location }) => {
         </div>
       </div>
     );
-  }, []);
+  }, [openLightbox]);
 
   const getPageHeight = React.useCallback(() => {
     return rowHeight.current * ROWS_PER_PAGE;

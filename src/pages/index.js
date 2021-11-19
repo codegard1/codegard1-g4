@@ -33,16 +33,16 @@ const BlogIndex = ({ data, location }) => {
 
           const tags =
             post.frontmatter.tags !== null
-              ? post.frontmatter.tags.map(tag => <span><Link to={`/tags/${tag}`}>{tag}</Link>&nbsp;&nbsp;</span>)
+              ? post.frontmatter.tags.map(tag => (
+                  <span>
+                    <Link to={`/tags/${tag}`}>{tag}</Link>&nbsp;&nbsp;
+                  </span>
+                ))
               : "";
 
           return (
             <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
+              <article itemScope itemType="http://schema.org/Article">
                 <header>
                   <h2>
                     <Link to={post.fields.slug} itemProp="url">
