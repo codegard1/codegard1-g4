@@ -2,7 +2,7 @@
   "name": "ciaervo",
   "private": true,
   "description": "Homepage for Ciaervo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Chris Odegard <c.odegard@gmail.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
@@ -34,20 +34,19 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-images": "^1.2.0-beta.7",
-    "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.75"
+    "typeface-merriweather": "^1.1.13",
+    "typeface-montserrat": "^1.1.13"
   },
   "devDependencies": {
-    "gatsby-cli": "^4.0.0",
-    "image-size": "^1.0.0",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "terser-webpack-plugin": "^5.2.5"
   },
   "homepage": "https://www.ciaervo.com",
   "keywords": [
-    "gatsby"
+    "ciaervo","ciaervo1","Chris Odegard","Blog","Personal Site", "gatsby"
   ],
   "license": "0BSD",
-  "main": "n/a",
+  "main": "/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
