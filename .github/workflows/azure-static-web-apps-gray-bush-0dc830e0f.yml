@@ -44,7 +44,3 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GRAY_BUSH_0DC830E0F }}
           action: "close"
-
-env:
-  NODE_VERSION: 14
-  NPM_VERSION: 8.1.3
