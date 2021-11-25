@@ -45,12 +45,12 @@ const SiteNav = () => (
           links: [
             { name: "Blog", url: "/", key: "blog", target: "_self" },
             { name: "Tags", url: "/tags", key: "tags", target: "_self" },
-            {
-              name: "Gallery",
-              url: "/gallery",
-              key: "gallery",
-              target: "_self",
-            },
+            // {
+            //   name: "Gallery",
+            //   url: "/gallery",
+            //   key: "gallery",
+            //   target: "_self",
+            // },
             {
               name: "Blackjack",
               url: "/blackjack",
