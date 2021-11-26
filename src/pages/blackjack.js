@@ -29,7 +29,7 @@ const BlackjackPage = ({ data, location }) => {
         work as expected. That is to say, a lot of things are always broken.
         Over the years, this project has been used to experiment with different
         technologies and it has become a disorganized hybrid creature, but it
-        still looks fairly presentable.{" "}
+        still looks fairly presentable.
       </p>
       <br />
       <p>

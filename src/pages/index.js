@@ -28,7 +28,6 @@ const BlogIndex = ({ data, location }) => {
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug;
-
           const tags = post.frontmatter.tags !== null
             ? post.frontmatter.tags.map(tag =>
               <Link key={`tag-${tag}`} to={`/tags/${tag}`}>{tag}&nbsp;&nbsp;</Link>)

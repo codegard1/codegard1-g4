@@ -1,6 +1,8 @@
 import React from "react";
+
 import NavBar from "./navbar";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
+
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
