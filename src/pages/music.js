@@ -1,5 +1,4 @@
 import React from "react";
-import { Text } from "@fluentui/react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
@@ -17,7 +16,6 @@ const MusicPage = ({ data, location }) => {
       <Seo title="Music" keywords={[`music`, `audio`, `Ciaervo`]} />
       <h2>Music</h2>
       <p>
-        <Text>
           I make music sometimes using Logic or Fruity Loops. You can find some
           of my tracks on{" "}
           <OutboundLink
@@ -44,7 +42,6 @@ const MusicPage = ({ data, location }) => {
             Apple Music
           </OutboundLink>
           , etc.
-        </Text>
       </p>
       <br />
 

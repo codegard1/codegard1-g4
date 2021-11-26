@@ -11,9 +11,11 @@ const NavBar = ({ location, title }) => {
 
   return (
     <nav id="navbar" className='navbar-container container'>
-      <Link to='/' className='home-link' state={{ fromNav: true }}>
-        {title}
-      </Link>
+      <h2>
+        <Link to='/' className='home-link' state={{ fromNav: true }}>
+          {title}
+        </Link>
+      </h2>
       <button
         type="button"
         id='navbar-toggle'
@@ -27,38 +29,40 @@ const NavBar = ({ location, title }) => {
         <span className='icon-bar'></span>
       </button>
 
-      {isNavVisible && (
-        <div id='navbar-menu' aria-labelledby='navbar-toggle'>
-          <ul className='navbar-links'>
-            <li className='navbar-item'>
-              <Link className='navbar-link' to='/'>
-                Blog
-              </Link>
-            </li>
-            <li className='navbar-item'>
-              <Link className='navbar-link' to='/tags'>
-                Tags
-              </Link>
-            </li>
-            <li className='navbar-item'>
-              <Link className='navbar-link' to='/blackjack'>
-                Blackjack
-              </Link>
-            </li>
-            <li className='navbar-item'>
-              <Link className='navbar-link' to='/gallery'>
-                Gallery
-              </Link>
-            </li>
-            <li className='navbar-item'>
-              <Link className='navbar-link' to='/music'>
-                Music
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
-    </nav>
+      {
+        isNavVisible && (
+          <div id='navbar-menu' aria-labelledby='navbar-toggle'>
+            <ul className='navbar-links'>
+              <li className='navbar-item'>
+                <Link className='navbar-link' to='/'>
+                  Blog
+                </Link>
+              </li>
+              <li className='navbar-item'>
+                <Link className='navbar-link' to='/tags'>
+                  Tags
+                </Link>
+              </li>
+              <li className='navbar-item'>
+                <Link className='navbar-link' to='/blackjack'>
+                  Blackjack
+                </Link>
+              </li>
+              <li className='navbar-item'>
+                <Link className='navbar-link' to='/gallery'>
+                  Gallery
+                </Link>
+              </li>
+              <li className='navbar-item'>
+                <Link className='navbar-link' to='/music'>
+                  Music
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )
+      }
+    </nav >
   );
 };
 

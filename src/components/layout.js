@@ -7,13 +7,11 @@ const Layout = ({ location, title, children }) => {
   const isRootPath = location.pathname === rootPath;
 
   return (
-    <>
-      <header>
+    <div id="LayoutContainer">
         <NavBar
           location={location}
           title={title}
         />
-      </header>
       <main>{children}</main>
       <footer>
         {`© ${new Date().getFullYear()}`} Ciaervo, All rights reserved.
@@ -28,7 +26,7 @@ const Layout = ({ location, title, children }) => {
         </OutboundLink>
         .
       </footer>
-    </>
+    </div>
   );
 };
 
