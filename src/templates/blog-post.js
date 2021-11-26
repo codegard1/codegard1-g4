@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
-import { Text } from "@fluentui/react/lib/Text";
 import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -9,11 +8,9 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const { previous, next } = data;
-  const tagLinks = post.frontmatter.tags.map(tag => (
-    <span>
-      <Link to={`/tags/${tag}`}>{tag}</Link>&nbsp;
-    </span>
-  ));
+  const tagLinks = post.frontmatter.tags.map(tag =>
+    <Link key={`tag-${tag}`} to={`/tags/${tag}`}>{tag}&nbsp;</Link>
+  );
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -23,21 +20,18 @@ const BlogPostTemplate = ({ data, location }) => {
       />
       <article itemScope itemType="http://schema.org/Article">
         <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <Text variant="xxLarge">{post.frontmatter.date}</Text>
-          <br />
-          <Text variant="large">tags:&nbsp;{tagLinks}</Text>
+          <h3 itemProp="headline">{post.frontmatter.title}</h3>
+          <h4>{post.frontmatter.date}</h4>
+          <h5>tags:&nbsp;{tagLinks}</h5>
           <br />
           <br />
         </header>
+        <Bio />
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
         <hr />
-        <footer>
-          <Bio />
-        </footer>
       </article>
       <nav>
         <ul

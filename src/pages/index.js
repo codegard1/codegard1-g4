@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
 
-import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 
@@ -13,7 +12,6 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle}>
         <Seo title="All posts" />
-        <Bio />
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
@@ -26,19 +24,14 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
-      <Bio />
+
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug;
-
-          const tags =
-            post.frontmatter.tags !== null
-              ? post.frontmatter.tags.map(tag => (
-                  <span>
-                    <Link to={`/tags/${tag}`}>{tag}</Link>&nbsp;&nbsp;
-                  </span>
-                ))
-              : "";
+          const tags = post.frontmatter.tags !== null
+            ? post.frontmatter.tags.map(tag =>
+              <Link key={`tag-${tag}`} to={`/tags/${tag}`}>{tag}&nbsp;&nbsp;</Link>)
+            : "";
 
           return (
             <li key={post.fields.slug}>

@@ -3,7 +3,6 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
-import { Text } from "@fluentui/react/lib/Text";
 
 const BlackjackPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
@@ -22,7 +21,7 @@ const BlackjackPage = ({ data, location }) => {
       />
 
       <h2>Chris's Blackjack</h2>
-      <Text>
+      <p>
         This is a "fairly minimal" version of the game Blackjack made with
         React, Flux, and Fluent UI. It stores game state in browser storage so
         that the player's statistics will persist across session.
@@ -30,10 +29,10 @@ const BlackjackPage = ({ data, location }) => {
         work as expected. That is to say, a lot of things are always broken.
         Over the years, this project has been used to experiment with different
         technologies and it has become a disorganized hybrid creature, but it
-        still looks fairly presentable.{" "}
-      </Text>
+        still looks fairly presentable.
+      </p>
       <br />
-      <Text>
+      <p>
         <OutboundLink
           href="https://github.com/codegard1/blackjack"
           target="_blank"
@@ -49,7 +48,7 @@ const BlackjackPage = ({ data, location }) => {
         >
           Open the app full-screen.
         </OutboundLink>
-      </Text>
+      </p>
       <br />
       <br />
       <iframe
