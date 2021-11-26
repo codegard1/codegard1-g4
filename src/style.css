@@ -60,7 +60,9 @@
   --color-heading: #1a202c;
   --color-heading-black: black;
   --color-accent: #d1dce5;
+  --color-teal: rgb(0,178,148);
 
+  --navbar-height: 64px;
   --navbar-bg-color: hsl(0, 0%, 15%);
   --navbar-text-color: hsl(0, 0%, 85%);
   --navbar-text-color-focus: white;
@@ -269,13 +271,19 @@ a:focus {
   margin: 0 auto;
 }
 
+main {
+  margin-top: var(--navbar-height);
+  
+}
+
 #navbar {
-  --navbar-height: 64px;
+  
   position: fixed;
   height: var(--navbar-height);
-  background-color: var(--navbar-bg-color);
+  background-color: var(--color-teal);
   left: 0;
   right: 0;
+  top:0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 

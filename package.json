@@ -42,11 +42,16 @@
     "typeface-montserrat": "^1.1.13"
   },
   "devDependencies": {
-    "prettier": "^2.4.1"
+    "prettier": "^2.5.0"
   },
   "homepage": "https://www.ciaervo.com",
   "keywords": [
-    "ciaervo","ciaervo1","Chris Odegard","Blog","Personal Site", "gatsby"
+    "ciaervo",
+    "ciaervo1",
+    "Chris Odegard",
+    "Blog",
+    "Personal Site",
+    "gatsby"
   ],
   "license": "0BSD",
   "main": "/",

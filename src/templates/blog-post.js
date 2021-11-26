@@ -21,12 +21,13 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
+      <Bio />
       <article itemScope itemType="http://schema.org/Article">
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <Text variant="xxLarge">{post.frontmatter.date}</Text>
+          <h2>{post.frontmatter.date}</h2>
           <br />
-          <Text variant="large">tags:&nbsp;{tagLinks}</Text>
+          <h3>tags:&nbsp;{tagLinks}</h3>
           <br />
           <br />
         </header>
@@ -35,9 +36,6 @@ const BlogPostTemplate = ({ data, location }) => {
           itemProp="articleBody"
         />
         <hr />
-        <footer>
-          <Bio />
-        </footer>
       </article>
       <nav>
         <ul

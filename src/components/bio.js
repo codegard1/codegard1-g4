@@ -2,8 +2,6 @@ import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 
-import { Stack } from "@fluentui/react/lib/Stack";
-
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
@@ -15,12 +13,7 @@ const Bio = () => {
             summary
           }
           social {
-            bandcamp
-            github
             keybase
-            linkedin
-            soundcloud
-            stackoverflow
           }
         }
       }
@@ -32,9 +25,9 @@ const Bio = () => {
   const social = data.site.siteMetadata?.social;
 
   return (
-    <Stack horizontal>
+    <div>
       <StaticImage
-        layout="fixed"
+        layout="constrained"
         formats={["auto", "webp", "avif"]}
         src="../images/profile-pic.jpg"
         width={50}
@@ -51,7 +44,7 @@ const Bio = () => {
           </a>
         </p>
       )}
-    </Stack>
+    </div>
   );
 };
 
