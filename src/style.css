@@ -426,3 +426,14 @@ a:focus {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#bio-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#bio-container > p {
+  padding: 0 0 0 var(--spacing-2);
+  margin:0;
+}
+
