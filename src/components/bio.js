@@ -26,9 +26,9 @@ const Bio = () => {
   const social = data.site.siteMetadata?.social;
 
   return (
-    <div>
+    <div id="bio-container">
       <StaticImage
-        layout="constrained"
+        layout="fixed"
         formats={["auto", "webp", "avif"]}
         src="../images/profile-pic.jpg"
         width={50}
