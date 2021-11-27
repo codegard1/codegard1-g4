@@ -77,9 +77,6 @@ const GalleryPage = ({ data, location }) => {
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
-  // Public url prefix for images store in Azure
-  const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
-
   // Preprocess images (local files)
   // const photos = useConst(
   //   data.allFile.edges.map(edge => ({
@@ -95,7 +92,7 @@ const GalleryPage = ({ data, location }) => {
       ...photo,
       height: photo.height / 3,
       width: photo.width / 3,
-      src: blobStorageBaseUrl + photo.uri,
+      src: photo.uri,
       key: `photo_${photo.id}`,
     }))
   );

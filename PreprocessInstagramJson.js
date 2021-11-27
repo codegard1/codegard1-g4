@@ -25,47 +25,50 @@ new Promise((resolve, reject) => {
       })
       .on("error", err => reject(err));
   });
-})
-  .then(jsonContent => {
-    // filter out non-applicable files
-    const filtered = jsonContent.filter(i => {
-      const item = i.media[0];
-      const uri = item.uri;
-      const uriLength = uri.length;
+}).then(jsonContent => {
+  // filter out non-JPG files
+  const filtered = jsonContent.filter(i => {
+    const item = i.media[0];
+    const uri = item.uri;
+    const uriLength = uri.length;
+    return uri.substr(uriLength - 3, 3) === "jpg";
+  });
 
-      return uri.substr(uriLength - 3, 3) === "jpg";
-    });
+  // Map to promise array
+  const output = filtered.map(i => {
+    const item = i.media[0];
+    const name = item.uri.substr(19);
+    console.log(item.uri);
+    console.log(name);
+    const publicUri = blobStorageBaseUrl + `smaller/` + name;
 
-    // Map to promise array
-    const output = filtered.map(i => {
-      const item = i.media[0];
-      const uri = blobStorageBaseUrl + item.uri;
 
-      return new Promise((resolve, reject) => {
-        http.get(uri, response => {
-          const chunks = [];
-          response
-            .on("data", chunk => chunks.push(chunk))
-            .on("end", () => {
-              const buffer = Buffer.concat(chunks);
-              const size = sizeOf(buffer);
-              console.log(size);
-              resolve({ ...item, ...size, ratio: size.height / size.width });
-            })
-            .on("error", err => reject(err));
-        });
+    // Download images to get width and height
+    return new Promise((resolve, reject) => {
+      http.get(publicUri, response => {
+        const chunks = [];
+        response
+          .on("data", chunk => chunks.push(chunk))
+          .on("end", () => {
+            const buffer = Buffer.concat(chunks);
+            const size = sizeOf(buffer);
+            console.log(size);
+            resolve({ ...item, ...size, uri: publicUri, ratio: size.height / size.width });
+          })
+          .on("error", err => reject(err));
       });
     });
+  });
 
-    // Write output to a file
-    Promise.all(output).then(data => {
-      try {
-        fs.writeFileSync(filePath1, JSON.stringify(data));
-      } catch (err) {
-        console.log(err);
-      }
-    });
-  })
+  // Write output to a file
+  Promise.all(output).then(data => {
+    try {
+      fs.writeFileSync(filePath1, JSON.stringify(data));
+    } catch (err) {
+      console.log(err);
+    }
+  });
+})
   .catch(err => {
     console.error(err);
   });
