@@ -28,19 +28,16 @@ new Promise((resolve, reject) => {
 }).then(jsonContent => {
   // filter out non-JPG files
   const filtered = jsonContent.filter(i => {
-    const item = i.media[0];
-    const uri = item.uri;
-    const uriLength = uri.length;
-    return uri.substr(uriLength - 3, 3) === "jpg";
+    const uri = i.media[0].uri;
+    return uri.substr(uri.length - 3, 3) === "jpg";
   });
 
   // Map to promise array
   const output = filtered.map(i => {
     const item = i.media[0];
     const name = item.uri.substr(19);
-    console.log(item.uri);
-    console.log(name);
-    const publicUri = blobStorageBaseUrl + `smaller/` + name;
+    // console.log(name);
+    const publicUri = `${blobStorageBaseUrl}smaller/${name}`;
 
 
     // Download images to get width and height
@@ -53,7 +50,13 @@ new Promise((resolve, reject) => {
             const buffer = Buffer.concat(chunks);
             const size = sizeOf(buffer);
             console.log(size);
-            resolve({ ...item, ...size, uri: publicUri, ratio: size.height / size.width });
+            resolve({
+              title: item.title,
+              creation_timestamp: item.creation_timestamp,
+              ...size,
+              src: publicUri,
+              ratio: size.height / size.width
+            });
           })
           .on("error", err => reject(err));
       });
