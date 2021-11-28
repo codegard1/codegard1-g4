@@ -198,7 +198,6 @@ const GalleryPage = ({ data, location }) => {
                 currentIndex={currentImage}
                 views={photos.map(x => ({
                   ...x,
-                  // srcset: x.srcSet,
                   caption: x.title,
                 }))}
               />
@@ -221,7 +220,7 @@ export const pageQuery = graphql`
     }
     allInstagramPostsJson(
       sort: {fields: creation_timestamp, order: DESC}
-      limit: 50
+      limit: 75
     ) {
       nodes {
         creation_timestamp
