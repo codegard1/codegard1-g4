@@ -52,8 +52,9 @@ const BlackjackPage = ({ data, location }) => {
       <br />
       <br />
       <iframe
+        title="Blackjack"
         src="https://mango-cliff-08390e60f.azurestaticapps.net"
-        width="600"
+        width="100%"
         height="800"
       ></iframe>
     </Layout>

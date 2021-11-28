@@ -77,9 +77,6 @@ const GalleryPage = ({ data, location }) => {
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
-  // Public url prefix for images store in Azure
-  const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
-
   // Preprocess images (local files)
   // const photos = useConst(
   //   data.allFile.edges.map(edge => ({
@@ -91,13 +88,13 @@ const GalleryPage = ({ data, location }) => {
 
   // Pre-process image data from JSON
   const photos = useConst(
-    data.allInstagramPostsJson.nodes.map(photo => ({
-      ...photo,
-      height: photo.height / 3,
-      width: photo.width / 3,
-      src: blobStorageBaseUrl + photo.uri,
-      key: `photo_${photo.id}`,
-    }))
+    data.allInstagramPostsJson.nodes.map(photo => {
+      return {
+        ...photo,
+        uri: photo.src,
+        key: `photo_${photo.id}`,
+      }
+    })
   );
 
   const openLightbox = useCallback((event, { photo, index }) => {
@@ -176,9 +173,9 @@ const GalleryPage = ({ data, location }) => {
       </p>
       <p>
         See also:{" "}
-        <OutboundLink href="https://github.com/codegard1/imagal3/" 
-        target="_blank"
-        rel="noopener norefer"
+        <OutboundLink href="https://github.com/codegard1/imagal3/"
+          target="_blank"
+          rel="noopener norefer"
         >
           Imagal3 on GitHub
         </OutboundLink>
@@ -201,7 +198,6 @@ const GalleryPage = ({ data, location }) => {
                 currentIndex={currentImage}
                 views={photos.map(x => ({
                   ...x,
-                  srcset: x.srcSet,
                   caption: x.title,
                 }))}
               />
@@ -224,17 +220,17 @@ export const pageQuery = graphql`
     }
     allInstagramPostsJson(
       sort: {fields: creation_timestamp, order: DESC}
-      limit: 50
+      limit: 75
     ) {
       nodes {
         creation_timestamp
         height
-        width
-        uri
-        type
-        title
-        ratio
         id
+        ratio
+        src
+        title
+        type
+        width
       }
     }
   }
