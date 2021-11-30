@@ -23,6 +23,7 @@ module.exports = {
       twitch: "https://www.twitch.tv/ciaervo",
       twitter: "https://twitter.com/ciaervo1",
       lastfm: "https://www.last.fm/user/codegard1",
+      youtube: "https://www.youtube.com/channel/UCL3N9vvGRSoeGB5Wi3XhhrQ",
     },
   },
   plugins: [
