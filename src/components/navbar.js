@@ -58,6 +58,11 @@ const NavBar = ({ location, title }) => {
                   Music
                 </Link>
               </li>
+              <li className='navbar-item'>
+                <Link className='navbar-link' to='/contact'>
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
         )
