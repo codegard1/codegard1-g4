@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
+import PostList from "../components/post-list";
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
@@ -13,9 +14,7 @@ const BlogIndex = ({ data, location }) => {
       <Layout location={location} title={siteTitle}>
         <Seo title="All posts" />
         <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
+          No blog posts found.
         </p>
       </Layout>
     );
@@ -23,42 +22,8 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="All posts" />
-
-      <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug;
-          const tags = post.frontmatter.tags !== null
-            ? post.frontmatter.tags.map(tag =>
-              <Link key={`tag-${tag}`} to={`/tags/${tag}`}>{tag}&nbsp;&nbsp;</Link>)
-            : "";
-
-          return (
-            <li key={post.fields.slug}>
-              <article itemScope itemType="http://schema.org/Article">
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
-                  <br />
-                  <small>tags:&nbsp;{tags}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
-          );
-        })}
-      </ol>
+      <Seo title="Blog Index" />
+      <PostList posts={posts} />
     </Layout>
   );
 };
@@ -66,13 +31,13 @@ const BlogIndex = ({ data, location }) => {
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query {
+  query blogIndexQuery {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 5) {
       nodes {
         excerpt
         fields {
@@ -83,10 +48,6 @@ export const pageQuery = graphql`
           title
           description
           tags
-        }
-        timeToRead
-        wordCount {
-          words
         }
       }
     }

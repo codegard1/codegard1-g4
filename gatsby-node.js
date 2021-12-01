@@ -8,6 +8,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`);
   const tagTemplate = path.resolve(`./src/templates/tag.js`);
+  const blogList = path.resolve("./src/templates/blog-list.js");
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(`
@@ -16,8 +17,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         sort: { fields: [frontmatter___date], order: DESC }
         limit: 1000
       ) {
-        edges {
-          node {
+          nodes {
             id
             fields {
               slug
@@ -26,7 +26,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               tags
             }
           }
-        }
       }
       tagsGroup: allMarkdownRemark(
         limit: 2000
@@ -47,33 +46,48 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const posts = result.data.allMarkdownRemark.edges;
+  const posts = result.data.allMarkdownRemark.nodes;
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
   if (posts.length > 0) {
+    // Create page for each post
     posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].node.id;
+      const previousPostId = index === 0 ? null : posts[index - 1].id;
       const nextPostId =
-        index === posts.length - 1 ? null : posts[index + 1].node.id;
+        index === posts.length - 1 ? null : posts[index + 1].id;
 
       createPage({
-        path: post.node.fields.slug,
+        path: post.fields.slug,
         component: blogPost,
         context: {
-          id: post.node.id,
+          id: post.id,
           previousPostId,
           nextPostId,
         },
       });
     });
 
-    // Extract tag data from query
-    const tags = result.data.tagsGroup.group;
+    // Create pagination
+    const postsPerPage = 8;
+    const numPages = Math.ceil(posts.length / postsPerPage);
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: `/page/${i + 1}`,
+        component: blogList,
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages,
+          currentPage: i + 1,
+        },
+      })
+    });
 
     // Make tag pages
+    const tags = result.data.tagsGroup.group;
     tags.forEach(tag => {
       createPage({
         path: `/tags/${_.kebabCase(tag.fieldValue)}`,
@@ -91,7 +105,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode });
-
     createNodeField({
       name: `slug`,
       node,
