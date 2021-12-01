@@ -1,20 +1,22 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import PostList from "../components/post-list";
+import PageButtons from "../components/page-buttons";
 
-const BlogList = ({ data, location, context }) => {
+const BlogList = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata.title || 'Title';
   const posts = data.allMarkdownRemark.nodes;
-  // const { currentPage, numPages } = context;
-  // const isFirst = currentPage === 1;
-  // const isLast = currentPage === numPages;
-  // const prevPage = currentPage - 1 === 1 ? '/' : (currentPage - 1).toString();
-  // const nextPage = (currentPage + 1).toString();
+  const { currentPage, numPages } = pageContext;
 
   return (
     <Layout location={location} title={siteTitle}>
       <PostList posts={posts} />
+      <PageButtons {...pageContext} />
+      <p>
+        Current Page: {currentPage}<br/>
+        numPages: {numPages}
+      </p>
     </Layout>
   )
 };

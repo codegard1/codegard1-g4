@@ -442,3 +442,39 @@ a:focus {
   padding: 0 0 0 var(--spacing-2);
   margin: 0;
 }
+
+#PageButtons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 24rem;
+  padding: 1rem 2rem;
+}
+
+#PageButtons ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#PageButtons ul li {
+  padding: .25rem .5rem;
+  display: list-item;
+}
+
+#PageButtons ul li.num-active {
+  padding: .25rem .5rem;
+  display: list-item;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#PageButtons span {
+  padding: .25rem .5rem;
+  margin: .25rem .5rem;
+  /* width: 5rem; */
+}
