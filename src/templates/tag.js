@@ -5,7 +5,7 @@ import Layout from "../components/layout";
 
 const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext;
-  const { edges, totalCount } = data.allMarkdownRemark;
+  const { nodes, totalCount } = data.allMarkdownRemark;
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? "" : "s"
   } tagged with "${tag}"`;
@@ -16,7 +16,7 @@ const Tags = ({ pageContext, data, location }) => {
       <br />
       <br />
       <ul>
-        {edges.map(({ node }) => {
+        {nodes.map(({ node }) => {
           const { slug } = node.fields;
           const { title } = node.frontmatter;
           return (
@@ -41,14 +41,12 @@ export const pageQuery = graphql`
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
+      nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
         }
       }
     }
