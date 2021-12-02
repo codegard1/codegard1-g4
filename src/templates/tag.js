@@ -16,7 +16,7 @@ const Tags = ({ pageContext, data, location }) => {
       <br />
       <br />
       <ul>
-        {nodes.map(({ node }) => {
+        {nodes.map( node  => {
           const { slug } = node.fields;
           const { title } = node.frontmatter;
           return (

@@ -23,6 +23,9 @@ const ContactPage = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Seo title="Contact" />
       <h1>Contact</h1>
+      <p>
+        You may admire or reach me through the following social media and other platforms. Email is in there, as well. 
+        </p>
       <ul>
         {brandLinks}
       </ul>
@@ -40,14 +43,18 @@ export const pageQuery = graphql`
         social {
           applemusic
           bandcamp
+          email
           github
           keybase
+          lastfm
           linkedin
           soundcloud
           spotify
           stackoverflow
           tumblr
           twitter
+          twitch
+          youtube
         }
       }
     }

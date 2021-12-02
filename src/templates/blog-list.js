@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import PostList from "../components/post-list";
 import PageButtons from "../components/page-buttons";
+import Seo from "../components/seo";
 
 const BlogList = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata.title || 'Title';
@@ -11,12 +12,9 @@ const BlogList = ({ data, location, pageContext }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+      <Seo title={`Blog Page ${currentPage}`} />
       <PostList posts={posts} />
       <PageButtons {...pageContext} />
-      <p>
-        Current Page: {currentPage}<br/>
-        numPages: {numPages}
-      </p>
     </Layout>
   )
 };
