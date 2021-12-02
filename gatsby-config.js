@@ -11,8 +11,10 @@ module.exports = {
     social: {
       applemusic: "https://music.apple.com/us/artist/1592784321",
       bandcamp: "https://ciaervo.bandcamp.com/",
+      email: "mailto:chris@codegard1.com?subject=Enquiry%20from%20a%20Peruser",
       github: "https://github.com/codegard1",
       keybase: `https://keybase.io/ciaervo`,
+      lastfm: "https://www.last.fm/user/codegard1",
       linkedin: "https://www.linkedin.com/in/codegard1",
       soundcloud: "https://soundcloud.com/ciaervo",
       stackoverflow:
@@ -22,7 +24,6 @@ module.exports = {
       tumblr: "https://ciaervo1.tumblr.com",
       twitch: "https://www.twitch.tv/ciaervo",
       twitter: "https://twitter.com/ciaervo1",
-      lastfm: "https://www.last.fm/user/codegard1",
       youtube: "https://www.youtube.com/channel/UCL3N9vvGRSoeGB5Wi3XhhrQ",
     },
   },
