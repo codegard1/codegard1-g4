@@ -81,12 +81,10 @@ module.exports = {
         trackingIds: ["G-C6KCGGKWQH"],
         gtagConfig: {
           anonymize_ip: true,
-          cookie_expires: 0,
         },
         pluginConfig: {
-          head: false,
+          head: true,
           respectDNT: true,
-          exclude: ["/preview/**"],
         },
       }
     },
