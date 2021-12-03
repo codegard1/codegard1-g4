@@ -21,7 +21,7 @@ const Layout = ({ location, title, children }) => {
         Built with{" "}
         <OutboundLink
           href="https://www.gatsbyjs.com"
-          rel="noopener noreferrer"
+          rel="noopener noreferrerrer"
           target="_blank"
         >
           Gatsby
