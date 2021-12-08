@@ -39,7 +39,7 @@ const Bio = () => {
       />
       {author?.name && (
         <p>
-          Written by 
+          Written by {` `}
           <OutboundLink target="_blank" rel="noopener noreferrerrer" href={`${social?.keybase || ``}`}>
           <strong>{author.name}</strong>
           </OutboundLink>
