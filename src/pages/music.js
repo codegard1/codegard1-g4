@@ -21,23 +21,23 @@ const MusicPage = ({ data, location }) => {
           <OutboundLink
             href={soundcloud}
             target="_blank"
-            rel="noopener norefer"
+            rel="noopener noreferrer"
           >
             SoundCloud
           </OutboundLink>
           ,{" "}
-          <OutboundLink href={bandcamp} target="_blank" rel="noopener norefer">
+          <OutboundLink href={bandcamp} target="_blank" rel="noopener noreferrer">
             BandCamp
           </OutboundLink>
           ,{" "}
-          <OutboundLink href={spotify} target="_blank" rel="noopener norefer">
+          <OutboundLink href={spotify} target="_blank" rel="noopener noreferrer">
             Spotify
           </OutboundLink>
           ,{" "}
           <OutboundLink
             href={applemusic}
             target="_blank"
-            rel="noopener norefer"
+            rel="noopener noreferrer"
           >
             Apple Music
           </OutboundLink>

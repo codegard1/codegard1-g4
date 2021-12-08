@@ -157,7 +157,7 @@ const GalleryPage = ({ data, location }) => {
         <OutboundLink
           href="https://azure.microsoft.com/en-us/services/storage/blobs/"
           target="_blank"
-          rel="noopener norefer"
+          rel="noopener noreferrer"
         >
           Azure Blob Storage{" "}
         </OutboundLink>{" "}
@@ -165,7 +165,7 @@ const GalleryPage = ({ data, location }) => {
         <OutboundLink
           href="https://github.com/neptunian/react-photo-gallery"
           target="_blank"
-          rel="noopener norefer"
+          rel="noopener noreferrer"
         >
           List Grid
         </OutboundLink>
@@ -175,7 +175,7 @@ const GalleryPage = ({ data, location }) => {
         See also:{" "}
         <OutboundLink href="https://github.com/codegard1/imagal3/"
           target="_blank"
-          rel="noopener norefer"
+          rel="noopener noreferrer"
         >
           Imagal3 on GitHub
         </OutboundLink>

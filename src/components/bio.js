@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
+import { OutboundLink } from "gatsby-plugin-google-gtag";
 
 
 const Bio = () => {
@@ -38,11 +39,10 @@ const Bio = () => {
       />
       {author?.name && (
         <p>
-          Written by <strong>{author.name}</strong>
-          <br />
-          <a href={`${social?.keybase || ``}`}>
-            You should follow them on Keybase
-          </a>
+          Written by {` `}
+          <OutboundLink target="_blank" rel="noopener noreferrerrer" href={`${social?.keybase || ``}`}>
+          <strong>{author.name}</strong>
+          </OutboundLink>
         </p>
       )}
     </div>

@@ -36,7 +36,7 @@ const BlackjackPage = ({ data, location }) => {
         <OutboundLink
           href="https://github.com/codegard1/blackjack"
           target="_blank"
-          rel="noreferrer noopener"
+          rel="noreferrerrer noopener"
         >
           Here's the github repo.
         </OutboundLink>
@@ -44,7 +44,7 @@ const BlackjackPage = ({ data, location }) => {
         <OutboundLink
           href="https://mango-cliff-08390e60f.azurestaticapps.net"
           target="_blank"
-          rel="noreferrer noopener"
+          rel="noreferrerrer noopener"
         >
           Open the app full-screen.
         </OutboundLink>
