@@ -3,28 +3,29 @@ module.exports = {
     title: `Ciaervo`,
     author: {
       name: `Chris Odegard`,
-      bio: "Self-taught web developer and data scientist",
+      bio: `Self-taught web developer and data scientist`,
       summary: `I have a dev blog.`,
     },
     description: `Personal site of Chris Odegard.`,
     siteUrl: `https://www.ciaervo.com`,
     social: {
-      applemusic: "https://music.apple.com/us/artist/1592784321",
-      bandcamp: "https://ciaervo.bandcamp.com/",
-      email: "mailto:chris@codegard1.com?subject=Enquiry%20from%20a%20Peruser",
-      github: "https://github.com/codegard1",
+      applemusic: `https://music.apple.com/us/artist/1592784321`,
+      bandcamp: `https://ciaervo.bandcamp.com/`,
+      email: `mailto:chris@codegard1.com?subject=Enquiry%20from%20a%20Peruser`,
+      github: `https://github.com/codegard1`,
+      instagram: `https://instagram.com/ciaervo`,
       keybase: `https://keybase.io/ciaervo`,
-      lastfm: "https://www.last.fm/user/codegard1",
-      linkedin: "https://www.linkedin.com/in/codegard1",
-      soundcloud: "https://soundcloud.com/ciaervo",
+      lastfm: `https://www.last.fm/user/codegard1`,
+      linkedin: `https://www.linkedin.com/in/codegard1`,
+      soundcloud: `https://soundcloud.com/ciaervo`,
       stackoverflow:
-        "https://stackoverflow.com/users/2852366/chris-odegard?tab=profile",
+        `https://stackoverflow.com/users/2852366/chris-odegard?tab=profile`,
       spotify:
-        "https://open.spotify.com/artist/3MS6P6gKoxxcSJoEqqNQST?si=dHeDrh3WS4iAB1lw2bAGDg",
-      tumblr: "https://ciaervo1.tumblr.com",
-      twitch: "https://www.twitch.tv/ciaervo",
-      twitter: "https://twitter.com/ciaervo1",
-      youtube: "https://www.youtube.com/channel/UCL3N9vvGRSoeGB5Wi3XhhrQ",
+        `https://open.spotify.com/artist/3MS6P6gKoxxcSJoEqqNQST?si=dHeDrh3WS4iAB1lw2bAGDg`,
+      tumblr: `https://ciaervo1.tumblr.com`,
+      twitch: `https://www.twitch.tv/ciaervo`,
+      twitter: `https://twitter.com/ciaervo1`,
+      youtube: `https://www.youtube.com/channel/UCL3N9vvGRSoeGB5Wi3XhhrQ`,
     },
   },
   plugins: [
@@ -78,7 +79,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingIds: ["G-C6KCGGKWQH"],
+        trackingIds: [`G-C6KCGGKWQH`],
         gtagConfig: {
           anonymize_ip: true,
         },
