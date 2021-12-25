@@ -45,9 +45,9 @@ export const pageQuery = graphql`
           bandcamp
           email
           github
+          instagram
           keybase
           lastfm
-          linkedin
           soundcloud
           spotify
           stackoverflow
