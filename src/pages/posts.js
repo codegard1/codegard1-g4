@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -9,21 +9,17 @@ import {
   CheckboxVisibility,
 } from "@fluentui/react/lib/DetailsList";
 
-const Tags = ({ pageContext, data, location }) => {
-  const { tag } = pageContext;
-  const { nodes, totalCount } = data.allMarkdownRemark;
-  const tagHeader = `${totalCount} post${totalCount === 1 ? "" : "s"
-    } tagged with "${tag}"`;
-
+const PostsPage = ({ data, location }) => {
   const _items = data.allMarkdownRemark.nodes.map(post => {
     return {
       key: post.id,
       name: post.frontmatter.title,
+      tags: post.frontmatter.tags,
       date: post.frontmatter.date,
+      published: post.frontmatter.published,
       slug: post.fields.slug
     };
   });
-
   const _columns = [
     {
       key: "name",
@@ -42,20 +38,40 @@ const Tags = ({ pageContext, data, location }) => {
       maxWidth: 100,
       isResizable: false,
     },
+    {
+      key: "published",
+      name: "Published",
+      fieldName: "published",
+      minWidth: 100,
+      maxWidth: 100,
+      isResizable: false,
+      onRender: item => item.published ? "Yes" : "No",
+    },
+    {
+      key: "tags",
+      name: "Tags",
+      fieldName: "tags",
+      minWidth: 100,
+      maxWidth: 200,
+      isResizable: true,
+      onRender: item =>
+        item.tags.map(
+          tag => <span><Link to={`/tags/${tag}`}>{tag}</Link>{`   `}</span>
+        ),
+    },
   ];
 
   return (
-    <Layout title={data.site.siteMetadata.title} location={location}>
+    <Layout location={location} title={data.site.siteMetadata.title}>
+      <h2>All Blog Posts</h2>
       <Seo
-        title={`Tags: ${tag}`}
+        title={`All Blog Posts`}
         keywords={[
           `gatsby`,
           `Ciaervo`,
           `Blog`,
-          tag
         ]}
       />
-      <h2>{tagHeader}</h2>
       <DetailsList
         items={_items}
         columns={_columns}
@@ -64,37 +80,31 @@ const Tags = ({ pageContext, data, location }) => {
         checkboxVisibility={CheckboxVisibility.hidden}
         compact={false}
       />
-      <br />
-      <Link to="/tags">All tags</Link>
-      <br/>
     </Layout>
   );
 };
 
-export default Tags;
+export default PostsPage;
 
 export const pageQuery = graphql`
-query ($tag: String) {
-  allMarkdownRemark(
-    limit: 2000
-    sort: {fields: [frontmatter___date], order: DESC}
-    filter: {frontmatter: {tags: {in: [$tag]}}}
-  ) {
-    totalCount
-    nodes {
-      id
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-        date(formatString: "yyy-MM-DD")
-      }
-    }
-  }
+{
   site {
     siteMetadata {
       title
+    }
+  }
+  allMarkdownRemark(limit: 2000, sort: {fields: frontmatter___date, order: DESC}) {
+    nodes {
+      frontmatter {
+        date(formatString: "yyyy-MM-DD")
+        published
+        tags
+        title
+      }
+      fields {
+        slug
+      }
+      id
     }
   }
 }
