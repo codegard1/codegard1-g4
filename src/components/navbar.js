@@ -5,7 +5,6 @@ const NavBar = ({ location, title }) => {
   // Create a hook to toggle the state variable
   const [isNavVisible, toggleNavVisibility] = useState(false);
   useEffect(() => {
-    console.log(`effect! ${location.pathname}`);
     toggleNavVisibility(false);
   }, [location]);
 
@@ -35,12 +34,12 @@ const NavBar = ({ location, title }) => {
             <ul className='navbar-links'>
               <li className='navbar-item'>
                 <Link className='navbar-link' to='/'>
-                  Blog
+                  Home
                 </Link>
               </li>
               <li className='navbar-item'>
-                <Link className='navbar-link' to='/tags'>
-                  Tags
+                <Link className='navbar-link' to='/search'>
+                  Search Blog
                 </Link>
               </li>
               <li className='navbar-item'>

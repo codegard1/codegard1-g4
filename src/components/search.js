@@ -30,7 +30,7 @@ const Search = props => {
           value={query}
           onChange={e => setQuery(e.target.value)}
         />
-        {!!props.initialQuery && <Link to="/">&#10005;</Link>}
+        {!!props.initialQuery && <Link to="/search">&#10005;</Link>}
         {props.initialQuery && (
           <div>
             Found {props.numResults} matching post

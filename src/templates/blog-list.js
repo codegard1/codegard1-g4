@@ -10,7 +10,7 @@ const BlogList = ({ data, location, pageContext }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title={`Blog Page ${pageContext.currentPage}`} />
+      <Seo title={`Blog: Page ${pageContext.currentPage}`} />
       <PostList posts={data.allMarkdownRemark.nodes} />
       <PageButtons {...pageContext} />
     </Layout>
