@@ -15,7 +15,7 @@ const Search = props => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await navigate(`/?q=${query}`);
+      await navigate(`/search?q=${query}`);
     } catch (err) {
       console.error(err);
     }
@@ -35,6 +35,12 @@ const Search = props => {
           <div>
             Found {props.numResults} matching post
             {props.numResults === 1 ? "" : "s"}
+            <hr/>
+          </div>
+        )}
+        {!props.initialQuery && (
+          <div>
+            Search results appear below.
           </div>
         )}
       </form>
