@@ -47,8 +47,8 @@ const SearchPage = ({ data, location }) => {
       <Layout location={location} title={siteTitle}>
         <Seo title="Search Posts" />
         <ul>
-          <li><Link to="/posts">All Posts (sorted by date)</Link></li>
-          <li><Link to="/tags">All Tags</Link></li>
+          <li style={{ color: "salmon" }}><Link to="/blog/posts">All Posts (sorted by date)</Link></li>
+          <li style={{ color: "salmon" }}><Link to="/blog/tags">All Tags</Link></li>
           <li><Search initialQuery={initialQuery} numResults={blogs.length} /></li>
         </ul>
       </Layout>
@@ -59,10 +59,10 @@ const SearchPage = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Seo title="Search Posts" />
       <ul>
-          <li><Link to="/posts">All Posts (sorted by date)</Link></li>
-          <li><Link to="/tags">All Tags</Link></li>
-          <li><Search initialQuery={initialQuery} numResults={blogs.length} /></li>
-        </ul>
+        <li><Link to="/posts">All Posts (sorted by date)</Link></li>
+        <li><Link to="/blog/tags">All Tags</Link></li>
+        <li><Search initialQuery={initialQuery} numResults={blogs.length} /></li>
+      </ul>
       <PostList posts={blogs} />
     </Layout>
   );

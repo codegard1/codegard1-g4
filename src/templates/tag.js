@@ -65,7 +65,7 @@ const Tags = ({ pageContext, data, location }) => {
         compact={false}
       />
       <br />
-      <Link to="/tags">All tags</Link>
+      <Link to="/blog/tags">All tags</Link>
       <br/>
     </Layout>
   );

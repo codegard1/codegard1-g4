@@ -15,7 +15,7 @@ const Search = props => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await navigate(`/search?q=${query}`);
+      await navigate(`/blog/search?q=${query}`);
     } catch (err) {
       console.error(err);
     }
@@ -30,7 +30,7 @@ const Search = props => {
           value={query}
           onChange={e => setQuery(e.target.value)}
         />
-        {!!props.initialQuery && <Link to="/search">&#10005;</Link>}
+        {!!props.initialQuery && <Link to="/blog/search">&#10005;</Link>}
         {props.initialQuery && (
           <div>
             Found {props.numResults} matching post

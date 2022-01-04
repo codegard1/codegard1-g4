@@ -24,7 +24,7 @@ const PageButtons = ({ numPages, currentPage }) => {
         <ul>
           {nums.map((num) => (
             <li key={num} className={num === currentPage ? "num-active" : ""}>
-              <Link to={num === 1 ? "/" : `/blog/${num}`}>{num}</Link>
+              <Link to={`/blog/${num}`}>{num}</Link>
             </li>
           ))}
         </ul>
