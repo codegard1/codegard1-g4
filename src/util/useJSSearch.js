@@ -9,7 +9,8 @@ const useJsSearch = posts => {
   dataToSearch.searchIndex = new JsSearch.TfIdfSearchIndex("id");
 
   // Fields to search
-  dataToSearch.addIndex(["fronmatter", "title"]);
+  dataToSearch.addIndex(["frontmatter", "title"]);
+  dataToSearch.addIndex(["frontmatter", "tags"]);
   dataToSearch.addIndex(["excerpt"]);
 
   // Map types and filter out empty nodes (?)
