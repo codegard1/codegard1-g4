@@ -69,18 +69,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     });
 
-    // Create the default /blog page (identical to /blog/1)
-    createPage({
-      path: `/blog/`,
-      component: blogList,
-      context: {
-        limit: postsPerPage,
-        skip: 0,
-        numPages: numPages,
-        currentPage: i + 1,
-      }
-    });
-
     // Create page for each post
     posts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id;
@@ -123,6 +111,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value,
     });
   }
+};
 
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
