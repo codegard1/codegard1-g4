@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { graphql, Link } from "gatsby";
 
-import Layout from "../components/layout";
-import Seo from "../components/seo";
-import PostList from "../components/post-list";
-import useJsSearch from "../util/useJSSearch";
-import Search from "../components/search";
+import Layout from "../../components/layout";
+import Seo from "../../components/seo";
+import PostList from "../../components/post-list";
+import useJsSearch from "../../util/useJSSearch";
+import Search from "../../components/search";
 
 const SearchPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
