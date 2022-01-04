@@ -56,7 +56,7 @@ const PostsPage = ({ data, location }) => {
       isResizable: true,
       onRender: item =>
         item.tags.map(
-          tag => <span><Link to={`/tags/${tag}`}>{tag}</Link>{`   `}</span>
+          tag => <span><Link to={`/blog/tags/${tag}`}>{tag}</Link>{`   `}</span>
         ),
     },
   ];

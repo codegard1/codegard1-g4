@@ -9,7 +9,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const { previous, next } = data;
   const tagLinks = post.frontmatter.tags.map(tag =>
-    <Link key={`tag-${tag}`} to={`/tags/${tag}`}>{tag}&nbsp;</Link>
+    <Link key={`tag-${tag}`} to={`/blog/tags/${tag}`}>{tag}&nbsp;</Link>
   );
 
   return (

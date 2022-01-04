@@ -34,8 +34,11 @@ const BlogHome = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="Blog Home" />
+      <h3>Most recent Blog Posts</h3>
       <PostList posts={blogs} />
-      <PageButtons numPages={numPages} currentPage={1} />
+      <h3 style={{ color: "salmon" }}>
+        <Link to="/blog/1">More</Link>
+      </h3>
     </Layout>
   );
 };
@@ -49,10 +52,10 @@ query BlogHomeQuery {
       title
     }
   }
-  allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 7) {
+  allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 3) {
     nodes {
       id
-      excerpt(format: PLAIN, pruneLength: 200)
+      excerpt(format: PLAIN, pruneLength: 250)
       fields {
         slug
       }

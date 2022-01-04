@@ -27,7 +27,7 @@ const TagsPage = ({ data, location }) => {
       minWidth: 100,
       maxWidth: 200,
       isResizable: false,
-      onRender: item => <Link to={`/tags/${item.key}`}>{item.name}</Link>,
+      onRender: item => <Link to={`/blog/tags/${item.key}`}>{item.name}</Link>,
     },
     {
       key: "totalCount",
