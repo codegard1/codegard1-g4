@@ -6,8 +6,8 @@ const PageButtons = ({ numPages, currentPage }) => {
 
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;
-  const prev = `/page/${currentPage - 1}`;
-  const next = `/page/${currentPage + 1}`;
+  const prev = `/blog/${currentPage - 1}`;
+  const next = `/blog/${currentPage + 1}`;
 
   const nums = Array.from({ length: numPages }).map((_, i) => i + 1);
 
@@ -24,7 +24,7 @@ const PageButtons = ({ numPages, currentPage }) => {
         <ul>
           {nums.map((num) => (
             <li key={num} className={num === currentPage ? "num-active" : ""}>
-              <Link to={num === 1 ? "/" : `/page/${num}`}>{num}</Link>
+              <Link to={`/blog/${num}`}>{num}</Link>
             </li>
           ))}
         </ul>

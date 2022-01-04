@@ -53,6 +53,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // `context` is available in the template as a prop and as a variable in GraphQL
 
   if (posts.length > 0) {
+    // Create pagination
+    const postsPerPage = 7;
+    const numPages = Math.ceil(posts.length / postsPerPage);
+    Array.from({ length: numPages }).forEach((_, i) => {
+      createPage({
+        path: `/blog/${i + 1}`,
+        component: blogList,
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          numPages: numPages,
+          currentPage: i + 1,
+        },
+      })
+    });
+
     // Create page for each post
     posts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id;
@@ -70,27 +86,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
 
-    // Create pagination
-    const postsPerPage = 5;
-    const numPages = Math.ceil(posts.length / postsPerPage);
-    Array.from({ length: numPages }).forEach((_, i) => {
-      createPage({
-        path: `/page/${i + 1}`,
-        component: blogList,
-        context: {
-          limit: postsPerPage,
-          skip: i * postsPerPage,
-          numPages: numPages,
-          currentPage: i + 1,
-        },
-      })
-    });
-
     // Make tag pages
     const tags = result.data.tagsGroup.group;
     tags.forEach(tag => {
       createPage({
-        path: `/tags/${_.kebabCase(tag.fieldValue)}`,
+        path: `/blog/tags/${_.kebabCase(tag.fieldValue)}`,
         component: tagTemplate,
         context: {
           tag: tag.fieldValue,

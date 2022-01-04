@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "gatsby";
 import NavBar from "./navbar";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 
@@ -16,7 +16,7 @@ const Layout = ({ location, title, children }) => {
         />
       <main>{children}</main>
       <footer>
-        {`© ${new Date().getFullYear()}`} Ciaervo, All rights reserved.
+        {`© ${new Date().getFullYear()}`} <Link to="/contact">Chris Odegard</Link>, All rights reserved.
         {` `}
         Built with{" "}
         <OutboundLink

@@ -1,19 +1,29 @@
-import * as React from "react";
-import { graphql } from "gatsby";
+import React from "react";
+import { graphql, Link } from "gatsby";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import PostList from "../components/post-list";
-import PageButtons from '../components/page-buttons';
+import PageButtons from "../components/page-buttons";
 
-const BlogIndex = ({ data, location }) => {
+const BlogHome = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
-  const posts = data.allMarkdownRemark.nodes;
+  const blogs = data.allMarkdownRemark.nodes;
+  const postCount = data.postGroup.pageInfo.itemCount;
+  const postsPerPage = 7;
+  const numPages = Math.ceil(postCount / postsPerPage);
 
-  if (posts.length === 0) {
+  if (blogs.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <Seo title="All posts" />
+        <Seo
+          title={`Blog Home`}
+          keywords={[
+            `gatsby`,
+            `Ciaervo`,
+            `Blog`,
+          ]}
+        />
         <p>
           No blog posts found.
         </p>
@@ -21,40 +31,45 @@ const BlogIndex = ({ data, location }) => {
     );
   }
 
-
-  const postsPerPage = 5;
-  const numPages = Math.ceil(posts.length / postsPerPage);
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="Blog Index" />
-      <PostList posts={posts.slice(0,4)} />
-      <PageButtons numPages={numPages} currentPage={1} />
+      <Seo title="Blog Home" />
+      <h3>Most recent Blog Posts</h3>
+      <PostList posts={blogs} />
+      <h3 style={{ color: "salmon" }}>
+        <Link to="/blog/1">More</Link>
+      </h3>
     </Layout>
   );
 };
 
-export default BlogIndex;
+export default BlogHome;
 
 export const pageQuery = graphql`
-  query blogIndexQuery {
-    site {
-      siteMetadata {
-        title
-      }
+query BlogHomeQuery {
+  site {
+    siteMetadata {
+      title
     }
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-          tags
-        }
+  }
+  allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 3) {
+    nodes {
+      id
+      excerpt(format: PLAIN, pruneLength: 250)
+      fields {
+        slug
+      }
+      frontmatter {
+        date(formatString: "MMMM DD, YYYY")
+        title
+        tags
       }
     }
   }
+  postGroup: allMarkdownRemark {
+    pageInfo {
+      itemCount
+    }
+  }
+}
 `;

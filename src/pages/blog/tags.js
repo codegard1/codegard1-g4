@@ -1,7 +1,8 @@
 import React from "react";
 import kebabCase from "lodash/kebabCase";
 import { Link, graphql } from "gatsby";
-import Layout from "../components/layout";
+import Layout from "../../components/layout";
+import Seo from "../../components/seo";
 
 import {
   DetailsList,
@@ -15,7 +16,7 @@ const TagsPage = ({ data, location }) => {
       key: kebabCase(tag.fieldValue),
       name: tag.fieldValue,
       totalCount: tag.totalCount,
-      posts: tag.nodes,
+      postDate: tag.nodes.map(node => node.frontmatter.date)[0],
     };
   });
   const _columns = [
@@ -26,22 +27,38 @@ const TagsPage = ({ data, location }) => {
       minWidth: 100,
       maxWidth: 200,
       isResizable: false,
-      onRender: item => <Link to={`/tags/${item.key}`}>{item.name}</Link>,
+      onRender: item => <Link to={`/blog/tags/${item.key}`}>{item.name}</Link>,
     },
     {
       key: "totalCount",
       name: "Post Count",
       fieldName: "totalCount",
       minWidth: 100,
-      maxWidth: 200,
+      maxWidth: 100,
+      isResizable: false,
+    },
+    {
+      key: "postDate",
+      name: "Last Post",
+      fieldName: "postDate",
+      minWidth: 100,
+      maxWidth: 100,
       isResizable: false,
     },
   ];
 
   return (
     <Layout location={location} title={data.site.siteMetadata.title}>
-      <h2>Blog Post Tags</h2>
-      <br />
+      <h2>All Blog Post Tags</h2>
+      <Seo
+        title={`All Blog Post Tags`}
+        keywords={[
+          `gatsby`,
+          `Ciaervo`,
+          `Blog`,
+          `Tags`,
+        ]}
+      />
       <DetailsList
         items={_items}
         columns={_columns}
@@ -64,21 +81,18 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      limit: 2000
-      filter: { frontmatter: { tags: { ne: "" } } }
+      filter: {frontmatter: {tags: {ne: ""}}}
+      sort: {order: DESC, fields: frontmatter___date}
     ) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount
         nodes {
           frontmatter {
-            title
-            tags
-            date
+            date(formatString: "yyyy-MM-DD")
           }
-          id
         }
       }
     }
-  }
+  }  
 `;

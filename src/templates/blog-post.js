@@ -9,7 +9,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const { previous, next } = data;
   const tagLinks = post.frontmatter.tags.map(tag =>
-    <Link key={`tag-${tag}`} to={`/tags/${tag}`}>{tag}&nbsp;</Link>
+    <Link key={`tag-${tag}`} to={`/blog/tags/${tag}`}>{tag}&nbsp;</Link>
   );
 
   return (
@@ -17,6 +17,12 @@ const BlogPostTemplate = ({ data, location }) => {
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        keywords={[
+          `gatsby`,
+          `Ciaervo`,
+          `Blog`,
+          ...post.frontmatter.tags
+        ]}
       />
       <article itemScope itemType="http://schema.org/Article">
         <header>
@@ -51,7 +57,7 @@ const BlogPostTemplate = ({ data, location }) => {
             )}
           </li>
           <li>
-            <Link to={"/"}>Index</Link>
+            <Link to={"/blog"}>Index</Link>
           </li>
           <li>
             {next && (

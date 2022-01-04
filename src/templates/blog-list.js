@@ -6,14 +6,12 @@ import PageButtons from "../components/page-buttons";
 import Seo from "../components/seo";
 
 const BlogList = ({ data, location, pageContext }) => {
-  const siteTitle = data.site.siteMetadata.title || 'Title';
-  const posts = data.allMarkdownRemark.nodes;
-  const { currentPage, numPages } = pageContext;
+  const siteTitle = data.site.siteMetadata.title ?? 'Title';
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title={`Blog Page ${currentPage}`} />
-      <PostList posts={posts} />
+      <Seo title={`Blog: Page ${pageContext.currentPage}`} />
+      <PostList posts={data.allMarkdownRemark.nodes} />
       <PageButtons {...pageContext} />
     </Layout>
   )
@@ -34,6 +32,7 @@ query blogPageQuery($limit: Int!, $skip: Int!) {
     skip: $skip
   ) {
     nodes {
+      id
       excerpt
       fields {
         slug
