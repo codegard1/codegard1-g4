@@ -57,7 +57,7 @@ const BlogPostTemplate = ({ data, location }) => {
             )}
           </li>
           <li>
-            <Link to={"/blog"}>Index</Link>
+            <Link to={"/blog/posts"}>Index</Link>
           </li>
           <li>
             {next && (
