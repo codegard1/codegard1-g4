@@ -1,11 +1,7 @@
 ---
-tags:
-  - openasset
-  - rest
-  - api
-  - json
+tags: ["openasset","rest","api","json"]
 published: true
-date: 2020-06-02T14:34:36.668Z
+date: 2020-01-29
 title: Open Asset REST API Notes
 ---
 
@@ -89,3 +85,4 @@ _jsonBody: [{
     "original_filename": "Jabberwocky_003.jpg"
 }]
 ```
+![image.png](./image-64d02c2d-83c4-4386-8e72-29692e278208.png)
