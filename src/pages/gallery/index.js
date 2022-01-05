@@ -3,8 +3,8 @@ import Carousel, { Modal, ModalGateway } from "react-images";
 
 import { graphql } from "gatsby";
 
-import Layout from "../components/layout";
-import Seo from "../components/seo";
+import Layout from "../../components/layout";
+import Seo from "../../components/seo";
 
 import { FocusZone } from "@fluentui/react/lib/FocusZone";
 import { List } from "@fluentui/react/lib/List";
@@ -147,7 +147,9 @@ const GalleryPage = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="Gallery" keywords={[`gallery`, `photos`, `Instagram`]} />
-      <h2>Gallery</h2>
+      <h2>Photography</h2>
+
+      <h4>Instagram Feed</h4>
       <p>
         Custom implementation of my own{" "}
         <OutboundLink target="_blank" href="https://www.instagram.com/codegard1/">
@@ -220,7 +222,7 @@ export const pageQuery = graphql`
     }
     allInstagramPostsJson(
       sort: {fields: creation_timestamp, order: DESC}
-      limit: 75
+      limit: 150
     ) {
       nodes {
         creation_timestamp
