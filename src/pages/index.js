@@ -4,14 +4,10 @@ import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import PostList from "../components/post-list";
-import PageButtons from "../components/page-buttons";
 
 const BlogHome = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const blogs = data.allMarkdownRemark.nodes;
-  const postCount = data.postGroup.pageInfo.itemCount;
-  const postsPerPage = 7;
-  const numPages = Math.ceil(postCount / postsPerPage);
 
   if (blogs.length === 0) {
     return (
@@ -37,7 +33,7 @@ const BlogHome = ({ data, location }) => {
       <h3>Most recent Blog Posts</h3>
       <PostList posts={blogs} />
       <h3 style={{ color: "salmon" }}>
-        <Link to="/blog/1">More</Link>
+        <Link to="/blog/posts">More</Link>
       </h3>
     </Layout>
   );
@@ -52,10 +48,10 @@ query BlogHomeQuery {
       title
     }
   }
-  allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 3) {
+  allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 7) {
     nodes {
       id
-      excerpt(format: PLAIN, pruneLength: 250)
+      excerpt(format: PLAIN, pruneLength: 300)
       fields {
         slug
       }
