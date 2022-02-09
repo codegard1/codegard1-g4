@@ -118,12 +118,12 @@ const ShoesPage = ({ data, location }) => {
         <div className={classNames.listGridSizer}>
           <div className={classNames.listGridPadder}>
             <GatsbyImage image={item.node.gatsbyImageData} alt="Picture of a shoe" />
-            <span className={classNames.listGridLabel}>{index+1}&nbsp;of&nbsp;{photos.length}&nbsp;|&nbsp;{item.node.id.substr(0, 7)}</span>
+            <span className={classNames.listGridLabel}>{index + 1}&nbsp;of&nbsp;{photos.length}&nbsp;|&nbsp;{item.node.id.substr(0, 7)}</span>
           </div>
         </div>
       </div>
     );
-  }, [openLightbox]);
+  }, [openLightbox, photos.length]);
 
   const getPageHeight = React.useCallback(() => {
     return rowHeight.current * ROWS_PER_PAGE;
@@ -155,7 +155,6 @@ const ShoesPage = ({ data, location }) => {
               <Carousel
                 animationHandler={"fade"}
                 dynamicHeight
-                interval={60}
                 selectedItem={currentImage}
                 showArrows
                 showIndicators={false}
@@ -178,13 +177,15 @@ export default ShoesPage;
 
 export const pageQuery = graphql`
 query {
-  allImageSharp {
+  allImageSharp(limit: 50) {
     edges {
       node {
         gatsbyImageData(
-          formats: WEBP
-          placeholder: BLURRED
-          webpOptions: {quality: 3}
+          formats: AUTO
+          placeholder: DOMINANT_COLOR
+          breakpoints: 3
+          jpgOptions: {progressive: true}
+          quality: 7
         )
         id
       }
