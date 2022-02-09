@@ -80,7 +80,8 @@ const ShoesPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
   // Preprocess images (local files)
-  const photos = useConst(data.allImageSharp.edges);
+  const photos = useConst(data.allFile.edges);
+  const totalCount = useConst(data.allFile.totalCount);
 
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
@@ -117,13 +118,13 @@ const ShoesPage = ({ data, location }) => {
       >
         <div className={classNames.listGridSizer}>
           <div className={classNames.listGridPadder}>
-            <GatsbyImage image={item.node.gatsbyImageData} alt="Picture of a shoe" />
-            <span className={classNames.listGridLabel}>{index + 1}&nbsp;of&nbsp;{photos.length}&nbsp;|&nbsp;{item.node.id.substr(0, 7)}</span>
+            <GatsbyImage image={item.node.childImageSharp.gatsbyImageData} alt="Picture of a shoe" />
+            <span className={classNames.listGridLabel}>{index + 1}&nbsp;of&nbsp;{totalCount}&nbsp;|&nbsp;{item.node.id.substr(0, 7)}</span>
           </div>
         </div>
       </div>
     );
-  }, [openLightbox, photos.length]);
+  }, [openLightbox, totalCount]);
 
   const getPageHeight = React.useCallback(() => {
     return rowHeight.current * ROWS_PER_PAGE;
@@ -162,7 +163,7 @@ const ShoesPage = ({ data, location }) => {
                 autoPlay={false}
                 onClickItem={closeLightbox}
                 children={photos.map(p =>
-                  <GatsbyImage image={p.node.gatsbyImageData} alt="Photo of a shoe" />
+                  <GatsbyImage image={p.node.childImageSharp.gatsbyImageData} alt="Photo of a shoe" />
                 )}
               />
             </Modal>
@@ -177,19 +178,25 @@ export default ShoesPage;
 
 export const pageQuery = graphql`
 query {
-  allImageSharp(limit: 50) {
-    edges {
-      node {
-        gatsbyImageData(
-          formats: AUTO
-          placeholder: DOMINANT_COLOR
-          breakpoints: 10
-          jpgOptions: {progressive: true}
-          quality: 7
-        )
-        id
-      }
-    }
+allFile(filter: {sourceInstanceName: {eq: "shoes"}}, limit: 50) {
+	totalCount
+	edges {
+		node {
+			id
+			name
+			childImageSharp {
+				gatsbyImageData(
+				  aspectRatio: 1
+				  formats: WEBP
+				  placeholder: BLURRED
+				  breakpoints: 5
+				  jpgOptions: {progressive: true}
+				  quality: 10
+				  height: 300
+				)
+			}
+		}
+	}
   }
   site {
     siteMetadata {
