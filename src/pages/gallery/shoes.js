@@ -183,7 +183,7 @@ query {
         gatsbyImageData(
           formats: AUTO
           placeholder: DOMINANT_COLOR
-          breakpoints: 3
+          breakpoints: 10
           jpgOptions: {progressive: true}
           quality: 7
         )

@@ -7,7 +7,7 @@ module.exports = {
       summary: `I have a dev blog.`,
     },
     description: `Personal site of Chris Odegard.`,
-    siteUrl: `https://www.ciaervo.com`,
+    siteUrl: `https://ciaervo.com`,
     social: {
       applemusic: `https://music.apple.com/us/artist/1592784321`,
       bandcamp: `https://ciaervo.bandcamp.com/`,
@@ -33,6 +33,13 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/images/shoes`,
+        name: `shoes`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
