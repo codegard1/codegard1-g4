@@ -42,7 +42,7 @@ const BlackjackPage = ({ data, location }) => {
         </OutboundLink>
         <br />
         <OutboundLink
-          href="https://mango-cliff-08390e60f.azurestaticapps.net"
+          href="https://ciaervo-blackjack.netlify.app"
           target="_blank"
           rel="noreferrerrer noopener"
         >
@@ -53,7 +53,7 @@ const BlackjackPage = ({ data, location }) => {
       <br />
       <iframe
         title="Blackjack"
-        src="https://mango-cliff-08390e60f.azurestaticapps.net"
+        src="https://ciaervo-blackjack.netlify.app"
         width="100%"
         height="800"
       ></iframe>
