@@ -3,6 +3,8 @@ import Carousel, { Modal, ModalGateway } from "react-images";
 
 import { graphql } from "gatsby";
 
+import { GatsbyImage } from "gatsby-plugin-image";
+
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
 
@@ -78,24 +80,18 @@ const GalleryPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
   // Preprocess images (local files)
-  // const photos = useConst(
-  //   data.allFile.edges.map(edge => ({
-  //     ...edge.node.childrenImageSharp.original,
-  //     src: edge.node.publicURL,
-  //     key: `photo_${edge.node.id}`
-  //   }))
-  // );
+  const photos = useConst(data.allFile.nodes);
 
   // Pre-process image data from JSON
-  const photos = useConst(
-    data.allInstagramPostsJson.nodes.map(photo => {
-      return {
-        ...photo,
-        uri: photo.src,
-        key: `photo_${photo.id}`,
-      }
-    })
-  );
+  // const photos = useConst(
+  //   data.allInstagramPostsJson.nodes.map(photo => {
+  //     return {
+  //       ...photo,
+  //       uri: photo.src,
+  //       key: `photo_${photo.id}`,
+  //     }
+  //   })
+  // );
 
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
@@ -132,7 +128,7 @@ const GalleryPage = ({ data, location }) => {
       >
         <div className={classNames.listGridSizer}>
           <div className={classNames.listGridPadder}>
-            <img src={item.src} className={classNames.listGridImage} />
+            <GatsbyImage image={item.childImageSharp.gatsbyImageData} alt={item.name} />
             {/* <span className={classNames.listGridLabel}>{item.title}</span> */}
           </div>
         </div>
@@ -214,26 +210,39 @@ const GalleryPage = ({ data, location }) => {
 export default GalleryPage;
 
 export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
+query {
+  allInstagramPostsJson(
+    sort: {fields: creation_timestamp, order: DESC}
+    limit: 10
+  ) {
+    nodes {
+      creation_timestamp
+      name
+      title
     }
-    allInstagramPostsJson(
-      sort: {fields: creation_timestamp, order: DESC}
-      limit: 150
+  }
+  allFile(
+    filter: {sourceInstanceName: {eq: "instagram"}}
+    limit: 50
     ) {
-      nodes {
-        creation_timestamp
-        height
-        id
-        ratio
-        src
-        title
-        type
-        width
+    nodes {
+      name
+      childImageSharp {
+        gatsbyImageData(
+          formats: AUTO
+          quality: 10
+          placeholder: BLURRED
+          aspectRatio: 1
+          breakpoints: 5
+          width: 200
+        )
       }
     }
   }
+  site {
+    siteMetadata {
+      title
+    }
+  }
+}  
 `;
