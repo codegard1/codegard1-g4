@@ -1,18 +1,17 @@
 import React, { useState, useCallback } from "react";
-import Carousel, { Modal, ModalGateway } from "react-images";
-
 import { graphql } from "gatsby";
-
 import { GatsbyImage } from "gatsby-plugin-image";
-
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
-
 import { FocusZone } from "@fluentui/react/lib/FocusZone";
 import { List } from "@fluentui/react/lib/List";
-import { getTheme, mergeStyleSets } from "@fluentui/react/lib/Styling";
-import { useConst } from "@fluentui/react-hooks";
-
+import { useConst, useId } from "@fluentui/react-hooks";
+import {
+  getTheme,
+  mergeStyleSets,
+  FontWeights,
+  Modal,
+} from '@fluentui/react';
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 
 const ROWS_PER_PAGE = 1;
@@ -71,6 +70,11 @@ const classNames = mergeStyleSets({
     left: 0,
     width: "100%",
   },
+  container: {
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    alignItems: 'stretch',
+  },
 });
 
 const GalleryPage = ({ data, location }) => {
@@ -79,19 +83,14 @@ const GalleryPage = ({ data, location }) => {
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
-  // Preprocess images (local files)
-  const photos = useConst(data.allFile.nodes);
-
-  // Pre-process image data from JSON
-  // const photos = useConst(
-  //   data.allInstagramPostsJson.nodes.map(photo => {
-  //     return {
-  //       ...photo,
-  //       uri: photo.src,
-  //       key: `photo_${photo.id}`,
-  //     }
-  //   })
-  // );
+  // Union join photo files and photo metadata
+  const photosUnion = useConst(data.allInstagramPostsJson.nodes.map(flerp => {
+    const file = data.allFile.nodes.find(v => flerp.name.startsWith(v.name));
+    return {
+      ...flerp,
+      gatsbyImageData: (file ? file.childImageSharp.gatsbyImageData : null)
+    }
+  }));
 
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
@@ -99,8 +98,8 @@ const GalleryPage = ({ data, location }) => {
   }, []);
 
   const closeLightbox = () => {
-    setCurrentImage(0);
     setViewerIsOpen(false);
+    // setCurrentImage(0);
   };
 
   const columnCount = React.useRef(0);
@@ -128,8 +127,10 @@ const GalleryPage = ({ data, location }) => {
       >
         <div className={classNames.listGridSizer}>
           <div className={classNames.listGridPadder}>
-            <GatsbyImage image={item.childImageSharp.gatsbyImageData} alt={item.name} />
-            {/* <span className={classNames.listGridLabel}>{item.title}</span> */}
+            <GatsbyImage image={item.gatsbyImageData} alt={item.title} className={classNames.listGridImage} />
+            {item.title &&
+              <span className={classNames.listGridLabel}>{item.title.substring(0, 50)}</span>
+            }
           </div>
         </div>
       </div>
@@ -182,26 +183,28 @@ const GalleryPage = ({ data, location }) => {
       <FocusZone>
         <List
           className={classNames.listGrid}
-          items={photos}
+          items={photosUnion}
           getItemCountForPage={getItemCountForPage}
           getPageHeight={getPageHeight}
           renderedWindowsAhead={1}
           onRenderCell={onRenderCell}
         />
 
-        <ModalGateway>
-          {viewerIsOpen ? (
-            <Modal onClose={closeLightbox}>
-              <Carousel
-                currentIndex={currentImage}
-                views={photos.map(x => ({
-                  ...x,
-                  caption: x.title,
-                }))}
-              />
-            </Modal>
-          ) : null}
-        </ModalGateway>
+        <Modal
+          titleAriaId={useId('modal')}
+          isOpen={viewerIsOpen}
+          onDismiss={closeLightbox}
+          isBlocking={false}
+          containerClassName={classNames.container}
+        >
+          <GatsbyImage
+            image={photosUnion[currentImage].gatsbyImageData}
+            alt={photosUnion[currentImage].title}
+            style={{ maxWidth: "500px" }} onClick={closeLightbox} />
+          {photosUnion[currentImage].title &&
+            <span className={classNames.listGridLabel}>{photosUnion[currentImage].title}</span>
+          }
+        </Modal>
       </FocusZone>
     </Layout>
   );
@@ -213,7 +216,7 @@ export const pageQuery = graphql`
 query {
   allInstagramPostsJson(
     sort: {fields: creation_timestamp, order: DESC}
-    limit: 10
+    limit: 100
   ) {
     nodes {
       creation_timestamp
@@ -223,18 +226,12 @@ query {
   }
   allFile(
     filter: {sourceInstanceName: {eq: "instagram"}}
-    limit: 50
     ) {
     nodes {
       name
       childImageSharp {
         gatsbyImageData(
-          formats: AUTO
-          quality: 10
-          placeholder: BLURRED
-          aspectRatio: 1
-          breakpoints: 5
-          width: 200
+          layout: CONSTRAINED
         )
       }
     }
