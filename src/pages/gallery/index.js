@@ -6,12 +6,7 @@ import Seo from "../../components/seo";
 import { FocusZone } from "@fluentui/react/lib/FocusZone";
 import { List } from "@fluentui/react/lib/List";
 import { useConst, useId } from "@fluentui/react-hooks";
-import {
-  getTheme,
-  mergeStyleSets,
-  FontWeights,
-  Modal,
-} from '@fluentui/react';
+import { getTheme, mergeStyleSets, Modal } from '@fluentui/react';
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 
 const ROWS_PER_PAGE = 1;
@@ -86,9 +81,15 @@ const GalleryPage = ({ data, location }) => {
   // Union join photo files and photo metadata
   const photosUnion = useConst(data.allInstagramPostsJson.nodes.map(flerp => {
     const file = data.allFile.nodes.find(v => flerp.name.startsWith(v.name));
+    const gatsbyImageData = file ? file.childImageSharp.gatsbyImageData : null;
+    const timestamp = new Date(flerp.creation_timestamp * 1000).toLocaleDateString();
+    const caption = flerp.title.length > 20 ? (flerp.title.substring(0, 17) + "...") : flerp.title;
+
     return {
       ...flerp,
-      gatsbyImageData: (file ? file.childImageSharp.gatsbyImageData : null)
+      timestamp,
+      caption,
+      gatsbyImageData
     }
   }));
 
@@ -128,9 +129,9 @@ const GalleryPage = ({ data, location }) => {
         <div className={classNames.listGridSizer}>
           <div className={classNames.listGridPadder}>
             <GatsbyImage image={item.gatsbyImageData} alt={item.title} className={classNames.listGridImage} />
-            {item.title &&
-              <span className={classNames.listGridLabel}>{item.title.substring(0, 50)}</span>
-            }
+            <span className={classNames.listGridLabel}>
+              {item.timestamp}
+            </span>
           </div>
         </div>
       </div>
@@ -151,33 +152,7 @@ const GalleryPage = ({ data, location }) => {
         Custom implementation of my own{" "}
         <OutboundLink target="_blank" href="https://www.instagram.com/codegard1/">
           Instagram feed
-        </OutboundLink>{" "}
-        using{" "}
-        <OutboundLink
-          href="https://azure.microsoft.com/en-us/services/storage/blobs/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Azure Blob Storage{" "}
-        </OutboundLink>{" "}
-        and{" "}
-        <OutboundLink
-          href="https://github.com/neptunian/react-photo-gallery"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          List Grid
-        </OutboundLink>
-        .
-      </p>
-      <p>
-        See also:{" "}
-        <OutboundLink href="https://github.com/codegard1/imagal3/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Imagal3 on GitHub
-        </OutboundLink>
+        </OutboundLink>. I used to host the images on Azure but it's really much better to use Git LFS and host them locally instead. 
       </p>
 
       <FocusZone>
@@ -201,9 +176,11 @@ const GalleryPage = ({ data, location }) => {
             image={photosUnion[currentImage].gatsbyImageData}
             alt={photosUnion[currentImage].title}
             style={{ maxWidth: "500px" }} onClick={closeLightbox} />
-          {photosUnion[currentImage].title &&
-            <span className={classNames.listGridLabel}>{photosUnion[currentImage].title}</span>
-          }
+          <span className={classNames.listGridLabel}>
+            {photosUnion[currentImage].timestamp}
+            {` `}
+            {photosUnion[currentImage].title}
+          </span>
         </Modal>
       </FocusZone>
     </Layout>
@@ -216,7 +193,6 @@ export const pageQuery = graphql`
 query {
   allInstagramPostsJson(
     sort: {fields: creation_timestamp, order: DESC}
-    limit: 100
   ) {
     nodes {
       creation_timestamp
