@@ -1,16 +1,12 @@
 import React, { useState, useCallback } from "react";
-import Carousel, { Modal, ModalGateway } from "react-images";
-
 import { graphql } from "gatsby";
-
+import { GatsbyImage } from "gatsby-plugin-image";
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
-
 import { FocusZone } from "@fluentui/react/lib/FocusZone";
 import { List } from "@fluentui/react/lib/List";
-import { getTheme, mergeStyleSets } from "@fluentui/react/lib/Styling";
-import { useConst } from "@fluentui/react-hooks";
-
+import { useConst, useId } from "@fluentui/react-hooks";
+import { getTheme, mergeStyleSets, Modal } from '@fluentui/react';
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 
 const ROWS_PER_PAGE = 1;
@@ -69,6 +65,11 @@ const classNames = mergeStyleSets({
     left: 0,
     width: "100%",
   },
+  container: {
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    alignItems: 'stretch',
+  },
 });
 
 const GalleryPage = ({ data, location }) => {
@@ -77,25 +78,20 @@ const GalleryPage = ({ data, location }) => {
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
-  // Preprocess images (local files)
-  // const photos = useConst(
-  //   data.allFile.edges.map(edge => ({
-  //     ...edge.node.childrenImageSharp.original,
-  //     src: edge.node.publicURL,
-  //     key: `photo_${edge.node.id}`
-  //   }))
-  // );
+  // Union join photo files and photo metadata
+  const photosUnion = useConst(data.allInstagramPostsJson.nodes.map(flerp => {
+    const file = data.allFile.nodes.find(v => flerp.name.startsWith(v.name));
+    const gatsbyImageData = file ? file.childImageSharp.gatsbyImageData : null;
+    const timestamp = new Date(flerp.creation_timestamp * 1000).toLocaleDateString();
+    const caption = flerp.title.length > 20 ? (flerp.title.substring(0, 17) + "...") : flerp.title;
 
-  // Pre-process image data from JSON
-  const photos = useConst(
-    data.allInstagramPostsJson.nodes.map(photo => {
-      return {
-        ...photo,
-        uri: photo.src,
-        key: `photo_${photo.id}`,
-      }
-    })
-  );
+    return {
+      ...flerp,
+      timestamp,
+      caption,
+      gatsbyImageData
+    }
+  }));
 
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
@@ -103,8 +99,8 @@ const GalleryPage = ({ data, location }) => {
   }, []);
 
   const closeLightbox = () => {
-    setCurrentImage(0);
     setViewerIsOpen(false);
+    // setCurrentImage(0);
   };
 
   const columnCount = React.useRef(0);
@@ -132,8 +128,10 @@ const GalleryPage = ({ data, location }) => {
       >
         <div className={classNames.listGridSizer}>
           <div className={classNames.listGridPadder}>
-            <img src={item.src} className={classNames.listGridImage} />
-            {/* <span className={classNames.listGridLabel}>{item.title}</span> */}
+            <GatsbyImage image={item.gatsbyImageData} alt={item.title} className={classNames.listGridImage} />
+            <span className={classNames.listGridLabel}>
+              {item.timestamp}
+            </span>
           </div>
         </div>
       </div>
@@ -154,58 +152,36 @@ const GalleryPage = ({ data, location }) => {
         Custom implementation of my own{" "}
         <OutboundLink target="_blank" href="https://www.instagram.com/codegard1/">
           Instagram feed
-        </OutboundLink>{" "}
-        using{" "}
-        <OutboundLink
-          href="https://azure.microsoft.com/en-us/services/storage/blobs/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Azure Blob Storage{" "}
-        </OutboundLink>{" "}
-        and{" "}
-        <OutboundLink
-          href="https://github.com/neptunian/react-photo-gallery"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          List Grid
-        </OutboundLink>
-        .
-      </p>
-      <p>
-        See also:{" "}
-        <OutboundLink href="https://github.com/codegard1/imagal3/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Imagal3 on GitHub
-        </OutboundLink>
+        </OutboundLink>. I used to host the images on Azure but it's really much better to use Git LFS and host them locally instead. 
       </p>
 
       <FocusZone>
         <List
           className={classNames.listGrid}
-          items={photos}
+          items={photosUnion}
           getItemCountForPage={getItemCountForPage}
           getPageHeight={getPageHeight}
           renderedWindowsAhead={1}
           onRenderCell={onRenderCell}
         />
 
-        <ModalGateway>
-          {viewerIsOpen ? (
-            <Modal onClose={closeLightbox}>
-              <Carousel
-                currentIndex={currentImage}
-                views={photos.map(x => ({
-                  ...x,
-                  caption: x.title,
-                }))}
-              />
-            </Modal>
-          ) : null}
-        </ModalGateway>
+        <Modal
+          titleAriaId={useId('modal')}
+          isOpen={viewerIsOpen}
+          onDismiss={closeLightbox}
+          isBlocking={false}
+          containerClassName={classNames.container}
+        >
+          <GatsbyImage
+            image={photosUnion[currentImage].gatsbyImageData}
+            alt={photosUnion[currentImage].title}
+            style={{ maxWidth: "500px" }} onClick={closeLightbox} />
+          <span className={classNames.listGridLabel}>
+            {photosUnion[currentImage].timestamp}
+            {` `}
+            {photosUnion[currentImage].title}
+          </span>
+        </Modal>
       </FocusZone>
     </Layout>
   );
@@ -214,26 +190,32 @@ const GalleryPage = ({ data, location }) => {
 export default GalleryPage;
 
 export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
+query {
+  allInstagramPostsJson(
+    sort: {fields: creation_timestamp, order: DESC}
+  ) {
+    nodes {
+      creation_timestamp
+      name
+      title
     }
-    allInstagramPostsJson(
-      sort: {fields: creation_timestamp, order: DESC}
-      limit: 150
+  }
+  allFile(
+    filter: {sourceInstanceName: {eq: "instagram"}}
     ) {
-      nodes {
-        creation_timestamp
-        height
-        id
-        ratio
-        src
-        title
-        type
-        width
+    nodes {
+      name
+      childImageSharp {
+        gatsbyImageData(
+          layout: CONSTRAINED
+        )
       }
     }
   }
+  site {
+    siteMetadata {
+      title
+    }
+  }
+}  
 `;

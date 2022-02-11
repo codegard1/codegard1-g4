@@ -70,3 +70,5 @@ yarn-error.log
 
 # temporarily ignore local images
 content/gallery/*
+
+posts_1.json

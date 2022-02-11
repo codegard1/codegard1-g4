@@ -7,7 +7,7 @@ module.exports = {
       summary: `I have a dev blog.`,
     },
     description: `Personal site of Chris Odegard.`,
-    siteUrl: `https://www.ciaervo.com`,
+    siteUrl: `https://ciaervo.com`,
     social: {
       applemusic: `https://music.apple.com/us/artist/1592784321`,
       bandcamp: `https://ciaervo.bandcamp.com/`,
@@ -30,9 +30,40 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          quality: 50,
+          breakpoints: [750, 1080, 1366, 1920],
+          backgroundColor: `transparent`,
+          tracedSVGOptions: {},
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        }
+      }
+    },
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/images/shoes`,
+        name: `shoes`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/images/instagram`,
+        name: `instagram`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
