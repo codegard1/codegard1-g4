@@ -9,7 +9,7 @@ import { useConst, useId } from "@fluentui/react-hooks";
 import { getTheme, mergeStyleSets, Modal } from '@fluentui/react';
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 
-const ROWS_PER_PAGE = 1;
+const ROWS_PER_PAGE = 2;
 const MAX_ROW_HEIGHT = 200;
 const theme = getTheme();
 const { palette, fonts } = theme;

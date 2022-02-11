@@ -1,21 +1,15 @@
 import React, { useState, useCallback } from "react";
-import { Modal, ModalGateway } from "react-images";
-import { Carousel } from "react-responsive-carousel";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
-
 import { FocusZone } from "@fluentui/react/lib/FocusZone";
 import { List } from "@fluentui/react/lib/List";
-import { getTheme, mergeStyleSets } from "@fluentui/react/lib/Styling";
-import { useConst } from "@fluentui/react-hooks";
+import { useConst, useId } from "@fluentui/react-hooks";
+import { getTheme, mergeStyleSets, Modal } from "@fluentui/react";
+import { OutboundLink } from "gatsby-plugin-google-gtag";
 
-// css for the Carousel
-import "react-responsive-carousel/lib/styles/carousel.css";
-
-const ROWS_PER_PAGE = 1;
+const ROWS_PER_PAGE = 2;
 const MAX_ROW_HEIGHT = 200;
 const theme = getTheme();
 const { palette, fonts } = theme;
@@ -70,6 +64,11 @@ const classNames = mergeStyleSets({
     top: 0,
     left: 0,
     width: "100%",
+  },
+  container: {
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    alignItems: 'stretch',
   },
 });
 
@@ -137,7 +136,7 @@ const ShoesPage = ({ data, location }) => {
 
       <h4>Shoes</h4>
       <p>
-        Choose mang
+        I notice shoes fairly often, and when I see an abandoned pair, or, more often, a single, I always take a moment to imagine how it might have ended up there. This is my collection of discarded shoe photos. 
       </p>
 
       <FocusZone>
@@ -149,28 +148,22 @@ const ShoesPage = ({ data, location }) => {
           renderedWindowsAhead={1}
           onRenderCell={onRenderCell}
         />
-
-        <ModalGateway>
-          {viewerIsOpen ? (
-            <Modal onClose={closeLightbox}>
-              <Carousel
-                animationHandler={"fade"}
-                dynamicHeight
-                selectedItem={currentImage}
-                showArrows
-                showIndicators={false}
-                showThumbs={false}
-                autoPlay={false}
-                onClickItem={closeLightbox}
-                children={photos.map(p =>
-                  <GatsbyImage image={p.node.childImageSharp.gatsbyImageData} alt="Photo of a shoe" />
-                )}
-              />
-            </Modal>
-          ) : null}
-        </ModalGateway>
+        <Modal
+          titleAriaId={useId('modal')}
+          isOpen={viewerIsOpen}
+          onDismiss={closeLightbox}
+          isBlocking={false}
+          containerClassName={classNames.container}
+        >
+          <GatsbyImage
+            image={photos[currentImage].node.childImageSharp.gatsbyImageData}
+            alt="Photo of a shoe"
+            style={{ maxWidth: "500px" }}
+            onClick={closeLightbox}
+          />
+        </Modal>
       </FocusZone>
-    </Layout>
+    </Layout >
   );
 };
 
@@ -178,25 +171,17 @@ export default ShoesPage;
 
 export const pageQuery = graphql`
 query {
-allFile(filter: {sourceInstanceName: {eq: "shoes"}}, limit: 50) {
-	totalCount
-	edges {
-		node {
-			id
-			name
-			childImageSharp {
-				gatsbyImageData(
-				  aspectRatio: 1
-				  formats: WEBP
-				  placeholder: BLURRED
-				  breakpoints: 5
-				  jpgOptions: {progressive: true}
-				  quality: 10
-				  height: 300
-				)
-			}
-		}
-	}
+  allFile(filter: {sourceInstanceName: {eq: "shoes"}}, limit: 50) {
+    totalCount
+    nodes {
+      id
+      name
+      childImageSharp {
+        gatsbyImageData(
+          layout: CONSTRAINED
+        )
+      }
+    }
   }
   site {
     siteMetadata {
