@@ -79,7 +79,7 @@ const ShoesPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
   // Preprocess images (local files)
-  const photos = useConst(data.allFile.edges);
+  const photos = useConst(data.allFile.nodes);
   const totalCount = useConst(data.allFile.totalCount);
 
   const openLightbox = useCallback((event, { photo, index }) => {
@@ -117,8 +117,8 @@ const ShoesPage = ({ data, location }) => {
       >
         <div className={classNames.listGridSizer}>
           <div className={classNames.listGridPadder}>
-            <GatsbyImage image={item.node.childImageSharp.gatsbyImageData} alt="Picture of a shoe" />
-            <span className={classNames.listGridLabel}>{index + 1}&nbsp;of&nbsp;{totalCount}&nbsp;|&nbsp;{item.node.id.substr(0, 7)}</span>
+            <GatsbyImage image={item.childImageSharp.gatsbyImageData} alt="Picture of a shoe" />
+            <span className={classNames.listGridLabel}>{index + 1}&nbsp;of&nbsp;{totalCount}&nbsp;|&nbsp;{item.id.substr(0, 7)}</span>
           </div>
         </div>
       </div>
@@ -156,7 +156,7 @@ const ShoesPage = ({ data, location }) => {
           containerClassName={classNames.container}
         >
           <GatsbyImage
-            image={photos[currentImage].node.childImageSharp.gatsbyImageData}
+            image={photos[currentImage].childImageSharp.gatsbyImageData}
             alt="Photo of a shoe"
             style={{ maxWidth: "500px" }}
             onClick={closeLightbox}
@@ -171,7 +171,9 @@ export default ShoesPage;
 
 export const pageQuery = graphql`
 query {
-  allFile(filter: {sourceInstanceName: {eq: "shoes"}}, limit: 50) {
+  allFile(
+    filter: {sourceInstanceName: {eq: "shoes"}} 
+  ) {
     totalCount
     nodes {
       id
