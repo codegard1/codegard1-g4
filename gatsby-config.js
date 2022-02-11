@@ -50,6 +50,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
+    `gatsby-transformer-csv`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -83,6 +84,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `dailyAggregations`,
+        path: `${__dirname}/content/dailyAggregations`,
       },
     },
     {
@@ -126,7 +134,7 @@ module.exports = {
         name: `Ciaervo`,
         short_name: `CRVO`,
         start_url: `/`,
-        background_color: `#ffffff`,
+        background_color: `#038387`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,

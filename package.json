@@ -29,6 +29,7 @@
     "gatsby-remark-responsive-iframe": "^5.0.0",
     "gatsby-remark-smartypants": "^5.0.0",
     "gatsby-source-filesystem": "^4.0.0",
+    "gatsby-transformer-csv": "^4.7.0",
     "gatsby-transformer-json": "^4.1.0",
     "gatsby-transformer-remark": "^5.0.0",
     "gatsby-transformer-sharp": "^4.1.0",
@@ -39,15 +40,13 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-images": "^1.2.0-beta.7",
-    "react-responsive-carousel": "^3.2.22",
     "typeface-merriweather": "^1.1.13",
     "typeface-montserrat": "^1.1.13"
   },
   "devDependencies": {
-    "image-size": "^1.0.0",
     "prettier": "^2.5.0"
   },
-  "homepage": "https://www.ciaervo.com",
+  "homepage": "https://ciaervo.com",
   "keywords": [
     "ciaervo",
     "ciaervo1",
