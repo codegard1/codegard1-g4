@@ -1,12 +1,13 @@
 import React, { useState, useCallback } from "react";
-import { graphql,Link } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
 import { FocusZone } from "@fluentui/react/lib/FocusZone";
 import { List } from "@fluentui/react/lib/List";
 import { useConst, useId } from "@fluentui/react-hooks";
-import { getTheme, mergeStyleSets, Modal } from "@fluentui/react";
+import { getTheme, mergeStyleSets, Modal } from '@fluentui/react';
+import { OutboundLink } from "gatsby-plugin-google-gtag";
 
 const ROWS_PER_PAGE = 2;
 const MAX_ROW_HEIGHT = 200;
@@ -71,15 +72,26 @@ const classNames = mergeStyleSets({
   },
 });
 
-const ShoesPage = ({ data, location }) => {
+const InstagramPage = ({ data, location }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
-  // Preprocess images (local files)
-  const photos = useConst(data.allFile.nodes);
-  const totalCount = useConst(data.allFile.totalCount);
+  // Union join photo files and photo metadata
+  const photosUnion = useConst(data.allInstagramPostsJson.nodes.map(flerp => {
+    const file = data.allFile.nodes.find(v => flerp.name.startsWith(v.name));
+    const gatsbyImageData = file ? file.childImageSharp.gatsbyImageData : null;
+    const timestamp = new Date(flerp.creation_timestamp * 1000).toLocaleDateString();
+    const caption = flerp.title.length > 20 ? (flerp.title.substring(0, 17) + "...") : flerp.title;
+
+    return {
+      ...flerp,
+      timestamp,
+      caption,
+      gatsbyImageData
+    }
+  }));
 
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
@@ -88,7 +100,7 @@ const ShoesPage = ({ data, location }) => {
 
   const closeLightbox = () => {
     setViewerIsOpen(false);
-    setCurrentImage(0);
+    // setCurrentImage(0);
   };
 
   const columnCount = React.useRef(0);
@@ -116,13 +128,15 @@ const ShoesPage = ({ data, location }) => {
       >
         <div className={classNames.listGridSizer}>
           <div className={classNames.listGridPadder}>
-            <GatsbyImage image={item.childImageSharp.gatsbyImageData} alt="Picture of a shoe" />
-            <span className={classNames.listGridLabel}>{index + 1}&nbsp;of&nbsp;{totalCount}&nbsp;|&nbsp;{item.id.substr(0, 7)}</span>
+            <GatsbyImage image={item.gatsbyImageData} alt={item.title} className={classNames.listGridImage} />
+            <span className={classNames.listGridLabel}>
+              {item.timestamp}
+            </span>
           </div>
         </div>
       </div>
     );
-  }, [openLightbox, totalCount]);
+  }, [openLightbox]);
 
   const getPageHeight = React.useCallback(() => {
     return rowHeight.current * ROWS_PER_PAGE;
@@ -132,20 +146,25 @@ const ShoesPage = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Seo title="Gallery" keywords={[`gallery`, `photos`, `Instagram`]} />
       <h2><Link to="/gallery">Gallery</Link></h2>
-      <h4>Shoes</h4>
+
+      <h4>Instagram Feed</h4>
       <p>
-        I notice shoes fairly often, and when I see an abandoned pair, or, more often, a single, I always take a moment to imagine how it might have ended up there. This is my collection of discarded shoe photos. 
+        Custom implementation of my own{" "}
+        <OutboundLink target="_blank" href="https://www.instagram.com/codegard1/">
+          Instagram feed
+        </OutboundLink>. I used to host the images on Azure but it's really much better to use Git LFS and host them locally instead. 
       </p>
 
       <FocusZone>
         <List
           className={classNames.listGrid}
-          items={photos}
+          items={photosUnion}
           getItemCountForPage={getItemCountForPage}
           getPageHeight={getPageHeight}
           renderedWindowsAhead={1}
           onRenderCell={onRenderCell}
         />
+
         <Modal
           titleAriaId={useId('modal')}
           isOpen={viewerIsOpen}
@@ -154,27 +173,37 @@ const ShoesPage = ({ data, location }) => {
           containerClassName={classNames.container}
         >
           <GatsbyImage
-            image={photos[currentImage].childImageSharp.gatsbyImageData}
-            alt="Photo of a shoe"
-            style={{ maxWidth: "500px" }}
-            onClick={closeLightbox}
-          />
+            image={photosUnion[currentImage].gatsbyImageData}
+            alt={photosUnion[currentImage].title}
+            style={{ maxWidth: "500px" }} onClick={closeLightbox} />
+          <span className={classNames.listGridLabel}>
+            {photosUnion[currentImage].timestamp}
+            {` `}
+            {photosUnion[currentImage].title}
+          </span>
         </Modal>
       </FocusZone>
-    </Layout >
+    </Layout>
   );
 };
 
-export default ShoesPage;
+export default InstagramPage;
 
 export const pageQuery = graphql`
 query {
-  allFile(
-    filter: {sourceInstanceName: {eq: "shoes"}} 
+  allInstagramPostsJson(
+    sort: {fields: creation_timestamp, order: DESC}
   ) {
-    totalCount
     nodes {
-      id
+      creation_timestamp
+      name
+      title
+    }
+  }
+  allFile(
+    filter: {sourceInstanceName: {eq: "instagram"}}
+    ) {
+    nodes {
       name
       childImageSharp {
         gatsbyImageData(
@@ -188,5 +217,5 @@ query {
       title
     }
   }
-}
+}  
 `;
