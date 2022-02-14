@@ -45,7 +45,9 @@ const SearchPage = ({ data, location }) => {
   if (blogs.length === 0 || searched === false) {
     return (
       <Layout location={location} title={siteTitle}>
-        <Seo title="Search Posts" />
+        <Seo title="Search Blog Posts" />
+        <h2><Link to="/blog/1">Blog</Link></h2>
+        <h4>Search Posts</h4>
         <ul>
           <li style={{ color: "salmon" }}><Link to="/blog/posts">All Posts (sorted by date)</Link></li>
           <li style={{ color: "salmon" }}><Link to="/blog/tags">All Tags</Link></li>

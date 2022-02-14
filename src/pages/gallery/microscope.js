@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
@@ -116,8 +116,8 @@ const MicroscopePage = ({ data, location }) => {
       >
         <div className={classNames.listGridSizer}>
           <div className={classNames.listGridPadder}>
-            <GatsbyImage image={item.childImageSharp.gatsbyImageData} alt="Picture of a shoe" />
-            <span className={classNames.listGridLabel}>{index + 1}&nbsp;of&nbsp;{totalCount}&nbsp;|&nbsp;{item.id.substr(0, 7)}</span>
+            <GatsbyImage image={item.childImageSharp.gatsbyImageData} alt="Photograph taken through a small microscope" />
+            <span className={classNames.listGridLabel}>{index + 1}&nbsp;of&nbsp;{totalCount}</span>
           </div>
         </div>
       </div>
@@ -131,8 +131,7 @@ const MicroscopePage = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="Gallery" keywords={[`gallery`, `photos`, `Instagram`]} />
-      <h2>Gallery</h2>
-
+      <h2><Link to="/gallery">Gallery</Link></h2>
       <h4>Microscope</h4>
       <p>
         Photos of small things up close
