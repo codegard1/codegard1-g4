@@ -79,6 +79,9 @@
   padding: 0;
 }
 
+html,body {
+  height: 100vh;
+}
 
 html {
   line-height: var(--lineHeight-normal);
@@ -91,12 +94,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--fontSize-1);
   color: var(--color-text);
-  height: 100vh;
-  line-height: 1.6;
-}
-
-footer {
-  padding: var(--spacing-1) var(--spacing-0);
+  line-height: var(--lineHeight-relaxed)
 }
 
 hr {
@@ -415,22 +413,28 @@ a:focus {
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
 }
 
-#LayoutContainer > main {
+div#LayoutContainer {
+  min-height: 99vh;
+  height: unset;
   display: flex;
   flex-direction: column;
-  flex-grow: 2;
-  /* align-items: center; */
+}
+
+div#LayoutContainer > main {
+  flex: 1 0 auto;
   margin-top: var(--navbar-height);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: larger;
+  font-family: var(--fontFamily-sans);
+  font-size: var(--fontSize-2);
   border-bottom: 4px solid teal;
   padding: 0 7% 0 7%;
 }
 
-#LayoutContainer>footer {
+div#LayoutContainer > footer {
+  font-size: var(--fontSize-0);
+  padding: var(--spacing-1) var(--spacing-0);
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: medium;
+  flex-shrink: 0;
 }
 
 #bio-container {

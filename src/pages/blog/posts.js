@@ -63,7 +63,6 @@ const PostsPage = ({ data, location }) => {
 
   return (
     <Layout location={location} title={data.site.siteMetadata.title}>
-      <h2>All Blog Posts</h2>
       <Seo
         title={`All Blog Posts`}
         keywords={[
@@ -72,6 +71,8 @@ const PostsPage = ({ data, location }) => {
           `Blog`,
         ]}
       />
+      <h2><Link to="/blog/1">Blog</Link></h2>
+      <h4>All Posts</h4>
       <DetailsList
         items={_items}
         columns={_columns}

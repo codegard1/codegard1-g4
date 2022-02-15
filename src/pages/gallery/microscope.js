@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { graphql,Link } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
@@ -71,7 +71,7 @@ const classNames = mergeStyleSets({
   },
 });
 
-const ShoesPage = ({ data, location }) => {
+const MicroscopePage = ({ data, location }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
@@ -116,8 +116,8 @@ const ShoesPage = ({ data, location }) => {
       >
         <div className={classNames.listGridSizer}>
           <div className={classNames.listGridPadder}>
-            <GatsbyImage image={item.childImageSharp.gatsbyImageData} alt="Picture of a shoe" />
-            <span className={classNames.listGridLabel}>{index + 1}&nbsp;of&nbsp;{totalCount}&nbsp;|&nbsp;{item.id.substr(0, 7)}</span>
+            <GatsbyImage image={item.childImageSharp.gatsbyImageData} alt="Photograph taken through a small microscope" />
+            <span className={classNames.listGridLabel}>{index + 1}&nbsp;of&nbsp;{totalCount}</span>
           </div>
         </div>
       </div>
@@ -132,9 +132,9 @@ const ShoesPage = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Seo title="Gallery" keywords={[`gallery`, `photos`, `Instagram`]} />
       <h2><Link to="/gallery">Gallery</Link></h2>
-      <h4>Shoes</h4>
+      <h4>Microscope</h4>
       <p>
-        I notice shoes fairly often, and when I see an abandoned pair, or, more often, a single, I always take a moment to imagine how it might have ended up there. This is my collection of discarded shoe photos. 
+        Photos of small things up close
       </p>
 
       <FocusZone>
@@ -165,12 +165,13 @@ const ShoesPage = ({ data, location }) => {
   );
 };
 
-export default ShoesPage;
+export default MicroscopePage;
 
 export const pageQuery = graphql`
 query {
   allFile(
-    filter: {sourceInstanceName: {eq: "shoes"}} 
+    filter: {sourceInstanceName: {eq: "microscope"}}
+    sort: {order: ASC, fields: name}
   ) {
     totalCount
     nodes {
