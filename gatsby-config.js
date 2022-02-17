@@ -61,6 +61,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/content/images/night`,
+        name: `night`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         path: `${__dirname}/content/images/instagram`,
         name: `instagram`,
       },
