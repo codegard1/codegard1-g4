@@ -13,8 +13,10 @@ const GalleryIndexPage = ({ data, location }) => {
       <h4>Amateur Photography by Yours Truly</h4>
 
       <h5>🤳&nbsp;<Link to="/gallery/instagram">Instagram Feed</Link>&nbsp;({data.instagram.totalCount})</h5>
+      
       <h5>🔬&nbsp;<Link to="/gallery/microscope">Microscope</Link>&nbsp;({data.microscope.totalCount})</h5>
-      {/* <h5>👞&nbsp;<Link to="/gallery/shoes">Shoes</Link>&nbsp;({data.shoes.totalCount})</h5> */}
+
+      <h5>👞&nbsp;<Link to="/gallery/shoes">Shoes</Link>&nbsp;({data.shoes.totalCount})</h5>
 
     </Layout>
   );
