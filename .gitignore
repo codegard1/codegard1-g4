@@ -68,7 +68,6 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-# temporarily ignore local images
-content/gallery/*
-
 posts_1.json
+
+.mp4
