@@ -10,15 +10,19 @@ import FluentUIGallery from "../../templates/gallery";
 const InstagramPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
+  // filter out photos that do not match a local image
+  const extantImages = data.allInstagramJson.nodes.filter(baz => data.allFile.nodes.find(bar => baz.name.startsWith(bar.name))
+  );
+
   // Join together image files and image metadata
-  const photosUnion = useConst(data.allInstagramJson.nodes.map(flerp => {
-    const file = data.allFile.nodes.find(v => flerp.name.startsWith(v.name));
+  const photosUnion = useConst(extantImages.map(foo => {
+    const file = data.allFile.nodes.find(v => foo.name.startsWith(v.name));
+    const timestamp = new Date(foo.creation_timestamp).toLocaleDateString();
+    const caption = foo.title.length > 20 ? (foo.title.substring(0, 17) + "...") : foo.title;
     const gatsbyImageData = file ? file.childImageSharp.gatsbyImageData : null;
-    const timestamp = new Date(flerp.creation_timestamp * 1000).toLocaleDateString();
-    const caption = flerp.title.length > 20 ? (flerp.title.substring(0, 17) + "...") : flerp.title;
 
     return {
-      ...flerp,
+      foo,
       timestamp,
       caption,
       gatsbyImageData
@@ -33,12 +37,11 @@ const InstagramPage = ({ data, location }) => {
 
       <h4>Instagram Feed</h4>
       <p>
-        Custom implementation of my own{" "}
+        Selection of images from my own{" "}
         <OutboundLink target="_blank" href="https://www.instagram.com/codegard1/">
           Instagram feed
-        </OutboundLink>. I used to host the images on Azure but it's really much better to use Git LFS and host them locally instead. Hey!!
+        </OutboundLink>.
       </p>
-
 
       <FluentUIGallery photoData={photosUnion} />
 
