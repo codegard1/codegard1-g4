@@ -1,8 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import Layout from "../components/layout";
-import Seo from "../components/seo";
+import Layout from "../../components/layout";
+import Seo from "../../components/seo";
 
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 
@@ -79,12 +79,28 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         social {
-          bandcamp
-          soundcloud
-          spotify
-          applemusic
+          spotify {
+            ...SocialLinkFragment
+          }
+          soundcloud {
+            ...SocialLinkFragment
+          }
+          lastfm {
+            ...SocialLinkFragment
+          }
+          bandcamp {
+            ...SocialLinkFragment
+          }
+          applemusic {
+            ...SocialLinkFragment
+          }
         }
       }
     }
+  }
+  
+  fragment SocialLinkFragment on SocialLink {
+    name
+    url
   }
 `;

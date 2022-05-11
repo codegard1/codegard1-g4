@@ -71,3 +71,7 @@ yarn-error.log
 posts_1.json
 
 .mp4
+
+# dolt stuff
+.dolt
+.sqlhistory
