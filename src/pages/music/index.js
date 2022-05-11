@@ -79,12 +79,28 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         social {
-          bandcamp
-          soundcloud
-          spotify
-          applemusic
+          spotify {
+            ...SocialLinkFragment
+          }
+          soundcloud {
+            ...SocialLinkFragment
+          }
+          lastfm {
+            ...SocialLinkFragment
+          }
+          bandcamp {
+            ...SocialLinkFragment
+          }
+          applemusic {
+            ...SocialLinkFragment
+          }
         }
       }
     }
+  }
+  
+  fragment SocialLinkFragment on SocialLink {
+    name
+    url
   }
 `;

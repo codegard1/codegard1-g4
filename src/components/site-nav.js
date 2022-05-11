@@ -12,31 +12,32 @@ const SiteNav = () => (
           siteMetadata {
             title
             social {
-              applemusic
-              bandcamp
-              github
-              keybase
-              linkedin
-              soundcloud
-              spotify
-              stackoverflow
-              tumblr
-              twitter
+              applemusic {name, url}
+              bandcamp {name, url}
+              github {name, url}
+              keybase {name, url}
+              linkedin {name, url}
+              soundcloud {name, url}
+              spotify {name, url}
+              stackoverflow {name, url}
+              tumblr {name, url}
+              twitter {name, url}
             }
           }
         }
       }
     `}
+
     render={data => {
-      let brandLinks = [];
+      let socialLinks = [];
       for (let key in data.site.siteMetadata.social) {
-        if (key !== undefined)
-          brandLinks.push({
-            name: key,
-            url: data.site.siteMetadata.social[key],
-            key: `site-nav-link-${key}`,
-            target: "_blank",
-          });
+        socialLinks.push({
+          name: data.site.siteMetadata.social[key].name,
+          url: data.site.siteMetadata.social[key].url,
+          key: `site-nav-link-${key}`,
+          target: "_blank",
+        }
+        )
       }
 
       const navLinkGroups = [
@@ -51,8 +52,8 @@ const SiteNav = () => (
           ],
         },
         {
-          name: "Brand Links",
-          links: brandLinks,
+          name: "Social Links",
+          links: socialLinks,
         },
       ];
 

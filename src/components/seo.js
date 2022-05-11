@@ -19,12 +19,12 @@ const Seo = ({ description, lang, meta, title }) => {
             title
             description
             social {
-              bandcamp
-              github
-              keybase
-              linkedin
-              soundcloud
-              stackoverflow
+              bandcamp {name, url}
+              github {name, url}
+              keybase {name, url}
+              linkedin {name, url}
+              soundcloud {name, url}
+              stackoverflow {name, url}
             }
           }
         }

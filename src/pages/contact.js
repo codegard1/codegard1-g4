@@ -9,28 +9,26 @@ import { OutboundLink } from "gatsby-plugin-google-gtag";
 const ContactPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
 
-  const brandLinks = [];
+  let socialLinks = [];
   for (let key in data.site.siteMetadata.social) {
-    if (key) {
-      brandLinks.push(
-        <li>
-          <OutboundLink href={data.site.siteMetadata.social[key]} key={`site-nav-link-${key}`}>{key}</OutboundLink>
-        </li>);
-    }
-  }
+    socialLinks.push(
+      <li>
+        <OutboundLink href={data.site.siteMetadata.social[key].url} key={`site-nav-link-${key}`}>{data.site.siteMetadata.social[key].name}</OutboundLink>
+      </li>)
+  };
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="Contact" />
-      <h1>Contact</h1>
+      <Seo title="Social" />
+      <h1>Social</h1>
       <p>
-        You may admire or reach me through the following social media and other platforms. Email is in there, as well. 
-        </p>
+        Reach out or admire from afar
+      </p>
       <ul>
-        {brandLinks}
+        {socialLinks}
       </ul>
     </Layout>
-  );
+  )
 };
 
 export default ContactPage;
@@ -41,20 +39,21 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         social {
-          applemusic
-          bandcamp
-          email
-          github
-          instagram
-          keybase
-          lastfm
-          soundcloud
-          spotify
-          stackoverflow
-          tumblr
-          twitter
-          twitch
-          youtube
+          applemusic {name,url}
+          bandcamp {name,url}
+          email {name,url}
+          github {name,url}
+          instagram {name,url}
+          keybase {name,url}
+          lastfm {name,url}
+          linkedin {name,url}
+          soundcloud {name,url}
+          spotify {name,url}
+          stackoverflow {name,url}
+          tumblr {name,url}
+          twitch {name,url}
+          twitter {name,url}
+          youtube {name,url}
         }
       }
     }

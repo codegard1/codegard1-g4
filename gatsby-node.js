@@ -135,7 +135,27 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Social {
-      twitter: String
+      twitter: SocialLink
+      applemusic: SocialLink
+      bandcamp: SocialLink
+      email: SocialLink
+      github: SocialLink
+      instagram: SocialLink
+      keybase: SocialLink
+      lastfm: SocialLink
+      linkedin: SocialLink
+      soundcloud: SocialLink
+      stackoverflow: SocialLink
+      spotify: SocialLink
+      tumblr: SocialLink
+      twitch: SocialLink
+      twitter: SocialLink
+      youtube: SocialLink
+    }
+
+    type SocialLink {
+      name: String
+      url: String
     }
 
     type MarkdownRemark implements Node {

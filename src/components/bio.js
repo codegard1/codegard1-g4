@@ -15,7 +15,10 @@ const Bio = () => {
             summary
           }
           social {
-            keybase
+            keybase {
+              name
+              url
+            }
           }
         }
       }
@@ -40,7 +43,7 @@ const Bio = () => {
       {author?.name && (
         <p>
           Written by {` `}
-          <OutboundLink target="_blank" rel="noopener noreferrerrer" href={`${social?.keybase || ``}`}>
+          <OutboundLink target="_blank" rel="noopener noreferrerrer" href={`${social?.keybase.url || ``}`}>
           <strong>{author.name}</strong>
           </OutboundLink>
         </p>
