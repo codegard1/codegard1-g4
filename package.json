@@ -69,6 +69,6 @@
     "develop": "gatsby develop",
     "start": "run develop",
     "clean": "gatsby clean; rm -r node_modules",
-    "preprocess": "node PreprocessInstagramJson.js"
+    "preprocess": "node ./utilities/PreprocessInstagramJson.js"
   }
 }
