@@ -1,47 +1,100 @@
 import React from "react";
-import { graphql } from "gatsby";
-
+import { graphql, Link } from "gatsby";
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
-
 import { OutboundLink } from "gatsby-plugin-google-gtag";
+import {
+  DetailsList,
+  DetailsListLayoutMode,
+  CheckboxVisibility,
+} from "@fluentui/react/lib/DetailsList";
 
 const MusicPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const { applemusic, bandcamp, soundcloud, spotify } =
     data.site.siteMetadata.social;
+  // const _items = data.allMarkdownRemark.nodes.map(post => {
+  //   return {
+  //     key: post.id,
+  //     name: post.frontmatter.title,
+  //     tags: post.frontmatter.tags,
+  //     date: post.frontmatter.date,
+  //     published: post.frontmatter.published,
+  //     slug: post.fields.slug
+  //   };
+  // });
+  // const _columns = [
+  //   {
+  //     key: "name",
+  //     name: "Name",
+  //     fieldName: "name",
+  //     minWidth: 200,
+  //     maxWidth: 300,
+  //     isResizable: true,
+  //     onRender: item => <Link to={item.slug}>{item.name}</Link>,
+  //   },
+  //   {
+  //     key: "date",
+  //     name: "Date",
+  //     fieldName: "date",
+  //     minWidth: 100,
+  //     maxWidth: 100,
+  //     isResizable: false,
+  //   },
+  //   {
+  //     key: "published",
+  //     name: "Published",
+  //     fieldName: "published",
+  //     minWidth: 100,
+  //     maxWidth: 100,
+  //     isResizable: false,
+  //     onRender: item => item.published ? "Yes" : "No",
+  //   },
+  //   {
+  //     key: "tags",
+  //     name: "Tags",
+  //     fieldName: "tags",
+  //     minWidth: 100,
+  //     maxWidth: 200,
+  //     isResizable: true,
+  //     onRender: item =>
+  //       item.tags.map(
+  //         tag => <span><Link to={`/blog/tags/${tag}`}>{tag}</Link>{`   `}</span>
+  //       ),
+  //   },
+  // ];
 
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="Music" keywords={[`music`, `audio`, `Ciaervo`]} />
       <h2>Music</h2>
       <p>
-          I make music sometimes using Logic or Fruity Loops. You can find some
-          of my tracks on{" "}
-          <OutboundLink
-            href={soundcloud}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            SoundCloud
-          </OutboundLink>
-          ,{" "}
-          <OutboundLink href={bandcamp} target="_blank" rel="noopener noreferrer">
-            BandCamp
-          </OutboundLink>
-          ,{" "}
-          <OutboundLink href={spotify} target="_blank" rel="noopener noreferrer">
-            Spotify
-          </OutboundLink>
-          ,{" "}
-          <OutboundLink
-            href={applemusic}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Apple Music
-          </OutboundLink>
-          , etc.
+        I make music sometimes using Logic or Fruity Loops. You can find some
+        of my tracks on{" "}
+        <OutboundLink
+          href={soundcloud}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          SoundCloud
+        </OutboundLink>
+        ,{" "}
+        <OutboundLink href={bandcamp} target="_blank" rel="noopener noreferrer">
+          BandCamp
+        </OutboundLink>
+        ,{" "}
+        <OutboundLink href={spotify} target="_blank" rel="noopener noreferrer">
+          Spotify
+        </OutboundLink>
+        ,{" "}
+        <OutboundLink
+          href={applemusic}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Apple Music
+        </OutboundLink>
+        , etc.
       </p>
       <br />
 
@@ -75,32 +128,24 @@ export default MusicPage;
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-        social {
-          spotify {
-            ...SocialLinkFragment
-          }
-          soundcloud {
-            ...SocialLinkFragment
-          }
-          lastfm {
-            ...SocialLinkFragment
-          }
-          bandcamp {
-            ...SocialLinkFragment
-          }
-          applemusic {
-            ...SocialLinkFragment
-          }
-        }
+  site {
+    siteMetadata {
+      title
+      social {
+        spotify {name,url}
+        soundcloud {name,url}
+        lastfm {name,url}
+        bandcamp {name,url}
+        applemusic {name,url}
       }
     }
   }
-  
-  fragment SocialLinkFragment on SocialLink {
-    name
-    url
+  allFile(filter: {sourceInstanceName: {eq: "music"}}) {
+    nodes {
+      extension
+      name
+      publicURL
+    }
   }
+}
 `;
