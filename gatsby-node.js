@@ -1,6 +1,7 @@
 const path = require(`path`);
 const _ = require(`lodash`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
+const fs = require(`fs`);
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
@@ -172,8 +173,105 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Fields {
       slug: String
     }
+
+    type SoundcloudJson implements Node {
+      AlbumURL: String
+      Album: String
+      Artist: String
+      Artwork: String
+      ReleaseDate: String
+      SongTitle: String
+      TrackURL: String
+    }
+
+    type Album implements Node {
+      Title: String
+      Tracks: [String]
+      Artist: String
+      URL: String
+      Artwork: String
+    }
+
+    type Song implements Node {
+      Title: String
+      Artist: String
+      ReleaseDate: String
+      Album: Album @link(from: "Album.Title" by: "Title")
+      Artwork: String
+    }
   `);
 };
+
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+  const { createNode } = actions;
+  const ALBUM_NODE_TYPE = `Album`;
+  const SONG_NODE_TYPE = `Song`;
+
+  // Simple read of local file
+  const data = JSON.parse(fs.readFileSync(`./content/data/soundcloud.json`));
+
+  // Get list of distinct album titles
+  const distinctAlbumTitles = [...new Set(data.map(v => v.Album))]
+
+  // Create album nodes
+  distinctAlbumTitles.forEach((albumTitle, ix) => {
+
+    const albumData = {
+      key: `album-${ix}`,
+      Title: albumTitle
+    };
+
+    const albumNodeMeta = {
+      id: createNodeId(albumData.key),
+      parent: null,
+      children: [],
+      internal: {
+        type: ALBUM_NODE_TYPE,
+        mediaType: `text/html`,
+        content: JSON.stringify(albumData),
+        contentDigest: createContentDigest(albumData)
+      }
+    };
+
+    // Create the album node
+    const album = Object.assign({}, albumData, albumNodeMeta);
+    createNode(album);
+
+    // Get songs that belong to this album
+    const albumSongs = data.filter(v => { v.Album === albumTitle });
+
+    // foreach song
+    albumSongs.forEach((song, ix1) => {
+      const songData = {
+        key: `${albumData.key}-song-${ix1}`,
+        Title: song.SongTitle,
+        Album: song.Album,
+        Artist: song.Artist,
+        ReleaseDate: song.ReleaseDate,
+        Artwork: song.Artwork
+      }
+
+      const songNodeMeta = {
+        id: createNodeId(`song-${song.id}`),
+        parent: null,
+        children: [],
+        internal: {
+          type: SONG_NODE_TYPE,
+          mediaType: `text/html`,
+          content: JSON.stringify(songData),
+          contentDigest: createContentDigest(songData)
+        }
+      };
+
+      // Create the song node
+      const songNode = Object.assign({}, songData, songNodeMeta);
+      createNode(songNode);
+    });
+
+  });
+};
+
+
 
 exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   if (stage === 'build-javascript' || stage === 'develop') {
