@@ -75,3 +75,5 @@ posts_1.json
 # dolt stuff
 .dolt
 .sqlhistory
+
+node_modules
