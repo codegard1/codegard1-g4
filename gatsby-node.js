@@ -175,19 +175,19 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Song implements Node {
-      Title: String!
-      Artist: String
-      ReleaseDate: String
-      Album: String 
-      Artwork: String
+      title: String!
+      artist: String
+      releaseDate: String
+      album: String 
+      artwork: String
     }
 
     type Album implements Node {
-      Title: String!
-      Tracks: [Song]
-      Artist: String
-      URL: String
-      Artwork: String
+      title: String!
+      tracks: [Song]
+      artist: String
+      url: String
+      artwork: String
     }
   `);
 };
