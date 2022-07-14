@@ -14,12 +14,6 @@ const Bio = () => {
             bio
             summary
           }
-          social {
-            keybase {
-              name
-              url
-            }
-          }
         }
       }
     }
@@ -27,7 +21,6 @@ const Bio = () => {
 
   // Set these values by editing "siteMetadata" in gatsby-config.js
   const author = data.site.siteMetadata?.author;
-  const social = data.site.siteMetadata?.social;
 
   return (
     <div id="bio-container">
@@ -42,10 +35,7 @@ const Bio = () => {
       />
       {author?.name && (
         <p>
-          Written by {` `}
-          <OutboundLink target="_blank" rel="noopener noreferrerrer" href={`${social?.keybase.url || ``}`}>
-          <strong>{author.name}</strong>
-          </OutboundLink>
+          &copy; {new Date().getFullYear()} <strong>{author.name}</strong>
         </p>
       )}
     </div>

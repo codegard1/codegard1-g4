@@ -15,13 +15,11 @@ const SiteNav = () => (
               applemusic {name, url}
               bandcamp {name, url}
               github {name, url}
-              keybase {name, url}
-              linkedin {name, url}
+              deviantart {name, url}
               soundcloud {name, url}
               spotify {name, url}
               stackoverflow {name, url}
               tumblr {name, url}
-              twitter {name, url}
             }
           }
         }

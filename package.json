@@ -2,7 +2,7 @@
   "name": "ciaervo",
   "private": true,
   "description": "Homepage for Ciaervo",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Chris Odegard <c.odegard@gmail.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
