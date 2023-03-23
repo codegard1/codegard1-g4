@@ -1,7 +1,7 @@
 {
-  "name": "ciaervo",
+  "name": "codegard1",
   "private": true,
-  "description": "Homepage for Ciaervo",
+  "description": "Homepage for Codegard1",
   "version": "0.2.2",
   "author": "Chris Odegard <c.odegard@gmail.com>",
   "bugs": {
@@ -9,7 +9,7 @@
   },
   "engines": {
     "node": "14",
-    "npm": "8"
+    "npm": "9"
   },
   "dependencies": {
     "@fluentui/react": "^8.67.3",
@@ -49,7 +49,7 @@
   "homepage": "https://ciaervo.com",
   "keywords": [
     "ciaervo",
-    "ciaervo1",
+    "codegard1",
     "Chris Odegard",
     "Blog",
     "Personal Site",
