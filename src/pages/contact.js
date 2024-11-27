@@ -19,8 +19,8 @@ const ContactPage = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="Social" />
-      <h1>Social</h1>
+      <Seo title="Contact" />
+      <h1>Contact</h1>
       <p>
         Reach out or admire from afar
       </p>
@@ -41,18 +41,15 @@ export const pageQuery = graphql`
         social {
           applemusic {name,url}
           bandcamp {name,url}
+          deviantart {name,url}
           email {name,url}
           github {name,url}
           instagram {name,url}
-          keybase {name,url}
           lastfm {name,url}
-          linkedin {name,url}
           soundcloud {name,url}
           spotify {name,url}
           stackoverflow {name,url}
           tumblr {name,url}
-          twitch {name,url}
-          twitter {name,url}
           youtube {name,url}
         }
       }

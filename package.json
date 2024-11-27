@@ -9,7 +9,7 @@
   },
   "engines": {
     "node": "14",
-    "npm": "8"
+    "npm": "9"
   },
   "dependencies": {
     "@fluentui/react": "^8.98.3",
@@ -48,7 +48,11 @@
   },
   "homepage": "https://codegard1.com",
   "keywords": [
+<<<<<<< HEAD
     "codegard",
+=======
+    "ciaervo",
+>>>>>>> 94797507ad14084fa07d39ab057f80c2c3914a07
     "codegard1",
     "Chris Odegard",
     "Blog",

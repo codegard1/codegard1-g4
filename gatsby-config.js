@@ -1,17 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `Ciaervo`,
+    title: `Codegard1`,
     author: {
       name: `Chris Odegard`,
-      bio: `Self-taught web developer and data scientist`,
-      summary: `I have a dev blog.`,
+      bio: `Amateur artist / professional nerd`,
+      summary: `I like to make things with computers and pens`,
     },
-    description: `Personal site of Chris Odegard.`,
-    siteUrl: `https://ciaervo.com`,
+    description: `Central repository for (SFW) Ciaervo-related content`,
+    siteUrl: `https://codegard1.com`,
     social: {
       applemusic: { url: `https://music.apple.com/us/artist/1592784321`, name: `Apple Music` },
       bandcamp: { url: `https://ciaervo.bandcamp.com/`, name: `Bandcamp` },
-      email: { url: `mailto:chris@codegard1.com?subject=Enquiry%20from%20a%20Peruser`, name: `e-mail` },
+      deviantart: { url: `https://www.deviantart.com/ciaervo/`, name: `Deviantart` },
+      email: { url: `mailto:ciaervo@gmail.com?subject=Enquiry%20from%20a%20Peruser`, name: `e-mail` },
       github: { url: `https://github.com/codegard1`, name: `github` },
       instagram: { url: `https://instagram.com/ciaervo`, name: `Instagram` },
       keybase: { url: `https://keybase.io/ciaervo`, name: `Keybase` },
@@ -137,8 +138,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Ciaervo`,
-        short_name: `CRVO`,
+        name: `Codegard1`,
+        short_name: `CAO1`,
         start_url: `/`,
         background_color: `#038387`,
         // This will impact how browsers show your PWA/website
