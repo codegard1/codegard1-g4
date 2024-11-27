@@ -6,7 +6,7 @@ module.exports = {
       bio: `Amateur artist / professional nerd`,
       summary: `I like to make things with computers and pens`,
     },
-    description: `Central repository for (SFW) Ciaervo-related content`,
+    description: `Codegard1's personal site`,
     siteUrl: `https://codegard1.com`,
     social: {
       applemusic: { url: `https://music.apple.com/us/artist/1592784321`, name: `Apple Music` },
