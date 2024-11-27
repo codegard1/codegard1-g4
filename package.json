@@ -8,8 +8,8 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "engines": {
-    "node": "14",
-    "npm": "9"
+    "node": "^16",
+    "npm": "^9"
   },
   "dependencies": {
     "@fluentui/react": "^8.98.3",
