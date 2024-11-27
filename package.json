@@ -2,7 +2,7 @@
   "name": "codegard1",
   "private": true,
   "description": "Personal web site",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "author": "Chris Odegard <c.odegard@gmail.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
