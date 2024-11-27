@@ -8,7 +8,7 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "engines": {
-    "node": "^16",
+    "node": "^18",
     "npm": "^9"
   },
   "dependencies": {
