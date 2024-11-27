@@ -98,6 +98,7 @@ const FluentUIGallery = ({ photoData }) => {
     return (
       <div
         className={classNames.listGridTile}
+        role="gridcell"
         data-is-focusable
         style={{
           width: 100 / columnCount.current + "%",
@@ -116,7 +117,7 @@ const FluentUIGallery = ({ photoData }) => {
         </div>
       </div>
     );
-  }, [openLightbox]);
+  }, [openLightbox,photoData.length]);
 
   const getPageHeight = React.useCallback(() => {
     return rowHeight.current * ROWS_PER_PAGE;

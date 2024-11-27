@@ -9,12 +9,9 @@ const MicroscopePage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
   // Join together image files and image metadata
-  const photosUnion = useConst(data.allMicroscopeJson.nodes.map(node => {
-    const file = data.allFile.nodes.find(v => node.name.startsWith(v.name));
-    const gatsbyImageData = file ? file.childImageSharp.gatsbyImageData : null;
-
-    const timestamp = new Date(node.creation_timestamp).toLocaleDateString();
-
+  const photosUnion = useConst(data.allFile.nodes.map(node => {
+    const gatsbyImageData = node.childImageSharp.gatsbyImageData;
+    const timestamp = new Date(node.birthTime).toLocaleDateString();
     const caption = node.name.length > 20 ? (node.name.substring(0, 17) + "...") : node.name;
 
     return {
@@ -54,13 +51,7 @@ query {
       childImageSharp {
         gatsbyImageData(layout: CONSTRAINED)
       }
-    }
-  }
-  allMicroscopeJson {
-    nodes {
-      id
-      name
-      creation_timestamp
+      birthTime
     }
   }
   site {
