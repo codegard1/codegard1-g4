@@ -129,12 +129,12 @@ exports.createSchemaCustomization = ({ actions }) => {
       siteUrl: String
       social: Social
     }
-
+    
     type Author {
       name: String
       summary: String
     }
-
+    
     type Social {
       twitter: SocialLink
       applemusic: SocialLink
@@ -169,11 +169,11 @@ exports.createSchemaCustomization = ({ actions }) => {
       description: String
       date: Date @dateformat
     }
-
+    
     type Fields {
       slug: String
     }
-
+    
     type Song implements Node {
       title: String!
       artist: String
@@ -189,7 +189,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       url: String
       artwork: String
     }
-  `);
+    `);
 };
 
 exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
@@ -198,61 +198,61 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
   const SONG_NODE_TYPE = `Song`;
 
   // Simple read of local file
-  const data = JSON.parse(fs.readFileSync(`./content/data/soundcloud.json`));
+  // const data = JSON.parse(fs.readFileSync(`./content/data/soundcloud.json`));
 
   // Get list of distinct album titles
-  const distinctAlbumTitles = [...new Set(data.map(v => v.Album))];
+  //   const distinctAlbumTitles = [...new Set(data.map(v => v.Album))];
 
   // Create album nodes
-  distinctAlbumTitles.forEach((albumTitle, ix) => {
-    // Get songs that belong to this album
-    // const albumSongTitles = data.filter(v => { v.Album === albumTitle }).map(v => v.Title);
+  //   distinctAlbumTitles.forEach((albumTitle, ix) => {
+  // Get songs that belong to this album
+  // const albumSongTitles = data.filter(v => { v.Album === albumTitle }).map(v => v.Title);
 
-    const albumData = {
-      key: albumTitle,
-      Title: albumTitle
-    };
+  //     const albumData = {
+  //       key: albumTitle,
+  //       Title: albumTitle
+  //     };
 
-    const albumNodeMeta = {
-      id: createNodeId(albumData.key),
-      parent: null,
-      children: [],
-      internal: {
-        type: ALBUM_NODE_TYPE,
-        mediaType: `text/html`,
-        content: JSON.stringify(albumData),
-        contentDigest: createContentDigest(albumData)
-      }
-    };
+  //     const albumNodeMeta = {
+  //       id: createNodeId(albumData.key),
+  //       parent: null,
+  //       children: [],
+  //       internal: {
+  //         type: ALBUM_NODE_TYPE,
+  //         mediaType: `text/html`,
+  //         content: JSON.stringify(albumData),
+  //         contentDigest: createContentDigest(albumData)
+  //       }
+  //     };
 
-    // Create the album node
-    const album = Object.assign({}, albumData, albumNodeMeta);
-    createNode(album);
-  });
+  //     // Create the album node
+  //     const album = Object.assign({}, albumData, albumNodeMeta);
+  //     createNode(album);
+  //   });
 
-  // Create Song nodes
-  data.forEach((song, ix) => {
-    const songData = {
-      key: `${song.Album}-song-${ix}`,
-      ...song
-    }
+  //   // Create Song nodes
+  //   data.forEach((song, ix) => {
+  //     const songData = {
+  //       key: `${song.Album}-song-${ix}`,
+  //       ...song
+  //     }
 
-    const songNodeMeta = {
-      id: createNodeId(`song-${song.Title}`),
-      parent: createNodeId(song.Album),
-      children: [],
-      internal: {
-        type: SONG_NODE_TYPE,
-        mediaType: `text/html`,
-        content: JSON.stringify(songData),
-        contentDigest: createContentDigest(songData)
-      }
-    };
+  //     const songNodeMeta = {
+  //       id: createNodeId(`song-${song.Title}`),
+  //       parent: createNodeId(song.Album),
+  //       children: [],
+  //       internal: {
+  //         type: SONG_NODE_TYPE,
+  //         mediaType: `text/html`,
+  //         content: JSON.stringify(songData),
+  //         contentDigest: createContentDigest(songData)
+  //       }
+  //     };
 
-    // Create the song node
-    const songNode = Object.assign({}, songData, songNodeMeta);
-    createNode(songNode);
-  });
+  //     // Create the song node
+  //     const songNode = Object.assign({}, songData, songNodeMeta);
+  //     createNode(songNode);
+  //   });
 
 };
 
@@ -267,7 +267,7 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
     if (miniCss) {
       // miniCss.options.ignoreOrder = true;
       miniCss.options.runtime = false;
-      miniCss.options.experimentalUseImportModule = true;
+      // miniCss.options.experimentalUseImportModule = true;
     }
 
     actions.replaceWebpackConfig(config);
