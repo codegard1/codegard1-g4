@@ -42,9 +42,6 @@
     "typeface-merriweather": "^1.1.13",
     "typeface-montserrat": "^1.1.13"
   },
-  "devDependencies": {
-    "prettier": "^2.7.1"
-  },
   "homepage": "https://codegard1.com",
   "keywords": [
     "ciaervo",
@@ -58,10 +55,9 @@
   "main": "/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/codegard1/codegard1-g4.git"
   },
   "scripts": {
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "build": "gatsby build;",
