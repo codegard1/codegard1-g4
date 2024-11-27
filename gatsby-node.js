@@ -197,62 +197,86 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
   const ALBUM_NODE_TYPE = `Album`;
   const SONG_NODE_TYPE = `Song`;
 
-  // Simple read of local file
-  // const data = JSON.parse(fs.readFileSync(`./content/data/soundcloud.json`));
+  // Try to read soundcloud.json
+  let soundCloudData;
+  try {
+    soundCloudData = JSON.parse(fs.readFileSync(`./content/data/soundcloud.json`));
+  } catch (error) {
+    console.error(`Error reading soundcloud.json:, ${error}`);
+    return;
+  }
 
   // Get list of distinct album titles
-  //   const distinctAlbumTitles = [...new Set(data.map(v => v.Album))];
+  const distinctAlbumTitles = [...new Set(soundCloudData.map(v => v.album))];
 
   // Create album nodes
-  //   distinctAlbumTitles.forEach((albumTitle, ix) => {
-  // Get songs that belong to this album
-  // const albumSongTitles = data.filter(v => { v.Album === albumTitle }).map(v => v.Title);
+  distinctAlbumTitles.forEach((albumTitle) => {
 
-  //     const albumData = {
-  //       key: albumTitle,
-  //       Title: albumTitle
-  //     };
+    // Get the album artist
+    const albumArtist = soundCloudData.find(v => v.album === albumTitle).artist;
 
-  //     const albumNodeMeta = {
-  //       id: createNodeId(albumData.key),
-  //       parent: null,
-  //       children: [],
-  //       internal: {
-  //         type: ALBUM_NODE_TYPE,
-  //         mediaType: `text/html`,
-  //         content: JSON.stringify(albumData),
-  //         contentDigest: createContentDigest(albumData)
-  //       }
-  //     };
+    // Get the album artwork
+    const albumArtwork = soundCloudData.find(v => v.album === albumTitle).artwork;
 
-  //     // Create the album node
-  //     const album = Object.assign({}, albumData, albumNodeMeta);
-  //     createNode(album);
-  //   });
+    const albumData = {
+      key: albumTitle.toLowerCase().replace(/\s+/g, ''),
+      title: albumTitle,
+      artist: albumArtist,
+      artwork: albumArtwork,
+    };
 
-  //   // Create Song nodes
-  //   data.forEach((song, ix) => {
-  //     const songData = {
-  //       key: `${song.Album}-song-${ix}`,
-  //       ...song
-  //     }
+    const albumNodeId = createNodeId(albumData.key);
 
-  //     const songNodeMeta = {
-  //       id: createNodeId(`song-${song.Title}`),
-  //       parent: createNodeId(song.Album),
-  //       children: [],
-  //       internal: {
-  //         type: SONG_NODE_TYPE,
-  //         mediaType: `text/html`,
-  //         content: JSON.stringify(songData),
-  //         contentDigest: createContentDigest(songData)
-  //       }
-  //     };
+    const albumNodeMeta = {
+      id: albumNodeId,
+      parent: null,
+      children: [],
+      internal: {
+        type: ALBUM_NODE_TYPE,
+        mediaType: `text/html`,
+        content: JSON.stringify(albumData),
+        contentDigest: createContentDigest(albumData),
+      }
+    };
 
-  //     // Create the song node
-  //     const songNode = Object.assign({}, songData, songNodeMeta);
-  //     createNode(songNode);
-  //   });
+    // Create the album node
+    const album = Object.assign({}, albumData, albumNodeMeta);
+    createNode(album);
+
+    // Get songs that belong to this album
+    const albumSongs = soundCloudData.filter(v => { v.album === albumTitle });
+
+    // Create Song nodes
+    albumSongs.forEach((song, ix) => {
+      const songData = {
+        key: song.title.toLowerCase().replace(/\s+/g, ''),
+        title: song.title,
+        artist: song.artist,
+        releaseDate: song.releasedate,
+        album: albumTitle,
+        artwork: song.artwork,
+      }
+
+      const songNodeId = createNodeId(songData.key);
+
+      const songNodeMeta = {
+        id: songNodeId,
+        parent: null,
+        children: [],
+        internal: {
+          type: SONG_NODE_TYPE,
+          mediaType: `text/html`,
+          content: JSON.stringify(songData),
+          contentDigest: createContentDigest(songData)
+        }
+      };
+
+      // Create the song node
+      const songNode = Object.assign({}, songData, songNodeMeta);
+      createNode(songNode);
+    });
+
+  });
 
 };
 
