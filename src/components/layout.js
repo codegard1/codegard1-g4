@@ -5,8 +5,8 @@ import { OutboundLink } from "gatsby-plugin-google-gtag";
 
 
 const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`;
-  const isRootPath = location.pathname === rootPath;
+  // const rootPath = `${__PATH_PREFIX__}/`;
+  // const isRootPath = location.pathname === rootPath;
 
   return (
     <div id="LayoutContainer">

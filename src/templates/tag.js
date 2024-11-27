@@ -15,7 +15,7 @@ const Tags = ({ pageContext, data, location }) => {
   const tagHeader = `${totalCount} post${totalCount === 1 ? "" : "s"
     } tagged with "${tag}"`;
 
-  const _items = data.allMarkdownRemark.nodes.map(post => {
+  const _items = nodes.map(post => {
     return {
       key: post.id,
       name: post.frontmatter.title,

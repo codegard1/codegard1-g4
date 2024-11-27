@@ -9,13 +9,9 @@ const ShoesPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
   // Join together image files and image metadata
-  const photosUnion = useConst(data.allShoesJson.nodes.map(node => {
-    const file = data.allFile.nodes.find(v => node.name.startsWith(v.name));
-    const gatsbyImageData = file ? file.childImageSharp.gatsbyImageData : null;
-
-    const createdDate = node.creation_timestamp ? node.creation_timestamp : node.created_timestamp;
-    const timestamp = new Date(createdDate).toLocaleDateString();
-
+  const photosUnion = useConst(data.allFile.nodes.map(node => {
+    const gatsbyImageData = node.childImageSharp.gatsbyImageData;
+    const timestamp = new Date(node.birthTime).toLocaleDateString();
     const titleOrNot = node.title ? node.title : node.name;
     const caption = titleOrNot.length > 20 ? (titleOrNot.substring(0, 17) + "...") : titleOrNot;
 
@@ -56,14 +52,7 @@ query {
       childImageSharp {
         gatsbyImageData(layout: CONSTRAINED)
       }
-    }
-  }
-  allShoesJson {
-    nodes {
-      id
-      name
-      creation_timestamp
-      created_timestamp
+      birthTime
     }
   }
   site {

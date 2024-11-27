@@ -7,7 +7,7 @@ const PostList = ({ posts }) => (
       const title = post.frontmatter.title || post.fields.slug;
       const tags = post.frontmatter.tags !== null
         ? post.frontmatter.tags.map(tag =>
-          <Link key={`tag-${tag}`} to={`/tags/${tag}`}>{tag}&nbsp;&nbsp;</Link>)
+          <Link key={`tag-${tag}`} to={`/blog/tags/${tag}`}>{tag}&nbsp;&nbsp;</Link>)
         : "";
 
       return (

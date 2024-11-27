@@ -6,7 +6,7 @@ module.exports = {
       bio: `Amateur artist / professional nerd`,
       summary: `I like to make things with computers and pens`,
     },
-    description: `Central repository for (SFW) Ciaervo-related content`,
+    description: `Codegard1's personal site`,
     siteUrl: `https://codegard1.com`,
     social: {
       applemusic: { url: `https://music.apple.com/us/artist/1592784321`, name: `Apple Music` },
@@ -51,7 +51,13 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
-    `gatsby-transformer-csv`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -76,6 +82,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/content/images/music`,
+        name: `music`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
       },
@@ -85,13 +98,6 @@ module.exports = {
       options: {
         name: `data`,
         path: `${__dirname}/content/data`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
       },
     },
     {
@@ -143,9 +149,6 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-react-helmet`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
+    `gatsby-plugin-react-helmet`
   ],
 };
