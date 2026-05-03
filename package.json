@@ -8,8 +8,8 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "engines": {
-    "node": "^18",
-    "npm": "^9"
+    "node": "^22",
+    "npm": "^10"
   },
   "dependencies": {
     "@fluentui/react": "8.125.5",
@@ -35,13 +35,18 @@
     "gatsby-transformer-json": "^4.24.0",
     "gatsby-transformer-remark": "^5.24.0",
     "gatsby-transformer-sharp": "^4.24.0",
+    "gray-matter": "^4.0.3",
     "js-search": "^2.0.0",
     "lodash": "4.18.1",
+    "next": "^16.2.4",
     "prismjs": "^1.29.0",
-    "react": "17.0.2",
-    "react-dom": "^17.0.2",
+    "prop-types": "^15.8.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
     "react-images": "^1.2.0-beta.7",
+    "remark": "^15.0.1",
+    "remark-html": "^15.0.2",
     "typeface-merriweather": "^1.1.13",
     "typeface-montserrat": "^1.1.13"
   },
@@ -71,6 +76,10 @@
     "develop": "gatsby develop",
     "start": "run develop",
     "clean": "gatsby clean; rm -r node_modules",
-    "preprocess": "node ./utilities/PreprocessInstagramJson.js"
+    "preprocess": "node ./utilities/PreprocessInstagramJson.js",
+    "nextjs:dev": "next dev",
+    "nextjs:build": "next build",
+    "nextjs:start": "next start",
+    "nextjs:clean": "rm -rf .next"
   }
 }
