@@ -38,7 +38,7 @@
     "gray-matter": "^4.0.3",
     "js-search": "^2.0.0",
     "lodash": "4.18.1",
-    "next": "^16.2.4",
+    "next": "16.2.4",
     "prismjs": "^1.29.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
@@ -51,7 +51,11 @@
     "typeface-montserrat": "^1.1.13"
   },
   "devDependencies": {
-    "prettier": "^2.7.1"
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "prettier": "^2.7.1",
+    "typescript": "^6.0.3"
   },
   "homepage": "https://codegard1.com",
   "keywords": [
