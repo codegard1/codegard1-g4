@@ -4,7 +4,7 @@ Source for [codegard1.com](https://codegard1.com), Chris Odegard's personal site
 
 Built with [Next.js](https://nextjs.org) (App Router, TypeScript, React Server Components) and
 deployed on Netlify. The site was migrated from Gatsby 4 in 2026; the last Gatsby version is
-tagged `v0.3.0-gatsby`.
+commit `676b49f` (tagged locally as `v0.3.0-gatsby`).
 
 ## Develop
 
