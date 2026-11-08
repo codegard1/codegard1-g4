@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# The Netlify Next.js runtime (@netlify/plugin-nextjs) is installed
+# automatically for Next.js sites; it serves the App Router with SSR,
+# on-demand image optimization and ISR.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
