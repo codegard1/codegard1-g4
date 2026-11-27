@@ -12,7 +12,14 @@ function contentRoutes(): string[] {
   return slugs;
 }
 
-const staticRoutes = [
+const staticAssetRoutes = [
+  "/rss.xml",
+  "/sitemap.xml",
+  "/robots.txt",
+  "/manifest.webmanifest",
+];
+
+const appRoutes = [
   "/",
   "/blog/1",
   "/blog/posts",
@@ -28,34 +35,37 @@ const staticRoutes = [
   "/music",
   "/blackjack",
   "/contact",
-  "/rss.xml",
-  "/sitemap.xml",
-  "/robots.txt",
-  "/manifest.webmanifest",
 ];
 
-for (const route of [...staticRoutes, ...contentRoutes()]) {
+for (const route of staticAssetRoutes) {
   test(`GET ${route} returns 200`, async ({ request }) => {
     const res = await request.get(route);
     expect(res.status(), `${route} status`).toBe(200);
   });
 }
 
-test("legacy URLs redirect", async ({ request }) => {
-  for (const [from, to] of [
-    ["/blog", "/blog/1"],
-    ["/posts", "/blog/posts"],
-    ["/site-status/", "/site-status"],
-  ]) {
-    const res = await request.get(from, { maxRedirects: 0 });
-    expect([301, 307, 308], `${from} status`).toContain(res.status());
-    expect(new URL(res.headers()["location"], "http://localhost").pathname).toBe(to);
+test("all app and content routes render without 404", async ({ page }) => {
+  for (const route of [...appRoutes, ...contentRoutes()]) {
+    await page.goto(route);
+    await expect(page.locator("main")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "404: Not Found" })).toHaveCount(0);
   }
 });
 
-test("unknown route is a 404", async ({ request }) => {
-  const res = await request.get("/this-page-does-not-exist");
-  expect(res.status()).toBe(404);
+test("legacy URLs redirect client-side", async ({ page }) => {
+  await page.goto("/blog");
+  await expect(page).toHaveURL(/\/blog\/1$/);
+
+  await page.goto("/posts");
+  await expect(page).toHaveURL(/\/blog\/posts$/);
+
+  await page.goto("/collection");
+  await expect(page).toHaveURL(/\/$/);
+});
+
+test("unknown route renders 404 page", async ({ page }) => {
+  await page.goto("/this-page-does-not-exist");
+  await expect(page.getByRole("heading", { name: "404: Not Found" })).toBeVisible();
 });
 
 test("home page lists recent posts and the nav opens", async ({ page }) => {

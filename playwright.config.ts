@@ -16,7 +16,7 @@ export default defineConfig({
       : undefined,
   },
   webServer: {
-    command: `npx next start -p ${port}`,
+    command: `npx vite preview --port ${port}`,
     url: `http://localhost:${port}/`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

@@ -1,11 +1,17 @@
 # dependencies
 node_modules/
 
-# next.js
-.next/
-out/
-next-env.d.ts
+# vite / build
+dist/
+src/generated/
 *.tsbuildinfo
+
+# generated public artifacts
+public/rss.xml
+public/sitemap.xml
+public/robots.txt
+public/manifest.webmanifest
+public/_redirects
 
 # netlify
 .netlify/
